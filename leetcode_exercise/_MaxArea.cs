@@ -28,19 +28,28 @@ namespace leetcode_exercise
      
         int getMaxArea(int[] height)
         {
-            int max = 0;
-            for (int i = 0; i < height.Length - 1; i++)
+           
+            int i = 0;
+            int j = height.Length - 1;
+            int max = Math.Min(height[i], height[j])*(j-i);
+            while (i<j)
             {
-                for (int j = i + 1; j < height.Length; j++)
-                {
-                    int tmp = getArea(i, j, height);
-                    if (max < tmp)
-                    {
-                        max = tmp;
-                    }
 
+                if (height[i] < height[j])
+                {
+                    i++;
+
+
+                }else
+                {
+                    j--;
                 }
+
+
+                int area = Math.Min(height[i], height[j]) * (j - i);
+                max = Math.Max(max, area);
             }
+
             return max;
         }
         public int MaxArea(int[] height)
