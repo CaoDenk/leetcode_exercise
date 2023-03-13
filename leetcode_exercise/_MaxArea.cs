@@ -58,61 +58,7 @@ namespace leetcode_exercise
 
             //areaMatrix = new int[height.Length, height.Length];
             return getMaxArea(height);
-            //if (height.Length < 10000)
-            //{
-            //    return getMaxArea(height);
-
-            //}
-            //else
-            //{
-
-            //    //List<int[]> res=  splitArr(height, 10);
-
-            //    int[] result = new int[10];
-            //    int size = height.Length / 10;
-            //    if (height.Length % 10 != 0)
-            //        size++;
-
-            //    for (int i = 0; i < 10; i++)
-            //    {
-            //        int start = i * size;
-            //        int end = (i + 1) * size;
-            //        if (end > height.Length)
-            //            end = height.Length;
-            //        TaskFactory taskFactory = new TaskFactory();
-            //        Task<int> task = taskFactory.StartNew<int>(() => { return getMaxArea(height[start..end]); });
-            //        //task.RunSynchronously();
-            //        result[i] = task.Result;
-            //    }
-
-            //    return findMax(result);
-            //}
-
-
         }
-
-        //List<int[]> splitArr(int[] height,int groupNum)
-        //{
-        //    List<int[]> list = new List<int[]>();
-        //    int sizeOfOneGroup=0;
-        //    if(height.Length%groupNum==0) //整分
-        //    {
-        //        sizeOfOneGroup=height.Length/groupNum;
-        //    }else
-        //    {
-        //        sizeOfOneGroup = height.Length / groupNum+1;
-        //    }
-        //    int i = 0;
-        //    for (;i<groupNum-1;i++)
-        //    {
-        //        int start = i * sizeOfOneGroup;
-        //        int end = (i+1) * sizeOfOneGroup;
-        //        list.Add(height[start..end]);
-        //    }
-        //    list.Add(height[(i * sizeOfOneGroup)..height.Length]);
-
-        //    return list;
-        //}
         int findMax(int[] arr)
         {
             int max = arr[0];
@@ -126,10 +72,10 @@ namespace leetcode_exercise
         public static void Main(string[] args)
         {
 
-            _MaxArea m = new();
-            Program p = new();
-            int res= m.MaxArea(p.arr);
-            Console.WriteLine(res);
+            //_MaxArea m = new();
+            //Program p = new();
+            //int res= m.MaxArea(p.arr);
+            //Console.WriteLine(res);
         }
         
     }
