@@ -5,7 +5,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-     <StartupObject>leetcode_exercise._PermuteUnique2</StartupObject>
+     <StartupObject>leetcode_exercise._GcdOfStrings</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>
