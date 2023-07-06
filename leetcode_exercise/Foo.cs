@@ -3,11 +3,7 @@
     public class Foo
     {
 
-        public Foo()
-        {
 
-        }
-        
         AutoResetEvent first=new AutoResetEvent(false);
         AutoResetEvent second=new AutoResetEvent(false);
         public void First(Action printFirst)
