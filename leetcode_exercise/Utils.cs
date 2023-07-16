@@ -32,6 +32,34 @@ namespace leetcode_exercise
             Console.WriteLine();
         }
 
-        
+        public static TreeNode? Make(int?[] nums)
+        {
+            if (nums.Length == 0 || nums[0] == null)
+                return null;
+            TreeNode root = new TreeNode(nums[0]!.Value);
+            Queue<TreeNode> que = new Queue<TreeNode>();
+            que.Enqueue(root);
+            LevelMake(que, nums);
+            return root;
+        }
+       static  void LevelMake(Queue<TreeNode> lastLevelNodes, int?[] nums)
+        {
+
+            for (int i = 1; i < nums.Length; i += 2)
+            {
+                TreeNode node = lastLevelNodes.Dequeue();
+                if (nums[i] != null)
+                {
+                    node.left = new TreeNode(nums[i].Value);
+                    lastLevelNodes.Enqueue(node.left);
+                }
+                if (i + 1 < nums.Length && nums[i + 1] != null)
+                {
+                    node.right = new TreeNode(nums[i + 1].Value);
+                    lastLevelNodes.Enqueue(node.right);
+                }
+            }
+
+        }
     }
 }

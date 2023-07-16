@@ -5,7 +5,8 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-     <StartupObject>leetcode_exercise._IsBalanced</StartupObject>
+	  <!--<StartupObject>leetcode_exercise._ConvertToTitle</StartupObject>-->
+	  <StartupObject>leetcode_exercise._IsValidBST</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>
