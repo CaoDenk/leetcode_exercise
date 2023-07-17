@@ -15,11 +15,10 @@ namespace leetcode_exercise
 
         char[] init()
         {
-            char[] ret = new char[27];
-            ret[0] ='Z';
+            char[] ret = new char[26];
             for(int i=0;i<26;++i)
             {
-                ret[i+1] = (char)('A' + i);
+                ret[i] = (char)('A' + i);
             }
             return ret;
         }
@@ -33,47 +32,31 @@ namespace leetcode_exercise
         /// <returns></returns>
         public string ConvertToTitle(int columnNumber)
         {
+          
             Stack<int> ints = new Stack<int>();
             var map = init();
-            bool flag = false;
             do
             {
-                if(columnNumber<27)
-                {
-                    if (!flag)
-                        ints.Push(columnNumber);
-                    else
-                        ints.Push(columnNumber-1);
-                    break;
-                }
+                --columnNumber;
                 columnNumber = Math.DivRem(columnNumber, 26, out int i);
-                flag = true;
-                
                 ints.Push(i);
-                if (columnNumber == 0)
-                {
-                    break;
-                 }
-                
 
-            } while (true);
-            
-            char[] chars = new char[ints.Count];
-            int count=ints.Count;
+            }while(columnNumber!=0);
 
-            for(int i=0; i<count ; i++)
+            char[] ret = new char[ints.Count];
+            for(int i=0;i<ret.Length;++i)
             {
-                chars[i] = map[ints.Pop()];
+                ret[i] = map[ints.Pop()];
             }
-            return new string(chars);
+            return new string(ret);
         }
         static void Main(string[] args)
         {
             _ConvertToTitle c = new();
-            {
-                var str = c.ConvertToTitle(27);
-                Console.WriteLine(str);
-            }
+            //{
+            //    var str = c.ConvertToTitle(28);
+            //    Console.WriteLine(str);
+            //}
             //{
             //    var str = c.ConvertToTitle(28);
             //    Console.WriteLine(str);
@@ -82,7 +65,7 @@ namespace leetcode_exercise
             //    var str = c.ConvertToTitle(26);
             //    Console.WriteLine(str);
             //}
-       
+
             //{
             //    var str = c.ConvertToTitle(28 - 1);
             //    Console.WriteLine(str);
@@ -99,11 +82,11 @@ namespace leetcode_exercise
             //    var str = c.ConvertToTitle(52);
             //    Console.WriteLine(str);
             //}
-            //for (int i = 1; i < 1000; i++)
-            //{
-            //    var str = c.ConvertToTitle(i);
-            //    Console.WriteLine($"{i}={str}");
-            //}
+            for (int i = 1; i < 1000; i++)
+            {
+                var str = c.ConvertToTitle(i);
+                Console.WriteLine($"{i}={str}");
+            }
         }
     }
 }

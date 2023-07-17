@@ -10,39 +10,14 @@ namespace leetcode_exercise
     {
         public int CountDigitOne(int n)
         {
-            
-            StringBuilder sb = new StringBuilder();
-            for (int i = 1; i <= n; i++)
+            int ret = 0;
+            for(int i=0; i <= n; i++)
             {
-                string s = Convert.ToString(i);
-                sb.Append(s);
+                ret+=Convert.ToString(i).Where(i=>i=='1').Count();
             }
-            return CountPerNum(sb.ToString());
+           return ret;
         }
-
-
-        /// <summary>
-        /// 
-        /// 个位是1的
-        /// </summary>
-        /// <param name="num"></param>
-        /// <returns></returns>
-
-        int CountPerNum(string num)
-        {
-
-            CharEnumerator charEnumerator = num.GetEnumerator();
-            int ret=0;
-            while(charEnumerator.MoveNext())
-            {
-                char c = charEnumerator.Current;
-                if (c == '1')
-                    ++ret;
-            }    
-
-
-            return ret;
-        }
+      
 
         static void Main()
         {

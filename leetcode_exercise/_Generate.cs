@@ -20,11 +20,9 @@ namespace leetcode_exercise
                 return l;
             l.Add(new List<int>() { 1 });
             if (numRows == 1)
-            {
-           
+            {          
                 return l;
             }
-            //l.Add(new List<int>() { 1 });
             l.Add(new List<int>() { 1, 1 });
             if (numRows == 2)
             {
