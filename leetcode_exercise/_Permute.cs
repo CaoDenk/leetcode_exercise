@@ -16,7 +16,6 @@ namespace leetcode_exercise
                 list.Add(nums.ToList());
                 return list;
             }
-
             qn(nums, 0,nums.Length - 1,list);
             return list;
         }
@@ -24,7 +23,6 @@ namespace leetcode_exercise
  
         void q2(int[] arr,int l,int r, IList<IList<int>> list)
         {
-
             AddList(arr, list);
             Swap(ref arr[l],ref arr[r]);
             AddList(arr, list);
@@ -33,10 +31,7 @@ namespace leetcode_exercise
 
         private void AddList(int[] arr, IList<IList<int>> list)
         {
-
-            List<int> l = arr.ToList();
-            list.Add(l);
-           
+            list.Add(new List<int>(arr));          
         }
         void   qn(int[] arr, int l, int r, IList<IList<int>> list)
         {
@@ -53,7 +48,6 @@ namespace leetcode_exercise
             }else
             {
                 q2(arr,l,r,list);
-
             }
 
         }
@@ -77,7 +71,11 @@ namespace leetcode_exercise
             //p.Perm(new int[] { 1, 2, 3}, 0, 3);
             int[] arr = new int[] { 1, 2, 3,4 };
             //p.qn(arr, 0, 3);
-
+            var ret=p.Permute(arr);
+            foreach(var i in ret)
+            {
+                Console.WriteLine(string.Join(",",i));
+            }
 
         }
 

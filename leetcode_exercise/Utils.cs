@@ -42,7 +42,7 @@ namespace leetcode_exercise
             LevelMake(que, nums);
             return root;
         }
-       static  void LevelMake(Queue<TreeNode> lastLevelNodes, int?[] nums)
+        static  void LevelMake(Queue<TreeNode> lastLevelNodes, int?[] nums)
         {
 
             for (int i = 1; i < nums.Length; i += 2)
@@ -60,6 +60,25 @@ namespace leetcode_exercise
                 }
             }
 
+        }
+        public static void PreVisit(TreeNode n)
+        {
+            Console.WriteLine(n.val);
+            if (n.left != null)
+            {
+                PreVisit(n.left);
+            }
+            if (n.right != null)
+                PreVisit(n.right);
+
+        }
+        public static void MidVistit(TreeNode root,  List<int> nums)
+        {
+            if (root.left != null)
+                MidVistit(root.left, nums);
+            nums.Add(root.val);
+            if (root.right != null)
+                MidVistit(root.right,  nums);
         }
     }
 }

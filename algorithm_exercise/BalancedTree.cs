@@ -8,5 +8,7 @@ namespace algorithm_exercise
 {
     internal class BalancedTree
     {
+
+
     }
 }

@@ -11,8 +11,27 @@ namespace algorithm_exercise
     /// </summary>
     internal class Avl
     {
+        
+        TreeNode root;
 
+        public static TreeNode BuildTree(int[] nums)
+        {
+
+
+            return null;
+        }
+        /// <summary>
+        /// LL旋转使其为avl
+        /// </summary>
+        /// <param name="treeNode"></param>
+        void LL(TreeNode treeNode)
+        {
+            
+
+        }
 
 
     }
+
+
 }

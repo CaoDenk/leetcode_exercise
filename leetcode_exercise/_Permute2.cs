@@ -14,11 +14,11 @@ namespace leetcode_exercise
         {
             IList<IList<int>> res = new List<IList<int>>();
 
-            List<int> output = new List<int>();
-            foreach(int num in nums)
-            {
-                output.Add(num);
-            }
+            List<int> output = new List<int>(nums);
+            //foreach(int num in nums)
+            //{
+            //    output.Add(num);
+            //}
 
             int n = nums.Length;
             Backtrack(n, output, res, 0);

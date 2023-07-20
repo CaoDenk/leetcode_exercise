@@ -22,7 +22,6 @@ namespace leetcode_exercise
                 ints.Add(sum);
             }
 
-
             return ints[^1];
         }
     }
