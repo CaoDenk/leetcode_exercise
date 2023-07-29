@@ -80,5 +80,20 @@ namespace leetcode_exercise
             if (root.right != null)
                 MidVistit(root.right,  nums);
         }
+
+        public static ListNode MakeListNodes(int[] arr)
+        {
+            
+            ListNode list = new ListNode();
+            ListNode ret = list;
+            list.val = arr[0];
+           for(int i=1; i<arr.Length; i++)
+            {
+                list.next=new ListNode(arr[i]);
+                list=list.next;
+            }
+           return ret;
+        }
+
     }
 }
