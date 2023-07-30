@@ -26,10 +26,8 @@ namespace leetcode_exercise
             for(int i = 0; i <no;++i)
             {
                 p= p.next;
-            }
-  
-             p.next = p.next.next;
-        
+            }  
+            p.next = p.next.next;        
             return head;
         }
 

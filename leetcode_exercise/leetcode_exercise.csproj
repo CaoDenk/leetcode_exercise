@@ -6,7 +6,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 	  <!--<StartupObject>leetcode_exercise._AddStrings</StartupObject>-->
-	  <StartupObject>leetcode_exercise._RemoveNthFromEnd</StartupObject>
+	  <StartupObject>leetcode_exercise._ThreeSum3</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>

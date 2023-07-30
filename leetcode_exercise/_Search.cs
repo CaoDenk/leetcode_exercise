@@ -27,7 +27,7 @@ namespace leetcode_exercise
         {
             if(end-start==0)
             {
-                    return -1;
+                  return -1;
             }
 
             int mid=(start+end)/2;
