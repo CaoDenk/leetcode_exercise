@@ -16,29 +16,30 @@ namespace leetcode_exercise
             {
                 if (i > 0 && nums[i] == nums[i - 1])
                     continue;
-                for(int j=i+1;j<nums.Length-1;++j)
+                int j=i+1;                    
+                int k = nums.Length - 1;
+                int target = -nums[i];
+                while(j<k)
                 {
-                    if (j>i+1&&nums[j] == nums[j - 1])
-                        continue;
-                    int k = nums.Length - 1;
-                    int target = -nums[i] - nums[j];
-
-                    for(; k>j;--k )
+                    int tmp = nums[j] + nums[k];
+                    if (tmp<target)
                     {
-                        if (nums[k] > target)
-                            continue;
-                        else
-                            break;
+                        j++;
+                    }else if (tmp> target)
+                    {
+                        k--;
                     }
-                    if (k == j)
-                        break;
-                    if (nums[k]==target)
+                    else
                     {
                         ret.Add(new List<int> { nums[i], nums[j], nums[k] });
+                        while (k > j && nums[k] == nums[k - 1]) k--;
+                        while (k > j && nums[j] == nums[j + 1]) j++;
+                        ++j;
+                        k--;
+                    
                     }
-             
-
                 }
+                   
             }
 
 
@@ -52,8 +53,9 @@ namespace leetcode_exercise
             //Test(new int[] { 3, 0, -2, -1, 1, 2});
             //Test(new int[] { 0,0,0,0});
             //Test(new int[] { -1, 0, 1, 2, -1, -4, -2, -3, 3, 0, 4 });
-            //Test(new int[] {-1, 0, 1, 2, -1, -4});
-            Test(new int[] { 1, 2, -2, -1 });
+            //Test(new int[] { -1, 0, 1, 2, -1, -4 });
+            Test(new int[] { -2, 0, 1, 1, 2 });
+            //Test(new int[] { 1, 2, -2, -1 });
 
 
         }

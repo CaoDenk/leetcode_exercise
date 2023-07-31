@@ -17,6 +17,7 @@ namespace leetcode_exercise
             int[] result = new int[nums.Length-k+1];
             for(int i=0;i<result.Length;++i)
             {
+
                 result[i] = nums[i..(i + k)].Max();
             }
             return result;
