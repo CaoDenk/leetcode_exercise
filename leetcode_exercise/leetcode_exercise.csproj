@@ -6,10 +6,11 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 	  <!--<StartupObject>leetcode_exercise._AddStrings</StartupObject>-->
-	  <StartupObject>leetcode_exercise._ThreeSum3</StartupObject>
+	  <StartupObject>leetcode_exercise._MaxSlidingWindow2</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Nito.Collections.Deque" Version="1.1.1" />
     <PackageReference Include="System.Runtime" Version="4.3.1" />
   </ItemGroup>
 
