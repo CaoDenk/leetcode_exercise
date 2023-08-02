@@ -32,23 +32,23 @@ namespace leetcode_exercise
             return flag;
         }
 
-        void PreVisit(TreeNode p, TreeNode q,ref bool flag)
+        void PreVisit(TreeNode root, TreeNode q,ref bool flag)
         {
             //if(p==q)   return true;
             if (flag)
                 return;
-            if(p.val==q.val)
+            if(root.val==q.val)
             {
                flag = true;
             }
-            if(p.left!=null)
+            if(root.left!=null)
             {
-                PreVisit(p.left, q, ref flag);
+                PreVisit(root.left, q, ref flag);
             }
           
-            if(p.right!=null)
+            if(root.right!=null)
             {
-                PreVisit(p.right, q, ref flag);
+                PreVisit(root.right, q, ref flag);
             }
 
 
