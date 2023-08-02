@@ -6,11 +6,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 	  <!--<StartupObject>leetcode_exercise._AddStrings</StartupObject>-->
-<<<<<<< HEAD
-	  <StartupObject>leetcode_exercise._DailyTemperatures</StartupObject>
-=======
-	  <StartupObject>leetcode_exercise._MaxSlidingWindow2</StartupObject>
->>>>>>> 2ab0e3a4674bfeda346dc84def565260ad9315ea
+	  <StartupObject>leetcode_exercise._KItemsWithMaximumSum</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>
