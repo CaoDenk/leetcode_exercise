@@ -15,12 +15,55 @@ namespace leetcode_exercise
         {
 
             int[] result = new int[nums.Length-k+1];
-            for(int i=0;i<result.Length;++i)
+            result[0] = nums[0];
+            int maxpos = 0;
+            for(int i=1;i<k;++i)
             {
+                if (nums[i] >= result[0])
+                {
+                    result[0] = nums[i];
+                    maxpos = i;
+                }
+                
+            }
 
-                result[i] = nums[i..(i + k)].Max();
+
+            for(int i=1;i<result.Length;++i)
+            {
+                if (nums[i + k-1] >= result[i-1]) //先判断新加入的这一个元素
+                {
+                    result[i] = nums[i+k-1];
+                    maxpos=i+k-1;
+                }else 
+                {
+                   
+                    if(i-1!=maxpos)//如果滑动窗口，i的位置不是maxpos，说明最大值还是maxpos
+                    {
+                        result[i] = nums[maxpos];
+                    }else
+                    {
+                        maxpos = i;
+                        for(int j=i+1;j<i+k;j++)
+                        {
+                            if (nums[j] >= nums[maxpos])
+                            {
+                                maxpos=j;
+                            }
+                        }
+                        result[i] = nums[maxpos];
+                    }
+                }
             }
             return result;
+        }
+
+        static void Main(string[] args)
+        {
+            _MaxSlidingWindow2 maxSlidingWindow = new();
+            { 
+                var ret = maxSlidingWindow.MaxSlidingWindow(new int[] { 1, 3, -1, -3, 5, 3, 6, 7 }, 3);
+                Console.WriteLine(string.Join(",", ret));
+            } 
         }
     }
 }

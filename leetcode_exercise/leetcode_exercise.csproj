@@ -6,10 +6,15 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 	  <!--<StartupObject>leetcode_exercise._AddStrings</StartupObject>-->
+<<<<<<< HEAD
 	  <StartupObject>leetcode_exercise._DailyTemperatures</StartupObject>
+=======
+	  <StartupObject>leetcode_exercise._MaxSlidingWindow2</StartupObject>
+>>>>>>> 2ab0e3a4674bfeda346dc84def565260ad9315ea
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Nito.Collections.Deque" Version="1.1.1" />
     <PackageReference Include="System.Runtime" Version="4.3.1" />
   </ItemGroup>
 
