@@ -10,28 +10,19 @@ namespace leetcode_exercise
     {
         public int CountDigitOne(int n)
         {
-            int ret = 0;
-            for(int i = 1; i <= n; i++)
+            // mulk 表示 10^k
+            // 在下面的代码中，可以发现 k 并没有被直接使用到（都是使用 10^k）
+            // 但为了让代码看起来更加直观，这里保留了 k
+            long mulk = 1;
+            int ans = 0;
+            for (int k = 0; n >= mulk; ++k)
             {
-                string s = Convert.ToString(i);
-                ret += CountChar(s, '1');
-
+                ans += (int)(n / (mulk * 10) * mulk) + (int)Math.Min(Math.Max(n % (mulk * 10) - mulk + 1, 0), mulk);
+                mulk *= 10;
             }
-            return ret;
+            return ans;
         }
 
-
-        int CountChar(string s,char c)
-        {
-            int count = 0;
-            for(int i=0;i<s.Length; i++)
-            {
-                if (s[i] == c)
-                    ++count;
-                
-            }
-            return count;
-        }
         static void Main()
         {
             _CountDigitOne _CountDigitOne = new _CountDigitOne();
