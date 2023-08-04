@@ -7,44 +7,36 @@ using System.Threading.Tasks;
 namespace leetcode_exercise
 {
     /// <summary>
-    /// 挖坑
+    /// 挖坑 超时
     /// </summary>
     internal class _MergeKLists
     {
-        class LNode : IComparable<LNode>
-        {
-            public ListNode node { get; set; }
-            public int CompareTo(LNode? other)
-            {
-                return node.val - other.node.val;
-            }
-            public LNode(ListNode node)
-            {
-                this.node = node;
-            }
-        }
+      
         public ListNode MergeKLists(ListNode[] lists)
         {
-            List<LNode> list = new List<LNode>();
-            foreach (var i in lists)
+            
+            PriorityQueue<ListNode,int> priorityQueue = new PriorityQueue<ListNode,int>();
+           
+            foreach(var l in lists)
             {
-                ListNode t = i;
-                do
+                if (l != null)
+                    priorityQueue.Enqueue(l, l.val);
+            }
+            ListNode head=new ListNode(0);
+            ListNode tail = head;
+
+            while(priorityQueue.Count>0)
+            {
+                var node=  priorityQueue.Dequeue();
+                tail.next = node;
+                tail=tail.next;
+                if(node.next!=null)
                 {
-                    list.Add(new LNode(t));
-                    t = t.next;
-                }while (t != null);
+                    priorityQueue.Enqueue(node.next, node.next.val);
+                }
             }
 
-            list.Sort();
-            var head = list[0].node;
-            var p=head;
-            for(int i=1;i<list.Count;i++)
-            {
-                p.next = list[i].node;
-                p= p.next;
-            }
-            return head;
+            return head.next;
         }
         static void Main(string[] args)
         {
