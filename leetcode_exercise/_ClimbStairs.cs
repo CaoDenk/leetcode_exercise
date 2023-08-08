@@ -32,7 +32,13 @@ namespace leetcode_exercise
         static void Main()
         {
             _ClimbStairs c = new();
-            Console.WriteLine(c.ClimbStairs(45));
+            
+            Console.WriteLine(c.ClimbStairs(3));
+            Console.WriteLine(c.ClimbStairs(4));
+            Console.WriteLine(c.ClimbStairs(5));
+            Console.WriteLine(c.ClimbStairs(6));
+
+            //Console.WriteLine(c.ClimbStairs(45));
 
         }
     }
