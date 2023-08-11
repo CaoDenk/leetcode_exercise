@@ -8,7 +8,7 @@ namespace leetcode_exercise
 {
     internal class _ClimbStairs
     {
-        public int ClimbStairs(int n)
+        public int ClimbStairs2(int n)
         {
             ++n;
             if(n<2) return 1;
@@ -29,10 +29,13 @@ namespace leetcode_exercise
         }
 
 
+
+
+
         static void Main()
         {
             _ClimbStairs c = new();
-            Console.WriteLine(c.ClimbStairs(45));
+            Console.WriteLine(c.ClimbStairs2(45));
 
         }
     }

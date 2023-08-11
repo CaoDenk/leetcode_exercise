@@ -5,7 +5,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-	  <StartupObject>algorithm_exercise.SplitGroup</StartupObject>
+	  <StartupObject>algorithm_exercise.QuickSort</StartupObject>
   </PropertyGroup>
 
 </Project>
