@@ -26,6 +26,7 @@ namespace algorithm_exercise
             for (int i = len; i >= 1; --i)
             {
                 (nums[i], nums[0]) = (nums[0], nums[i]);
+                Console.WriteLine(string.Join(",", nums));
                 len -= 1;
                 MaxHeapify(nums, 0, len);
             }
@@ -61,6 +62,7 @@ namespace algorithm_exercise
                 if (large != i)
                 {
                     (nums[i], nums[large]) = (nums[large], nums[i]);
+                    Console.WriteLine(string.Join(",", nums));
                     i = large;
                 }
                 else
@@ -73,10 +75,13 @@ namespace algorithm_exercise
         static void Main(string[] args)
         {
             {
-                //h.SortArray(arr);
-                //Console.WriteLine(string.Join(",",arr));
-            
-            
+                HeapSort_ h = new();
+                var arr = new int[] { -4, 0, 7, 4, 9, -5, -1, 0, -7, -1 };
+                Console.WriteLine(string.Join(",",arr));
+                h.SortArray(arr);
+                Console.WriteLine(string.Join(",",arr));
+
+
             }
         }
     }
