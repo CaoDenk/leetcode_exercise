@@ -10,7 +10,7 @@ namespace algorithm_exercise
     {
         public void NextPermutation(int[] nums)
         {
-            int len = nums.Length;
+            //int len = nums.Length;
 
             for (int i = nums.Length - 2; i >= 0; i--)
             {
@@ -79,9 +79,11 @@ namespace algorithm_exercise
 
                 int[] nums = { 1, 2, 3, 4,5,6 };
                 int size = p.fact(nums.Length);
-                HashSet<int[]> set = new HashSet<int[]>();
-                set.Add((int[])nums.Clone()) ;
-                for(int i = 0; i < size-1; ++i)
+                HashSet<int[]> set = new HashSet<int[]>
+                {
+                    (int[])nums.Clone()
+                };
+                for (int i = 0; i < size-1; ++i)
                 {
 
                     p.NextPermutation(nums);
@@ -90,9 +92,6 @@ namespace algorithm_exercise
                     set.Add((int[])nums.Clone());
                 }
                 Console.WriteLine(set.Count);
-
-
-
 
             }
 
