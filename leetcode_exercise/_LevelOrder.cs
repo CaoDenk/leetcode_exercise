@@ -35,6 +35,8 @@ namespace leetcode_exercise
         {
             ++level;
             Add(level, node.val);
+
+
             if(node.children != null)
             {
                 foreach (var i in node.children)
