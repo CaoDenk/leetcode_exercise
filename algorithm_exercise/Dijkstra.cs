@@ -6,12 +6,18 @@ using System.Threading.Tasks;
 
 namespace algorithm_exercise
 {
-    /// <summary>
-    /// 挖坑
-    /// </summary>
-    internal class BalancedTree
+    class VNode
     {
+        public string name;
+    }
+    class Edge
+    {
+       public VNode v1, v2;
+       public int weight;
 
+    }
+    internal class Dijkstra
+    {
 
     }
 }

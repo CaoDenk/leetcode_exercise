@@ -65,8 +65,7 @@ namespace algorithm_exercise
                     l2++;
                 }
                 ++k;
-            }
-
+            }            
             Array.Copy(arrBlock,start,arr,start,len);
         }
         static void Main(string[] args)

@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace algorithm_exercise
 {
-    /// <summary>
-    /// 挖坑
-    /// </summary>
-    internal class BalancedTree
+    internal class Kmp
     {
 
-
+        public int FindString(string str,string fstr)
+        {
+            return -1;
+        }
     }
 }

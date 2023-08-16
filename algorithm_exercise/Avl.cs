@@ -8,6 +8,7 @@ namespace algorithm_exercise
 {
     /// <summary>
     /// 怎么调整平衡二叉树
+    /// 挖坑
     /// </summary>
     internal class Avl
     {
@@ -30,6 +31,10 @@ namespace algorithm_exercise
 
         }
 
+        int GetDepth(TreeNode treeNode)
+        {
+            return 0;
+        }
 
     }
 
