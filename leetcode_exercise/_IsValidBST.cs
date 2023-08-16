@@ -20,27 +20,28 @@ namespace leetcode_exercise
             if(root.left==null&&root.right==null) return true;
             
             bool flag = false;
-            MidVisit(root, new List<int>(),flag);             
+            long max = long.MinValue;
+            MidVisit(root, ref max,ref flag);             
          
             return !flag;
         }
-        void MidVisit(TreeNode n,List<int> last,bool flag)
+        void MidVisit(TreeNode n,ref long max,ref bool flag)
         {
             if (flag)
                 return;
             if (n.left != null)
             {
-                MidVisit(n.left,last,flag);
+                MidVisit(n.left,ref max,ref flag);
             }
-            if (last.Count == 0 || last[^1] < n.val)
-                last.Add(n.val);
+            if (max <n.val)
+                max=n.val;
             else
             {
                 flag = true;
                 return;
             }
             if (n.right != null)
-                MidVisit(n.right,last,flag);
+                MidVisit(n.right,ref max,ref flag);
         }
 
         static void Main(string[] args)

@@ -6,7 +6,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 	  <!--<StartupObject>leetcode_exercise._AddStrings</StartupObject>-->
-	  <StartupObject>leetcode_exercise._MergeKLists</StartupObject>
+	  <StartupObject>leetcode_exercise.ReconstructQueue_</StartupObject>
+	  <!--<StartupObject>leetcode_exercise._ClimbStairs</StartupObject>-->
   </PropertyGroup>
 
   <ItemGroup>

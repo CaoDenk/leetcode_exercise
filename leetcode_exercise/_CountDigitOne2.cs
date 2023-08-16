@@ -10,12 +10,30 @@ namespace leetcode_exercise
     {
         public int CountDigitOne(int n)
         {
-            int ret = 0;
-            for(int i=0; i <= n; i++)
+            int res = 0;
+            int low = 0;
+            int digit = 1;//位因子
+            int hight=Math.DivRem(n, 10,out int cur);
+
+            while(hight!=0||cur!=0)
             {
-                ret+=Convert.ToString(i).Where(i=>i=='1').Count();
+                if (cur == 0)
+                {
+                    res += hight * digit;
+                }
+                else if (cur == 1)
+                {
+                    res += hight * digit + low + 1;
+                }
+                else
+                    res += (hight + 1) * digit;
+
+                low += cur * digit;
+                hight=Math.DivRem(hight, 10, out cur);
+                digit *= 10;
             }
-           return ret;
+
+           return res;
         }
       
 

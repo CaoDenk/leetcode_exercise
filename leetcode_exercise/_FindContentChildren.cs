@@ -26,7 +26,6 @@ namespace CSharpFeature
                     }
                 }
             }
-
             return count;
         }
         static void Main(string[] args)
