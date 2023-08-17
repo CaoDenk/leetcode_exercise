@@ -73,11 +73,8 @@ namespace algorithm_exercise
             tree.PostVisit(A);
 
         }
-    
 
     }
-
-
     class Node
     {
        public string value;

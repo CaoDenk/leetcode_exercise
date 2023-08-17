@@ -4,7 +4,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
-using static leetcode_exercise._Preorder;
+
 
 namespace leetcode_exercise
 {
@@ -15,27 +15,27 @@ namespace leetcode_exercise
     {
         public bool IsBalanced(TreeNode root)
         {
-            //int count=0;
-            //PreVisit(root,ref count);
-            try
-            {
-                GetDepth(root,0);
-            }catch (Exception ex)
-            {
-                return false;
-            }
-            return true;
+            bool flag = true;
+             GetDepth(root,0,ref flag);
+            return flag;
         }
 
-        int GetDepth(TreeNode root, int i)
+        int GetDepth(TreeNode root, int i,ref bool flag)
         {
+            if(!flag)
+            {
+                return -1;
+            }
             if (root != null)
             {
                 ++i;
-                int leftHeight = GetDepth(root.left, i);
-                int rightHeight= GetDepth(root.right, i);
-                if (Math.Abs(leftHeight-rightHeight)>1)
-                    throw new Exception();
+                int leftHeight = GetDepth(root.left, i,ref flag);
+                int rightHeight= GetDepth(root.right, i,ref flag);
+                if (Math.Abs(leftHeight - rightHeight) > 1)
+                {
+                    flag= false;
+                    return -1;
+                }
                 return Math.Max(leftHeight, rightHeight);
             }
             else

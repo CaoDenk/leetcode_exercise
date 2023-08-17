@@ -4,19 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace leetcode_exercise2
+namespace leetcode_exercise
 {
-    internal class ListNode
-    {
-        public int val;
-        public ListNode next;
-        public ListNode(int val = 0, ListNode next = null)
-        {
-            this.val = val;
-            this.next = next;
-        }
-        public ListNode() { }
-    }
+ 
 
     internal class _ReverseList
     {

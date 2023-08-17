@@ -66,10 +66,8 @@ namespace algorithm_exercise
             {
                 ret *= n;
                 --n;
-
             }
             return ret;
-        
         }
         static void Main()
         {

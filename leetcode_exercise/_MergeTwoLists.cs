@@ -4,8 +4,10 @@ using System.Collections.Generic;
 namespace leetcode_exercise {
 
 
-    internal class _MergeTwoLists {
-        ListNode MergeTwoLists(ListNode list1, ListNode list2) {
+    internal class _MergeTwoLists
+    {
+        ListNode MergeTwoLists(ListNode list1, ListNode list2)
+        {
 
 
             if (list1 == null)
@@ -38,19 +40,5 @@ namespace leetcode_exercise {
 
 
         }
-
-
     }
-
-     class ListNode {
-        public int val;
-        public ListNode next;
-        public ListNode(int val = 0, ListNode next = null) {
-            this.val = val;
-            this.next = next;
-        }
-    }
-
-
-
 }

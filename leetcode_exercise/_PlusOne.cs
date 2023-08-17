@@ -6,27 +6,22 @@ using System.Threading.Tasks;
 
 namespace leetcode_exercise
 {
-    internal class _PlusOne
+    public class _PlusOne
     {
 
         public int[] PlusOne(int[] digits)
         {
-
-
-        
             for (int i=digits.Length-1;i>0;i--)
             {            
-                    if (digits[i] == 9)
-                    {
-                        digits[i] = 0;
-                       
-                    }
-                    else
-                    {
-                        digits[i]++;
-                       return digits;
-                    }
-               
+                if (digits[i] == 9)
+                {
+                    digits[i] = 0;  
+                }
+                else
+                {
+                    digits[i]++;
+                    return digits;
+                }
             }
            
             if (digits[0] == 9)
@@ -37,8 +32,6 @@ namespace leetcode_exercise
             }
             else
                 digits[0]++;
-            
-
             return digits;
         }
 

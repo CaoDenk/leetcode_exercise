@@ -9,7 +9,7 @@ namespace leetcode_exercise
     /// <summary>
     /// 2485. 找出中枢整数
     /// </summary>
-    internal class _PivotInteger
+    public class _PivotInteger
     {
         public int PivotInteger1(int n)
         {

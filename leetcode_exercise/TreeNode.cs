@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace algorithm_exercise
+namespace leetcode_exercise
 {
-    internal class TreeNode
+    public class TreeNode
     {
-      
         public int val;
         public TreeNode left;
         public TreeNode right;
@@ -18,7 +17,5 @@ namespace algorithm_exercise
             this.left = left;
             this.right = right;
         }
-        
-
     }
 }

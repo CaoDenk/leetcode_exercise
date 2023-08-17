@@ -4,16 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static leetcode_exercise._Preorder;
 
 namespace leetcode_exercise
 {
     /// <summary>
     /// 层序遍历，使用队列
     /// </summary>
-    internal class _LevelOrder2
+    public class _LevelOrder2
     {
-
         public IList<IList<int>> LevelOrder(TreeNode root)
         {
             List<IList<int>> ret = new List<IList<int>>();

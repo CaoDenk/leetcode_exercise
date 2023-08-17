@@ -3,21 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static leetcode_exercise._Preorder;
 
 namespace leetcode_exercise
 {
     /// <summary>
     /// 层序遍历
     /// </summary>
-    internal class _LevelOrder
+    public class _LevelOrder
     {
         List<IList<int>> ret= new List<IList<int>>();
         public IList<IList<int>> LevelOrder(Node root)
         {
             if (root == null) return ret;
             //Add(1, root.val);
-            Cur( root,-1);
+            Recur( root,-1);
             return ret;
         }
 
@@ -31,7 +30,7 @@ namespace leetcode_exercise
                 ret[level].Add(val);
             }
         }
-        void Cur(Node node,int level)
+        void Recur(Node node,int level)
         {
             ++level;
             Add(level, node.val);
@@ -41,7 +40,7 @@ namespace leetcode_exercise
             {
                 foreach (var i in node.children)
                 {                
-                    Cur(i, level);                    
+                    Recur(i, level);                    
                 }
             }          
         }

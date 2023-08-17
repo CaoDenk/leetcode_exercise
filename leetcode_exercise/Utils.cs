@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace leetcode_exercise
 {
-    internal class Utils
+    public class Utils
     {
 
         public static ListNode Init(int[] arr)
@@ -42,7 +43,7 @@ namespace leetcode_exercise
             LevelMake(que, nums);
             return root;
         }
-        static  void LevelMake(Queue<TreeNode> lastLevelNodes, int?[] nums)
+        public static  void LevelMake(Queue<TreeNode> lastLevelNodes, int?[] nums)
         {
 
             for (int i = 1; i < nums.Length; i += 2)
@@ -95,5 +96,7 @@ namespace leetcode_exercise
            return ret;
         }
 
+
+    
     }
 }
