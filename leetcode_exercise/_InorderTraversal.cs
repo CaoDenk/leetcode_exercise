@@ -13,19 +13,19 @@ namespace leetcode_exercise
         {
             if(root==null)
                 return ret;
-            Cur(root);
+            Recur(root);
             return ret;
         }
-        void Cur(TreeNode root)
+        void Recur(TreeNode root)
         {
             if(root.left != null)
             {
-                Cur(root.left);
+                Recur(root.left);
             }
             ret.Add(root.val);
             if(root.right != null)
             {
-                Cur(root.right); 
+                Recur(root.right); 
             }
         }
     }

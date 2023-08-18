@@ -21,10 +21,7 @@ namespace leetcode_exercise
 
             }
         }
-            
-
-
-    class MyStack
+        class MyStack
      {
 
             Stack<Data> stack = new Stack<Data>();
@@ -50,14 +47,11 @@ namespace leetcode_exercise
 
      }
 
-
         public int LongestValidParentheses(string s)
         {
             int i = 0;
             int max = 0;
             MyStack my = new();
-
-          
             while (i<s.Length)
             {
                 if (s[i] == '(')
@@ -68,17 +62,12 @@ namespace leetcode_exercise
                 {
                     int len = my.Pop(i);
                     max = max < len ? len : max;
-
                 }
                 i++;
             }
 
-            
-
             return max;
         }
-
-
 
 
         public static void Main()
@@ -89,7 +78,7 @@ namespace leetcode_exercise
             string s3 = ")()())";
             string s4 = "()(())";
             string s5 = ")()())()()(";
-            // int res = l.LongestValidParentheses(s3);
+            Console.WriteLine(l.LongestValidParentheses(s1));
             Console.WriteLine(l.LongestValidParentheses(s2));
             Console.WriteLine(l.LongestValidParentheses(s3));
             Console.WriteLine(l.LongestValidParentheses(s4));

@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace leetcode_exercise
 {
+    /// <summary>
+    /// 挖坑
+    /// </summary>
     internal class IsValidSudoku_
     {
         public bool IsValidSudoku(char[][] board)

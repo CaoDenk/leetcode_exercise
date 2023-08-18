@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace leetcode_exercise
 {
+    /// <summary>
+    /// 二叉树的前序递归遍历
+    /// </summary>
     internal class _PreorderTraversal
     {
         List<int> ret=new List<int>();
