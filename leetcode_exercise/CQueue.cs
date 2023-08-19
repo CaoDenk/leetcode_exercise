@@ -13,10 +13,7 @@ namespace leetcode_exercise
     {
         Stack<int> font = new();
         Stack<int> back = new();
-        public CQueue()
-        {
-
-        }
+        public CQueue() { }
 
         public void AppendTail(int value)
         {

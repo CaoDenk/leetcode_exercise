@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace leetcode_exercise
 {
+    /// <summary>
+    /// 62. 不同路径 
+    /// 效率太低了，需要重写下，c#会超时
+    /// </summary>
     internal class _UniquePaths
     {
         public int UniquePaths(int m, int n)
@@ -37,8 +41,6 @@ namespace leetcode_exercise
                 ret1*=i;
                 ret2*=j;
             }
-
-
             return ret1 / ret2; ;
         }
 

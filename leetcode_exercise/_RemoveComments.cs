@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace leetcode_exercise
 {
     /// <summary>
-    /// 挖坑
+    /// 722. 删除注释
     /// </summary>
     internal class _RemoveComments
     {

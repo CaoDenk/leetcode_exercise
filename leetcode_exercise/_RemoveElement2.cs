@@ -1,13 +1,13 @@
 namespace leetcode;
 
-
+/// <summary>
+/// 27. 移除元素
+/// </summary>
 internal class _RemoveElement2
 {
 
     public int RemoveElement(int[] nums, int val)
     {
-
-
         int repeat = 0;
 
         for (int k = 0; k < nums.Length; k++)
@@ -19,37 +19,27 @@ internal class _RemoveElement2
 
         while (i < j)
         {
-
             if (nums[i] != val)
             {
-
                 ++i;
             }
             else
             {
-
-                swap(nums, i, j);
-                --j;
-
+                Swap(nums, i, j--);
             }
 
             if (nums[j] == val)
             {
-
                 --j;
             }
-          
         }
 
         return nums.Length-repeat;
     }
 
-    void swap(int[] nums,int i,int j)
+    void Swap(int[] nums,int i,int j)
     {
-        int t=nums[i];
-        nums[i]=nums[j];
-        nums[j]=t;
-
+        (nums[j], nums[i]) = (nums[i], nums[j]);
     }
 
     static void print(int ret ,int[] nums)
@@ -57,7 +47,7 @@ internal class _RemoveElement2
 
         for(int i=0;i<ret;++i)
         {
-            System.Console.WriteLine(nums[i]);
+            Console.WriteLine(nums[i]);
         }
 
     }

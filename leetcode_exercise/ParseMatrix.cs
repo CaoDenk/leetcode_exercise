@@ -7,7 +7,9 @@ using System.Threading.Tasks;
 namespace leetcode_exercise
 {
 
-    //enum
+    /// <summary>
+    /// 解析力扣里面的[[]]数组
+    /// </summary>
     internal class ParseMatrix
     {
         static object ParseString(string expression,Type type)

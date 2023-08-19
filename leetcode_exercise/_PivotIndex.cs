@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace leetcode_exercise
 {
+    /// <summary>
+    /// 724. 寻找数组的中心下标
+    /// </summary>
     internal class _PivotIndex
     {
         public int PivotIndex(int[] nums)

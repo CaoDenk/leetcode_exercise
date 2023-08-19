@@ -64,7 +64,7 @@ namespace leetcode_exercise
         }
         public static void PreVisit(TreeNode n)
         {
-            Console.WriteLine(n.val);
+            Console.Write(n.val+",");
             if (n.left != null)
             {
                 PreVisit(n.left);

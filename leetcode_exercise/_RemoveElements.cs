@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace leetcode_exercise
 {
+    /// <summary>
+    /// 203. 移除链表元素
+    /// </summary>
     internal class _RemoveElements
     {
 

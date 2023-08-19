@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 
 namespace leetcode_exercise
 {
+    /// <summary>
+    /// 43. 字符串相乘
+    /// 不能使用任何内置的 BigInteger 库或直接将输入转换为整数 这个需要重写下
+    /// </summary>
     internal class Multiply_
     {
         public string Multiply(string num1, string num2)

@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace leetcode_exercise
 {
+    /// <summary>
+    /// 867. 转置矩阵
+    /// </summary>
     internal class Transpose_
     {
         public int[][] Transpose(int[][] matrix)

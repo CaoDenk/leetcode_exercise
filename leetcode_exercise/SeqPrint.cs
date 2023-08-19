@@ -9,8 +9,7 @@ namespace leetcode_exercise
     internal class SeqPrint
     {
          int i = 1;
-        
-
+    
         void Add()
         {
             lock (this)

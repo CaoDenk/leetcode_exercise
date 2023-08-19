@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace leetcode_exercise
 {
+    /// <summary>
+    /// 33. 搜索旋转排序数组
+    /// </summary>
     internal class Search_
     {
         public int Search(int[] nums, int target)
@@ -68,7 +71,6 @@ namespace leetcode_exercise
                     }else
                         return SearchRecur(nums, start, mid-1, target);
                 }
-
 
             }
 

@@ -5,7 +5,10 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-	  <StartupObject>algorithm_exercise.Permutation</StartupObject>
+	  <StartupObject>algorithm_exercise.Avl</StartupObject>
   </PropertyGroup>
 
+	<ItemGroup>
+		<ProjectReference  Include="../leetcode_exercise/leetcode_exercise.csproj"/>
+	</ItemGroup>
 </Project>

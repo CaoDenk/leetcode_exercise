@@ -8,9 +8,6 @@ namespace leetcode_exercise
 {
     internal class _SolveNQueens
     {
-
-
-
         public IList<IList<string>> SolveNQueens(int n)
         {
 
@@ -24,7 +21,6 @@ namespace leetcode_exercise
 
                 for (int i = 1; i < n; ++i)
                 {
-
                     for (int j = 0; j < n; ++j)
                     {
                         int errloc = 0;
@@ -41,7 +37,6 @@ namespace leetcode_exercise
                         else
                         {
                             map[i, j] = true;
-                            //l.Add((i, j));
                         }
 
                     }
@@ -52,13 +47,10 @@ namespace leetcode_exercise
             {
                 ac(k);
             }
-          
-            
             return null;
-
         }
 
-        void  recur(bool[,] map,int startRow)
+        void Recur(bool[,] map, int startRow)
         {
 
             for(int q=0;q<map.GetLength(1);++q)
@@ -69,26 +61,18 @@ namespace leetcode_exercise
                     ++errloc;
                     if (errloc == map.Rank)
                     {
-                        //l.Clear();
                         return;
                     }
-
                 }
                 else
                 {
                     map[startRow, q] = true;
-
-                    //l.Add((i, j));
                 }
-
             }
-
-
         }
 
         bool IsSafe(bool[,] map,int i,int j)
         {
-            //bool ret = true;
             for(int row = 0; row < map.GetLength(0);++row)
             {
                 if (map[row, j])
@@ -139,9 +123,7 @@ namespace leetcode_exercise
                     ++m;
                     --n;
                 }
-
             }
-
             {
                 int m = i, n = j;
                 while (m < map.GetLength(0) && n <map.GetLength(1))

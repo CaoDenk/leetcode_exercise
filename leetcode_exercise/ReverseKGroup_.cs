@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace leetcode_exercise
 {
+    /// <summary>
+    /// 25. K 个一组翻转链表
+    /// </summary>
     internal class ReverseKGroup_
     {
         public ListNode ReverseKGroup(ListNode head, int k)

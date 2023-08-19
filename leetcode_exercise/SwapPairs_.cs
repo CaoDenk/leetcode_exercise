@@ -6,28 +6,16 @@ using System.Threading.Tasks;
 
 namespace leetcode_exercise
 {
+    /// <summary>
+    /// 24. 两两交换链表中的节点
+    /// </summary>
     internal class SwapPairs_
     {
         public ListNode SwapPairs(ListNode head)
         {
-            //if (head  ==null||head.next==null)
-            //{
-            //    return head;
-            //}
-            //var t=head.next.next;
-            //(head.val,head.next.val)=(head.next.val,head.val);
-
-            //while(t!=null&&t.next!=null)
-            //{
-            //    (t.val, t.next.val) = (t.next.val, t.val);
-            //    t = t.next.next;
-            //}
-            //return head;
             ListNode pre=new ListNode();
             pre.next = head;
             var t = pre;
-          
-      
             while (head != null && head.next != null)
             {
 
@@ -44,8 +32,6 @@ namespace leetcode_exercise
             }
 
             return pre.next;
-
-
         }
         ListNode Swap(ref ListNode node1,ref ListNode node2) {
             (node1.val,node2.val)=(node2.val,node1.val);
