@@ -13,22 +13,45 @@ namespace leetcode_exercise
     internal class InorderTraversal_
     {
 
-
-        
         public IList<int> InorderTraversal(TreeNode root)
         {
             List<int> result = new List<int>();
-            LinkedList<TreeNode> list = new LinkedList<TreeNode>();
-            list.AddLast(root);
-            //while (list.Count>0)
-            //{
-            //    if(list.)
+            if (root == null)
+                return result;
+            
+            Stack<TreeNode> stack = new Stack<TreeNode>();
+            stack.Push(root);
+            TreeNode node = root;
+            node = node.left;
+            while(stack.Count>0)
+            {
+                if(node!=null)
+                {
+                    stack.Push(node);
+                    node = node.left;
+                }else
+                {
+                    node=stack.Pop();
+                    result.Add(node.val);
+                    if(node.right!=null)
+                    {
+                        stack.Push(node.right);
+                        node = node.right;
+                        node = node.left;
+                    }else
+                        node = node.right;
+                }
 
-            //}
-
+            }
             return result;
 
         }
-
+        static void Main(string[] args)
+        {
+            TreeNode root = Utils.Make(new int?[] { 1, null, 2, 3 });
+            InorderTraversal_ i = new();
+            var res=i.InorderTraversal(root);
+            Console.WriteLine(string.Join(",",res));
+        }
     }
 }
