@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace leetcode_exercise
 {
+    /// <summary>
+    /// 小于n 转字符串1的个数 
+    /// 位1的个数
+    /// </summary>
     internal class _CountDigitOne2
     {
         public int CountDigitOne(int n)

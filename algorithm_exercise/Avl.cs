@@ -86,11 +86,12 @@ namespace algorithm_exercise
 
         void Adjust(BNode node)
         {
+
             if (node==null) return;
             int factor = GetBalancedFactor(root);
-            if (GetBalancedFactor(root) is 2 or -2)
+            if (factor==2)
             {
-
+                
 
             }else
             {
