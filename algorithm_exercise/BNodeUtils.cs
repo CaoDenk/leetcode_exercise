@@ -13,8 +13,17 @@ namespace algorithm_exercise
         {
             if(node == null) return;
             Console.WriteLine($"[val={node.val}]");
+            if(node.left!=null&& node.left.parent!=node)
+            {
+                throw new Exception($"{node.val}  乱了");
+            }
+            if (node.right != null && node.right.parent != node)
+            {
+                throw new Exception($"{node.val}  乱了");
+            }
             PreVisit(node.left);
             PreVisit(node.right);
+           
         }
         public static void PreVisitNode(BNode node)
         {
@@ -77,6 +86,30 @@ namespace algorithm_exercise
            }
             Console.WriteLine("*********************************");
         }
+
+       public static void VisitParent(BNode node)
+        {
+            while(node!=null)
+            {
+                Console.WriteLine(node.val);
+                node = node.parent;
+            }
+        }
+
+        public static BNode GetLast(BNode node)
+        {
+            while(node!=null&&node.left!=null)
+            {
+                node = node.left;
+            }
+            return node;
+        }
+
+
+
+       
+
+
 
     }
 }
