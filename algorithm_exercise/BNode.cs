@@ -12,13 +12,17 @@ namespace algorithm_exercise
         public int val;
         public BNode left;
         public BNode right;
-        public int level;
-        public BNode(int val = 0, BNode left = null, BNode right = null, int level = 0)
+        //public int height;
+        //public int level;
+        public BNode parent;
+        public BNode(int val = 0, BNode left = null, BNode right = null,BNode parent=null)
         {
             this.val = val;
             this.left = left;
             this.right = right;
-            this.level = level;
+            this.parent = parent;
+            //this.height = height;
+            //this.level = level;
         }
 
 

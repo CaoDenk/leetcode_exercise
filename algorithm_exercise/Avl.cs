@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,15 +10,20 @@ namespace algorithm_exercise
 {
     /// <summary>
     /// 怎么调整平衡二叉树
-    /// 挖坑
+    /// 挖坑   调整后依然不平衡 ？？？
     /// </summary>
     public class Avl
     {
-        
-        BNode root=null;
-        int height = 0;
 
-        int GetHeight(BNode node) => height - node.level;
+        BNode root = null;
+        public BNode Root { get => root; }
+    
+        public int GetHeight(BNode node)
+        {
+            if (node == null)
+                return 0;
+            return 1 + Math.Max(GetHeight(node.left), GetHeight(node.right));
+        }
         public static BNode BuildTree(int[] nums)
         {
             Avl tree = new Avl();
@@ -33,100 +39,191 @@ namespace algorithm_exercise
             if(node==null) return 0;
             return  GetHeight(node.left)-GetHeight(node.right);
         }
-        /// <summary>
-        /// LL旋转使其为avl
-        /// 
-        /// </summary>
-        /// <param name="treeNode"></param>
-        void LL(BNode treeNode)
-        {
-            BNode parent = GetFatherNode(treeNode);
-            //parent.left = treeNode.left;
-            //TreeNode t = treeNode.left;
-            //treeNode.left = treeNode.left.right;
-            //t.right = treeNode;
 
-            //parent.
-
-        }
-        /// <summary>
-        /// 获取父亲结点
-        /// 挖坑
-        /// </summary>
-        /// <param name="node"></param>
-        /// <returns></returns>
-        BNode GetFatherNode(BNode node)
+        void Insert(ref BNode node, int i)
         {
-            return root;
-        }
-        public void Insert(int i) => Insert(ref root, i);
-   
-        private void Insert(ref BNode node, int i)
-        {
-            int level = 0;
+            BNode parent = null;
             while (node != null)
             {
+                parent = node;
                 if (node.val == i)
                 {
                     return;
                 }
                 else if (node.val > i)
                 {
-                    node =ref node.left;
+                    node = ref node.left;
+                  
                 }
                 else
                 {
                     node = ref node.right;
                 }
-                ++level;
             }
-            height = Math.Max(height, level);
-            node =new BNode(i,level:level);
+            node = new BNode(i,parent:parent);
+            //Adjust(parent);
+            //BNodeUtils.LevelVisit(Root);
         }
+        public void Insert(int i) => Insert(ref root, i);
+        
+       void LLRotate( BNode node)
+        {
+            BNode T = node;
+            BNode L = T.left;
+            T.left = L.right;
+            if(L.right!=null)
+            {
+                L.right.parent = T;
+            }
+            L.right = T;
+            T.parent = L;
+            L.parent = T.parent;
+            if (node == root)
+            {
+                root = L;
+            }
+        }
+        void RRRotate(BNode node)
+        {
+            BNode T = node;
+            BNode R = T.right;
 
+            T.right = R.left; 
+            if(R.left!=null)
+            {
+                R.left.parent = T;
+            }
+            R.left = T;
+            T.parent = R;
+            R.parent = T.parent;
+            if (node == root)
+                root = R;
+        }
         void Adjust(BNode node)
         {
-
-            if (node==null) return;
-            int factor = GetBalancedFactor(root);
-            if (factor==2)
+            while(node != null)
             {
-                
+                int factor = GetBalancedFactor(node);
+                if (factor == 2)
+                {
+                    int leftNodeFactor = GetBalancedFactor(node.left);
+                    if (leftNodeFactor == 1)//LL
+                    {
+                        LLRotate(node);
+             
+                    }
+                    else //LR
+                    {
+                        BNode T = node;
+                        BNode L = T.left;
+                        BNode LR = L.right;
 
-            }else
-            {
-                Adjust(root.left);
-                Adjust(root.right);
+                        L.right = LR.left;
+                        LR.left = L;
+                        T.left = LR;
+                        LLRotate(node);
+                      
+                    }
+                    return;
+                }
+                if (factor == -2)
+                {
+                    int rightNodeFactor = GetBalancedFactor(node.right);
+                    if (rightNodeFactor == -1)//RR
+                    {
+                        RRRotate( node);
+                    }
+                    else//RL
+                    {
+                        BNode T = node;
+                        BNode R = T.right;
+                        BNode RL = R.left;
+
+                        R.left = RL.right;
+                        RL.right = R;
+                        T.right = RL;
+                        RRRotate(node);
+                    }
+                    return;
+                }
+                 node = node.parent;
             }
 
+
         }
+        //void Adjust(ref BNode node)
+        //{
 
+        //    if (node==null) return;
+        //    int factor = GetBalancedFactor(node);
+        //    if (factor==2)
+        //    {
+        //        int leftNodeFactor = GetBalancedFactor(node.left);
+        //        if (leftNodeFactor==1)//LL
+        //        {
+        //            LLRotate(ref node);
+        //            return;
+        //        }
+        //        else if(leftNodeFactor == -1) //LR
+        //        {
+        //            BNode T = node;
+        //            BNode L = T.left;
+        //            BNode  LR= L.right;
 
-        public int MaxDepth(BNode node) => GetDepth(node, 0);
-        int GetDepth(BNode root, int i)
-        {
-            if (root == null)
-                return i;
-            ++i;
-            return Math.Max(GetDepth(root.left, i), GetDepth(root.right, i));
-        }
+        //            L.right = LR.left;
+        //            LR.left = L;
+        //            T.left= LR;
+        //            LLRotate(ref node);
+        //            return;
+        //        }
+        //        Adjust(ref node.left);
+        //    }
+        //    else if(factor==-2)
+        //    {
+        //        int rightNodeFactor = GetBalancedFactor(node.right);
+        //        if (rightNodeFactor == -1)//RR
+        //        {
+        //            RRRotate(ref node);
+        //            return;
+        //        }
+        //        else if (rightNodeFactor == 1)//RL
+        //        {
+        //            BNode T= node;
+        //            BNode R= T.right;
+        //            BNode RL = R.left;
 
-        /// <summary>
-        /// 找到失衡的结点
-        /// </summary>
-        /// <param name="root"></param>
-        /// <returns></returns>
-        BNode FindInBalaned(BNode root) => root;
+        //            R.left=RL.right;
+        //            RL.right = R;
+        //            T.right=RL;
+        //            RRRotate(ref node);
+        //            return;
+        //        }
+        //        Adjust(ref node.right);
+        //    }else
+        //    {
+        //        Adjust(ref node.left);
+        //        Adjust(ref node.right);
+        //    }
+        //}
 
         static void Main(string[] args)
         {
             //Avl.BuildTree(new int[] { 10, 9, 8, 7, 6 });
             Avl avl = new();
-            for (int i = 10; i > 0; --i)
+            for (int i = 10; i >= 8; --i)
             {
                 avl.Insert(i);
             }
-            BNodeUtils.PreVisitNode(avl.root);
+            //avl.Insert(10);
+            //avl.Insert(9);
+            //avl.Insert(8);
+
+            //avl.Adjust(ref avl.root);
+            //avl.Adjust(ref avl.root.left);
+            BNodeUtils.LevelVisit(avl.root);
+            //BNodeUtils.PreVisitNode(avl.Root);
+            //Console.WriteLine();
+            //BNodeUtils.MidVisitNode(avl.Root);
             //avl.Insert(10);
             //avl.Insert(9);
             //Utils.PreVisit(avl.root);

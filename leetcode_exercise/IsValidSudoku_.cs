@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace leetcode_exercise
 {
     /// <summary>
+    /// 37. 解数独
     /// 挖坑
     /// </summary>
     internal class IsValidSudoku_

@@ -88,7 +88,21 @@ namespace leetcode_exercise
                 _IsBalanced i = new();
                 Console.WriteLine(i.IsBalanced(root));
             }
+            {
+                TreeNode root = Utils.Make(new int?[] {10,9,null,8,null} );
+             
+                //root.right.right = new TreeNode(7);
+                _IsBalanced i = new();
+                Console.WriteLine(i.IsBalanced(root));
+            }
 
+            {
+                TreeNode root = Utils.Make(new int?[] { 3, 2,7,1, null,5,9,0,null,4,6,8,10});
+
+                //root.right.right = new TreeNode(7);
+                _IsBalanced i = new();
+                Console.WriteLine(i.IsBalanced(root));
+            }
         }
     }
 }
