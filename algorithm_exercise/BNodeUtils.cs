@@ -12,7 +12,7 @@ namespace algorithm_exercise
         static void PreVisit(BNode node)
         {
             if(node == null) return;
-            Console.WriteLine($"[val={node.val}]");
+            //Console.WriteLine($"[val={node.val}]");
             if(node.left!=null&& node.left.parent!=node)
             {
                 throw new Exception($"{node.val}  乱了");
@@ -84,7 +84,7 @@ namespace algorithm_exercise
            {
                 Console.WriteLine(string.Join(",",l));
            }
-            Console.WriteLine("*********************************");
+            //Console.WriteLine("*********************************");
         }
 
        public static void VisitParent(BNode node)

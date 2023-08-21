@@ -5,6 +5,7 @@ using System.Linq;
 using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace algorithm_exercise
 {
@@ -53,7 +54,6 @@ namespace algorithm_exercise
                 else if (node.val > i)
                 {
                     node = ref node.left;
-                  
                 }
                 else
                 {
@@ -85,18 +85,16 @@ namespace algorithm_exercise
             if (node == root)
             {
                 root = L;
-            }else
-            {
-                if (Tparent.left == T)
-                {
-                    Tparent.left = L;
-                }
-                else
-                {
-                    Tparent.right = L;
-                }
-              
             }
+            else if (Tparent.left == T)
+            {
+                Tparent.left = L;
+            }
+            else
+            {
+                Tparent.right = L;
+            }
+                        
             T.parent = L;
    
         }
@@ -116,16 +114,13 @@ namespace algorithm_exercise
           
             if (node == root)
                 root = R;
-            else
+            else if (Tparent.left == T)
             {
-                if (Tparent.left == T)
-                {
-                    Tparent.left = R;
-                }
-                else 
-                {
-                    Tparent.right = R;
-                }
+                Tparent.left = R;
+            }
+            else 
+            {
+                Tparent.right = R;
             }
             T.parent = R;
 
@@ -141,11 +136,9 @@ namespace algorithm_exercise
                     if (leftNodeFactor >= 1)//LL
                     {
                         LLRotate(node);
-                        
                     }
                     else //LR
                     {
-                       
                         BNode T = node;
                         BNode L = T.left;
                         BNode LR = L.right;
@@ -155,14 +148,12 @@ namespace algorithm_exercise
                         {
                             LR.left.parent = L;
                         }
-
                         LR.left = L;
                         L.parent = LR;
 
                         T.left = LR;
                         LR.parent = T;
                         LLRotate(node);
-        
                     }
                     return;
                 }
@@ -178,16 +169,18 @@ namespace algorithm_exercise
                         BNode T = node;
                         BNode R = T.right;
                         BNode RL = R.left;
+
                         R.left = RL.right;
                         if (RL.right != null)
                         {
                             RL.right.parent = R;
                         }
+
                         RL.right = R;
                         R.parent = RL;
 
                         T.right = RL;
-                        RL.parent = RL;
+                        RL.parent = T;
                         RRRotate(node);
         
                     }
@@ -198,211 +191,182 @@ namespace algorithm_exercise
 
 
         }
-        
-        BNode Delete(BNode node,int value) 
-        {   
-
-            while(node!=null)
+        int GetMax(BNode node)
+        {
+            while (node.right != null)
             {
-                if(node.val == value)
-                {
-                    if(node.left==null&&node.right==null)//删除的是叶子结点
-                    {
-                        if(node.val==node.parent.left.val)
-                        {
-                            node.parent.left = null;
-                        }else
-                        {
-                            node.parent.right = null;
-                        }
-                    }else //删除非叶子结点
-                    {
-
-                        if(node.left==null) 
-                        {
-
-                            if(node.parent.left.val==node.val) //=》 后续优化可以直接比较指针，相比比较val代码量更少
-                            {
-
-
-                            }
-
-                            return root;
-                        }
-                        if(root.right==null)//左子树不为空,右子树为空
-                        {
-                            return null;
-                        }
-
-                        int leftHeight=GetHeight(node.left);
-                        int rightHeight=GetHeight(node.right);
-                        if(leftHeight>rightHeight)
-                        {
-                            return root;
-                        }
-                        if(leftHeight<rightHeight)
-                        {
-                            return root;
-                        }
-                        //随缘
-
-                    }
-
-
-                }
-                else if (node.val > value)
-                {
-                    node = node.left;
-                }
-                else
-                {
-                    node = node.right;
-                }
-
+                node = node.right;
             }
-            
-            return root;
+            return node.val;
         }
+        int GetMin(BNode node)
+        {
+            while (node.left != null)
+            {
+                node = node.left;
+            }
+            return node.val;
+        }
+    
         BNode Delete(int value)
         {
-            if (root == null) //删除空树
+            if (root == null)
                 return null;
-            if(root.val== value) //删除根
+            return Delete(ref root,root,value);
+        }
+        /// <summary>
+        /// 删除有bug
+        /// </summary>
+        /// <param name="parent"></param>
+        /// <param name="node"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        BNode Delete(ref BNode parent,BNode node,int value) //删除后返回根节点
+        {
+            if (node == null) //删除空树
             {
-                if(root.left == null)
+                return null;
+            }else if(value<node.val)
+            {
+                node.left=Delete(ref parent.left,node.left,value);
+            }else if(value>node.val)
+            {
+                node.right=Delete(ref parent.right,node.right,value);
+            }
+            else//找到
+            {
+                if (node.left == null && node.right == null) //删除叶子结点
                 {
-                    if (root.right != null)
-                    {
-                        root.right.parent = null;
-                        return root.right;
-                    }
-                    else
-                        return null;
-       
+                    parent = null;//没用代码
+                    return null;
                 }
-                if(root.right == null)
+                else if (node.left == null) //说明root.right!=null
                 {
-                    if (root.right != null)
-                    {
-                        root.right.parent = null;
-                        return root.right;
-                    }
-                    else
-                        return null;
-                }
+                    parent = null;
+                    return node.right;
 
-                int leftHeight = GetHeight(root.left);
-                int rightHeight = GetHeight(root.right);
-                if(leftHeight> rightHeight)
+                }else if (root.right == null)
                 {
-                    root.left.parent = null;
-                    root.left.right=root.right;
-                    root.right.parent = root.left;
-
-                    return root.left;
-                }
-                if(rightHeight> leftHeight)
-                {
-                    root.right.parent = null;
-                    root.right.left=root.left;
-
-                    root.left.parent=root.right;
-                    return root.right;
-                }
-
-                if ((new Random().Next() & 1) == 0)//随缘  奇数字时候左子树第一个为父节点
-                {
-                    root.left.parent = null;
-                    root.left.right = root.right;
-                    root.right.parent = root.left;
-
-                    return root.left;
+                    parent = null;
+                    return node.left;
                 }else
                 {
-                    root.right.parent = null;
-                    root.right.left = root.left;
-
-                    root.left.parent = root.right;
-                    return root.right;
-                }
-
-            }else
-            {
-                if(root.val>value)
-                {
-                    if (root.left != null)
+                    int leftHeight = GetHeight(node.left);
+                    int rightHeight = GetHeight(node.right);
+                    BNode ret;
+                    if (leftHeight >= rightHeight)
                     {
-                        return Delete(root.left, value);
-                    }
-                    else
-                        return root;
-                   
-                }else
-                {
-                    if (root.right != null)
+                        int max=GetMax(node.left);
+                        BNode bnode=  Delete(ref node.left, node.left, max);
+
+                        bnode.right = node.right;
+                        node.right.parent = bnode;
+                        #region
+                        //if(node.parent.left==node)
+                        //{
+                        //    node.parent.left = bnode;
+                        //    bnode.parent = node.parent;
+                        //}else
+                        //{
+                        //    node.parent.right = bnode;
+                        //    bnode.parent = node.parent;
+                        //}
+                        #endregion
+                        parent = bnode;
+                        bnode.parent = node.parent;
+                        ret = bnode;
+                      
+                    }else                
                     {
-                        return Delete(root.right, value);
+                        int min = GetMin(node.right);
+                        BNode bnode= Delete(ref node.right,node.right,min);
+
+                        bnode.right=node.left;
+                        node.right.parent = bnode;
+                        parent = bnode;
+                        bnode.parent = node.parent;
+                        ret = bnode;
                     }
-                    else
-                        return root;
+
+
+                    return ret;
                 }
             }
+ 
+            return node;
+        }
+
+        static void RandomInsert(int num,int maxNum)
+        {
+            Avl avl = new Avl();
+            HashSet<int> keys = new HashSet<int>();
+            List<int> values = new List<int>();
+            for(int i=0;i< num; i++)
+            {
+                Random random = new Random();
+                int rand=random.Next(maxNum);
+                while (keys.Contains(rand))
+                {
+                   rand=random.Next(maxNum);
+                }
+                keys.Add(rand);
+                avl.Insert(rand);
+                values.Add(rand);
+            }
+            BNodeUtils.LevelVisit(avl.root);
+            Console.WriteLine(string.Join(",",values));
+        }
+        static Avl InsertbasingList(List<int> list)
+        {
+            Avl avl = new Avl();
+  
+            for (int i = 0; i < list.Count; i++)
+            {
+                avl.Insert(list[i]);
+                //BNodeUtils.LevelVisit(avl.root);
+                //Console.WriteLine();
+            }
+
+            return avl;
+            //Console.WriteLine(string.Join(",", values));
+        }
+        static void DeleteTest(Avl avl,int value)
+        {
+            //avl.Delete(ref avl.,avl.root ,value);
+           
+        }
+
+        static void BugTest()
+        {
+            List<int> list = new List<int> { 39, 9, 1, 27, 93, 2, 10, 88, 28, 29, 81, 48, 47, 56, 46, 64, 5, 20, 54, 74, 60, 43, 59, 97, 35, 87, 65, 58, 3, 8, 0, 68, 32, 41, 38, 99, 30, 98, 75, 92, 69, 95, 18, 7, 14, 71, 50, 85, 57, 25 };
+            Avl avl = InsertbasingList(list);
+            BNodeUtils.LevelVisit(avl.root);
+            for (int i = 0; i < list.Count; ++i)
+            {
+                Console.WriteLine($"删除{list[i]}");
+                DeleteTest(avl, list[i]);
+                BNodeUtils.PreVisitNode(avl.root);
+                BNodeUtils.LevelVisit(avl.root);
+                Console.WriteLine();
+            }
+
         }
         static void Main(string[] args)
         {
-            //Avl.BuildTree(new int[] { 10, 9, 8, 7, 6 });
-            Avl avl = new();
-            //for (int i = 10; i >= -10; --i)
+            //List<int> list = new List<int> { 39, 9, 1, 27, 93, 2, 10, 88, 28, 29, 81, 48, 47, 56, 46, 64, 5, 20, 54, 74, 60, 43, 59, 97, 35, 87, 65, 58, 3, 8, 0, 68, 32, 41, 38, 99, 30, 98, 75, 92, 69, 95, 18, 7, 14, 71, 50, 85, 57, 25 };
+            //Avl avl = InsertbasingList(list);
+
+            BugTest();
+            //BNodeUtils.LevelVisit(avl.root);
+            //for (int i = 0; i < list.Count; ++i)
             //{
-            //    avl.Insert(i);
+            //    DeleteTest(avl, list[i]);
+            //    Console.WriteLine($"删除{list[i]}");
+            //    BNodeUtils.LevelVisit(avl.root);
             //}
 
-            var l = new int[] { 3, 46, 21, 47, 36, 19, 35, 31, 15, 9, 8, 27, 13, 45, 25, 29, 2, 17, 26, 43 };
-            //var l2 = new int[] { 5, 25, 27, 7,12};
-            HashSet<int> s = new();
-            //foreach (int i in l)
-            //{
-            //    //Console.WriteLine($"**********{i}**********");
-            //    avl.Insert(i);
-            //    //s.Add(i);
-            //    //BNodeUtils.PreVisitNode(avl.Root);
-            //    if (i == 34)
-            //        break;
-            //}
-            //Console.WriteLine($"count {s.Count}");
-            BNodeUtils.LevelVisit(avl.root);
-            List<int> allNums = new();
-            for (int i = 0; i < 50;)
-            {
-                int rand = new Random().Next(100);
-                if (s.Contains(rand))
-                    continue;
-                s.Add(rand);
-                ++i;
-                avl.Insert(rand);
-                allNums.Add(rand);
-                BNodeUtils.LevelVisit(avl.root);
-            }
-            Console.WriteLine(string.Join(",", allNums));
-            //BNode last=BNodeUtils.GetLast(avl.Root);
-            //BNodeUtils.VisitParent(last);
-            //avl.Insert(10);
-            //avl.Insert(9);
-            //avl.Insert(8);
 
-            //avl.Adjust(ref avl.root);
-            //avl.Adjust(ref avl.root.left);
-
-            //BNodeUtils.PreVisitNode(avl.Root);
-            //Console.WriteLine();
-            //BNodeUtils.MidVisitNode(avl.Root);
-            //avl.Insert(10);
-            //avl.Insert(9);
-            //Utils.PreVisit(avl.root);
         }
-
-
-
 
     }
 
