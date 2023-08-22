@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace leetcode_exercise
 {
+    /// <summary>
+    /// 路劲和
+    /// </summary>
     internal class _PathSum
     {
         public IList<IList<int>> PathSum(TreeNode root, int targetSum)
@@ -20,8 +23,7 @@ namespace leetcode_exercise
         }
         List<IList<int>> result = new();
         void PreVisit(TreeNode n, ref int sum, Stack<int> stack,  int target, ref bool ret)
-        {
-                       
+        {       
             stack.Push(n.val);
             sum += n.val;
             switch (n.left, n.right)
@@ -30,7 +32,7 @@ namespace leetcode_exercise
                     ret = sum == target;
                     if (ret)
                     {
-                        result.Add(new List<int>(stack.Reverse()));
+                        result.Add(stack.Reverse().ToList());
                         ret = false;
                     }
                     break;

@@ -24,6 +24,21 @@ namespace leetcode_exercise
             return ans;
         }
 
+        void Entry(List<IList<int>> ans, List<int> list, ref int sum, int[] candidates, int target, int start)
+        {
+            for (int i = start; i < candidates.Length; ++i)
+            {
+                if (i > 0 && candidates[i] == candidates[i - 1])
+                    continue;
+                sum += candidates[i];
+
+                list.Add(candidates[i]);
+                Recursive(ans, list, ref sum, candidates, target, i + 1);
+                list.RemoveAt(list.Count - 1);
+                sum -= candidates[i];
+            }
+        }
+
         void Recursive(List<IList<int>> ans, List<int> list, ref int sum, int[] candidates, int target, int start)
         {
             if (sum == target)
@@ -35,28 +50,35 @@ namespace leetcode_exercise
             {
                 return;
             }
-
             for (int i = start; i < candidates.Length; ++i)
             {
-                if (i > 0 && candidates[i] == candidates[i-1])
-                {
+                if (i > start && candidates[i] == candidates[i - 1])
                     continue;
-                }
                 sum += candidates[i];
+
                 list.Add(candidates[i]);
                 Recursive(ans, list, ref sum, candidates, target, i+1);
                 list.RemoveAt(list.Count - 1);
                 sum -= candidates[i];
             }
-
         }
         static void Main(string[] args)
         {
-            CombinationSum2_ c = new();
-            var res= c.CombinationSum2(new int[] { 10, 1, 2, 7, 6, 1, 5 }, 8);
-            foreach(var i in res)
             {
-                Console.WriteLine(string.Join(",",i));
+                CombinationSum2_ c = new();
+                var res = c.CombinationSum2(new int[] { 10, 1, 2, 7, 6, 1, 5 }, 8);
+                foreach (var i in res)
+                {
+                    Console.WriteLine(string.Join(",", i));
+                }
+            }
+            {
+                CombinationSum2_ c = new();
+                var res = c.CombinationSum2(new int[] { 2, 5, 2, 1, 2 }, 5);
+                foreach (var i in res)
+                {
+                    Console.WriteLine(string.Join(",", i));
+                }
             }
         }
     }

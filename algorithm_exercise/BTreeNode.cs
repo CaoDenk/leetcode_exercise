@@ -19,5 +19,38 @@ namespace algorithm_exercise
             this.right = right;
             this.height = height;
         }
+
+       public static IList<IList<int>> LevelOrder(BTreeNode root)
+        {
+            List<IList<int>> ret = new List<IList<int>>();
+            if (root == null)
+                return ret;
+
+            Queue<BTreeNode> queue = new Queue<BTreeNode>();
+            queue.Enqueue(root);
+            while (queue.Count > 0)
+            {
+                var l = new List<int>();
+                int curLevel = queue.Count;
+                for (int i = 0; i < curLevel; ++i)
+                {
+                    BTreeNode n = queue.Dequeue();
+                    if (n.left != null)
+                    {
+                        queue.Enqueue(n.left);
+
+                    }
+                    if (n.right != null)
+                    {
+                        queue.Enqueue(n.right);
+                    }
+
+                    l.Add(n.value);
+                }
+
+                ret.Add(l);
+            }
+            return ret;
+        }
     }
 }

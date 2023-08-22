@@ -8,6 +8,7 @@ namespace leetcode_exercise
 {
     /// <summary>
     /// 89. 格雷编码
+    /// 效率太低了
     /// </summary>
     internal class GrayCode_
     {

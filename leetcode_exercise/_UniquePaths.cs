@@ -20,9 +20,9 @@ namespace leetcode_exercise
             {
                 (m, n) = (n, m);
             }
-            return Cur(m,n);
+            return Recursive(m,n);
         }
-        int Cur(int m, int n) //m<n
+        int Recursive(int m, int n) //m<n
         {
          
             if (m == 2)
@@ -30,7 +30,7 @@ namespace leetcode_exercise
             if (n == 2)
                 return m;
             else
-                return Cur(m - 1, n) + Cur(m, n - 1);
+                return Recursive(m - 1, n) + Recursive(m, n - 1);
         }
         long Cn(int m, int n)
         {

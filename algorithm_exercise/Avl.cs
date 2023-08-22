@@ -323,8 +323,8 @@ namespace algorithm_exercise
             for (int i = 0; i < list.Count; i++)
             {
                 avl.Insert(list[i]);
-                //BNodeUtils.LevelVisit(avl.root);
-                //Console.WriteLine();
+                BNodeUtils.LevelVisit(avl.root);
+                Console.WriteLine();
             }
 
             return avl;
@@ -341,14 +341,14 @@ namespace algorithm_exercise
             List<int> list = new List<int> { 39, 9, 1, 27, 93, 2, 10, 88, 28, 29, 81, 48, 47, 56, 46, 64, 5, 20, 54, 74, 60, 43, 59, 97, 35, 87, 65, 58, 3, 8, 0, 68, 32, 41, 38, 99, 30, 98, 75, 92, 69, 95, 18, 7, 14, 71, 50, 85, 57, 25 };
             Avl avl = InsertbasingList(list);
             BNodeUtils.LevelVisit(avl.root);
-            for (int i = 0; i < list.Count; ++i)
-            {
-                Console.WriteLine($"删除{list[i]}");
-                DeleteTest(avl, list[i]);
-                BNodeUtils.PreVisitNode(avl.root);
-                BNodeUtils.LevelVisit(avl.root);
-                Console.WriteLine();
-            }
+            //for (int i = 0; i < list.Count; ++i)
+            //{
+            //    Console.WriteLine($"删除{list[i]}");
+            //    DeleteTest(avl, list[i]);
+            //    BNodeUtils.PreVisitNode(avl.root);
+            //    BNodeUtils.LevelVisit(avl.root);
+            //    Console.WriteLine();
+            //}
 
         }
         static void Main(string[] args)
