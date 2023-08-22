@@ -25,27 +25,26 @@ namespace leetcode_exercise
 
         void Recursive(List<IList<int>> ans, List<int> list,ref int sum, int[] candidates,int target, int start)
         {
-          
-            if (sum==target)
+            if(sum==target)
             {
                 ans.Add(list.ToList());
-                sum -= list[^1];
-                list.RemoveAt(list.Count-1);
-                Recursive(ans, list, ref sum, candidates, target, start + 1);
+                return;
             }
             if(sum>target)
             {
-                sum -= list[^1];
-                list.RemoveAt(list.Count - 1);
-                Recursive(ans, list, ref sum, candidates, target,  start+1);
+                return;
+            }
 
-            }
-            else
+            for(int i=start;i<candidates.Length;++i)
             {
-                sum += candidates[start];
-                list.Add(candidates[start]);
-                Recursive(ans, list, ref sum, candidates, target,  start);
+                
+                    sum += candidates[i];
+                    list.Add(candidates[i]);
+                    Recursive(ans, list, ref sum, candidates, target, i);
+                    list.RemoveAt(list.Count - 1);
+                    sum -= candidates[i];
             }
+           
         }
 
         static void Main(string[] args)

@@ -20,15 +20,16 @@ namespace leetcode_exercise
             {
                 0
             };
-            int count=(int)Math.Pow(n, 2);
+            int count=(int)Math.Pow(2, n);
             bool flag=false;
-            Recursive(list, visited,count,ref flag);
+            Recursive(list, visited,n,count,ref flag);
             return list;
         }
-        void Recursive(List<int> l,HashSet<int> r,int count,ref bool flag)
+        int cnt = 0;
+        void Recursive(List<int> l,HashSet<int> r,int n,int count,ref bool flag)
         {
 
-            if(l.Count>=count)
+            if(l.Count==count)
             {
                 int num = l[0] ^ l[^1];
                 if(HammingWeight(num)==1)
@@ -39,8 +40,7 @@ namespace leetcode_exercise
             }
             else
             {
-                
-                for (int  i=0; i<32;i++)
+                for (int  i=0; i<n;i++)
                 {
                     int num = l[^1];
                     num ^= (1 << i);
@@ -52,7 +52,8 @@ namespace leetcode_exercise
                     {
                         l.Add(num);
                         r.Add(num);
-                        Recursive(l, r, count, ref flag);
+                        
+                        Recursive(l, r,n, count, ref flag);
                         if (flag)
                             return;
                         else
@@ -73,14 +74,24 @@ namespace leetcode_exercise
             n = (n + (n >> 4)) & 0x0f0f0f0f;
             n += (n >> 8);
             n += (n >> 16);
-            return (int)(n & 0x3f);
+            return (n & 0x3f);
         }
 
         static void Main(string[] args)
         {
             GrayCode_ g = new();
-            var res= g.GrayCode(3);
-            Console.WriteLine(string.Join(",",res));
+            {
+                var res = g.GrayCode(3);
+                Console.WriteLine(string.Join(",", res));
+            }
+            {
+                var res = g.GrayCode(4);
+                Console.WriteLine(string.Join(",", res));
+            }
+            {
+                var res = g.GrayCode(8);
+                Console.WriteLine(string.Join(",", res));
+            }
         }
 
     }
