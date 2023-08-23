@@ -1,4 +1,5 @@
-﻿using System;
+﻿using leetcode_exercise;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -99,7 +100,12 @@ namespace algorithm_exercise
             
             return node;
         }
-
+        BTreeNode GetMinValueNode(BTreeNode node)
+        {
+            if (node == null || node.left == null)
+                return node;
+            return GetMinValueNode(node.left);
+        }
         void Delete(int value)
         {
             bool flag = false;//没找到删除的value
@@ -116,8 +122,19 @@ namespace algorithm_exercise
             }else if(value>node.value)
             {
                 node.right=Delete(node.right, value,ref flag);
-            }else
+            }else //找到
             {
+                if(node.left==null)
+                {
+                    var tmp = node.right;
+                    //node = null;
+                    return tmp;
+                }else if(node.right==null)
+                {
+                    var tmp = node.left;
+                    //node = null;
+                    return tmp;
+                }
 
             }
             //if(flag)
