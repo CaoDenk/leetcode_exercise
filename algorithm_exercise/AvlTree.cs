@@ -106,41 +106,75 @@ namespace algorithm_exercise
                 return node;
             return GetMinValueNode(node.left);
         }
+        BTreeNode GetMaxValueNode(BTreeNode node)
+        {
+            if (node == null || node.right == null)
+                return node;
+            return GetMaxValueNode(node.right);
+        }
         void Delete(int value)
         {
-            bool flag = false;//没找到删除的value
-            root = Delete(root, value,ref flag);
+            //bool flag = false;//没找到删除的value
+            root = Delete(root, value);
         }
-        BTreeNode Delete(BTreeNode node,int value,ref bool flag)
+        BTreeNode Delete(BTreeNode node,int value)
         {
-            if (node == null)
+            if (node == null)//没找到
             {
-                return node;
+                return null;
             } else if(value<node.value)
             {
-                node.left=Delete(node.left, value,ref flag);
+                node.left=Delete(node.left, value);//递归查找
             }else if(value>node.value)
             {
-                node.right=Delete(node.right, value,ref flag);
+                node.right=Delete(node.right, value);
             }else //找到
             {
-                if(node.left==null)
+                if(node.left==null)//如果左子树为null，返回右子树
                 {
-                    var tmp = node.right;
-                    //node = null;
-                    return tmp;
-                }else if(node.right==null)
+                    return node.right;
+                }else if(node.right==null)//如果右子树为null，返回左子树
                 {
-                    var tmp = node.left;
-                    //node = null;
-                    return tmp;
+                    return node.left;
                 }
-
+                if(node.left.height>=node.right.height) //删除node后，较高的子树中选择一个当作后继结点，然后递归删除
+                {
+                    var max=GetMaxValueNode(node.left);
+                    node.value=max.value;
+                    node.left=Delete(node.left, max.value);
+                }
+                else
+                {
+                    var min = GetMinValueNode(node.right);
+                    node.value = min.value;
+                    node.right = Delete(node.right, min.value);
+                }
             }
-            //if(flag)
-            //{
-            //    return node;
-            //}    
+            node.height=1+Math.Max(GetHeight(node.left),GetHeight(node.right));
+            int factor=GetBalanceFactor(node);
+            if(factor>1)
+            {
+                if(GetBalanceFactor(node.left)>=0)
+                {
+                   return RightRotate(node);
+                }else
+                {
+                    node.left = LeftRotate(node.left);
+                    return RightRotate(node);
+                }
+            }
+            if (factor <- 1)
+            {
+                if (GetBalanceFactor(node.left) <= 0)
+                {
+                    return LeftRotate(node);
+                }
+                else
+                {
+                    node.right = RightRotate(node.right);
+                    return LeftRotate(node);
+                }
+            }
             return node;
         }
 
