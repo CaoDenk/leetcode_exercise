@@ -34,7 +34,7 @@ namespace algorithm_exercise
             L.right = T;
 
             T.height = 1 + Math.Max(GetHeight(T.left), GetHeight(T.right));
-            L.height=1 + Math.Max(GetHeight(L.left), GetHeight(L.right));
+            L.height = 1 + Math.Max(GetHeight(L.left), GetHeight(L.right));
             return L;
         }
         BTreeNode LeftRotate(BTreeNode node)
@@ -194,7 +194,16 @@ namespace algorithm_exercise
                 }
                 Console.WriteLine($"**************插入{i}***************");
             }
-          
+            foreach (var i in list)
+            {
+                avlTree.Delete(i);
+                var res = BTreeNode.LevelOrder(avlTree.Root);
+                foreach (var j in res)
+                {
+                    Console.WriteLine(string.Join(",", j));
+                }
+                Console.WriteLine($"**************删除{i}***************");
+            }
         }
         public void Insert(int value)
         {

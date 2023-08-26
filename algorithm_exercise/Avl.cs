@@ -13,6 +13,21 @@ namespace algorithm_exercise
     /// 怎么调整平衡二叉树
     /// 挖坑   调整后依然不平衡 ？？？
     /// </summary>
+    ///  public class BNode
+    public class BNode
+    {
+        public int val;
+        public BNode left;
+        public BNode right;
+        public BNode parent;
+        public BNode(int val = 0, BNode left = null, BNode right = null, BNode parent = null)
+        {
+            this.val = val;
+            this.left = left;
+            this.right = right;
+            this.parent = parent;
+        }
+    }
     public class Avl
     {
 
@@ -330,11 +345,7 @@ namespace algorithm_exercise
             return avl;
             //Console.WriteLine(string.Join(",", values));
         }
-        static void DeleteTest(Avl avl,int value)
-        {
-            //avl.Delete(ref avl.,avl.root ,value);
-           
-        }
+
 
         static void BugTest()
         {
