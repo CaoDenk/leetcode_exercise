@@ -30,9 +30,20 @@ namespace leetcode_exercise
                     count += map[i];
                 }else
                 {
-                  int size=   BinSearch(drinks, x - i);
-                  count += size;
-                  map[i] = size;
+                    int target = x - i;
+                    if (target >= drinks[^1])
+                    {
+                        count += drinks.Length;
+                        map[i] = drinks.Length;
+                        continue;
+                    }
+                    if (target < drinks[0])
+                        continue;
+
+                    int size=  BinSearch(drinks, target);
+                    Console.WriteLine(size);
+                    count += size;
+                    map[i] = size;
                 }
             }
 
@@ -51,13 +62,9 @@ namespace leetcode_exercise
         }
         int BinSearch(int[] drinks,int target, int min, int max)
         {
-            if(max==0)
-                return 0;
+
             int mid=(min+max)/2;
-            if(mid+1>=drinks.Length)
-            {
-                return drinks.Length;
-            }
+
             if (drinks[mid] <= target && drinks[mid+1]>target)
             {
                 return mid+1;
@@ -72,12 +79,12 @@ namespace leetcode_exercise
         static void Main(string[] args)
         {
             BreakfastNumber_ b = new();
-            {
-                int[] staple = { 10, 20, 5 };
-                int[] drinks = { 5, 5, 2 };
-                int count= b.BreakfastNumber(staple, drinks,15);
-                Console.WriteLine(count);
-            }
+            //{
+            //    int[] staple = { 10, 20, 5 };
+            //    int[] drinks = { 5, 5, 2 };
+            //    int count= b.BreakfastNumber(staple, drinks,15);
+            //    Console.WriteLine(count);
+            //}
             {
                 int[] staple = { 2,1,1 };
                 int[] drinks = { 8, 9, 5, 1 };

@@ -10,100 +10,49 @@ namespace leetcode_exercise
     {
         public IList<IList<string>> SolveNQueens(int n)
         {
-
-            HashSet<int> startCol = new HashSet<int>();
-            Action<int> ac= (int startCol) =>
-            {
-                List<(int, int)> l = new List<(int, int)>();
-                bool[,] map = new bool[n, n];
-
-                map[0,startCol] = true;
-
-                for (int i = 1; i < n; ++i)
-                {
-                    for (int j = 0; j < n; ++j)
-                    {
-                        int errloc = 0;
-                        if (!IsSafe(map, i, j))
-                        {
-                            ++errloc;
-                            if (errloc == n)
-                            {
-                                l.Clear();
-                                return;
-                            }
-
-                        }
-                        else
-                        {
-                            map[i, j] = true;
-                        }
-
-                    }
-
-                }
-            };
-            for(int k=0; k < n; ++k)
-            {
-                ac(k);
-            }
-            return null;
+            bool[,] map=new bool[n,n];
+            List<IList<string>>  ans=new List<IList<string>>();
+            BackTracing(ans,0, map,new bool[n]);
+            return ans;
         }
 
-        void Recur(bool[,] map, int startRow)
+        void BackTracing(List<IList<string>> ans,int row, bool[,] map, bool[] colFilled)
         {
-
-            for(int q=0;q<map.GetLength(1);++q)
+            if (row >= colFilled.Length)
             {
-                int errloc = 0;
-                if (!IsSafe(map, startRow, q))
+                ans.Add(MapToList(map));
+                return;
+            }
+            for(int i = 0; i < colFilled.Length; i++)
+            {
+                if (colFilled[i])
                 {
-                    ++errloc;
-                    if (errloc == map.Rank)
+                    continue;
+                }else
+                {
+                    if(IsSafe(map,row,i))
                     {
-                        return;
+                        map[row,i] = true;
+                        colFilled[i] = true;
+                        BackTracing(ans,row+1,map,colFilled);
+                        map[row, i] = false;
+                        colFilled[i] = false;
+                    }
+                    else
+                    {
+                        continue;
                     }
                 }
-                else
-                {
-                    map[startRow, q] = true;
-                }
-            }
+
+            }  
         }
 
         bool IsSafe(bool[,] map,int i,int j)
         {
-            for(int row = 0; row < map.GetLength(0);++row)
-            {
-                if (map[row, j])
-                {
-                    return false;
-                }
-            }
-            for (int col = 0; col < map.GetLength(1); ++col)
-            {
-                if (map[i, col])
-                {
-                    return false;
-                }
-            }
 
             {
-                int m = i, n = j;
-                while(m>=0&&n>=0)
-                {
-
-                    if (map[m, n])
-                        return false;
-                    --m;
-                    --n;
-                }
-
-            }
-
-            {
-                int m = i, n = j;
-                while (m >= 0 && n<map.GetLength(1))
+                int m = i, n = j; //判断45度
+                while (m >= 0 && n < map.GetLength(0))
                 {
 
                     if (map[m, n])
@@ -114,25 +63,14 @@ namespace leetcode_exercise
 
             }
             {
-                int m = i, n = j;
-                while (m < map.GetLength(0) && n >=0)
+                int m = i, n = j; //判断135度
+                while (m >= 0 && n >=0)
                 {
 
                     if (map[m, n])
                         return false;
-                    ++m;
+                    --m;
                     --n;
-                }
-            }
-            {
-                int m = i, n = j;
-                while (m < map.GetLength(0) && n <map.GetLength(1))
-                {
-
-                    if (map[m, n])
-                        return false;
-                    ++m;
-                    ++n;
                 }
             }
 
@@ -140,6 +78,47 @@ namespace leetcode_exercise
 
         }
 
+        List<string> MapToList(bool[,] map)
+        {
+            StringBuilder sb = new StringBuilder(map.GetLength(0));
+            List<string> res = new();
+            for(int i=0; i<map.GetLength(0); i++)
+            {
+                for(int j=0;j<map.GetLength(1);++j)
+                {
+                    if (map[i,j])
+                    {
+                        sb.Append('Q');
+
+                    }else
+                    {
+                        sb.Append('.');
+                    }
+                }
+                res.Add(sb.ToString());
+                sb.Clear();
+            }
+            return res ;
+        }
+
+        static void Main(string[] args)
+        {
+            _SolveNQueens s = new();
+            {
+                var res = s.SolveNQueens(4);
+                foreach (var i in res)
+                {
+                    Console.WriteLine(string.Join(",", i));
+                }
+            }
+            {
+                var res = s.SolveNQueens(3);
+                foreach (var i in res)
+                {
+                    Console.WriteLine(string.Join(",", i));
+                }
+            }
+        }       
 
     }
 }

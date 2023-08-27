@@ -18,41 +18,54 @@ namespace leetcode_exercise
             List<int> ints = new List<int>();
             List<IList<int>> ans = new List<IList<int>>();
             int sum = 0;
-            int start = 0;
-            Recursive(ans, ints, ref sum, k, n, start);
+            int start = 1;
+
+            Recursive(ans, ints, ref sum, k, n,start);
             return ans;
         }
 
-        void Recursive(List<IList<int>> ans, List<int> list, ref int sum,int k, int target, int start)
+        void Recursive(List<IList<int>> ans, List<int> list, ref int sum,int k, int target,int start)
         {
-            if (sum == target)
+            if (list.Count==k)
             {
-                ans.Add(list.ToList());
-                return;
-            }
-            if (sum > target)
-            {
-                return;
-            }
+               if(sum==target)
+                {
+                    ans.Add(list.ToList());
 
-            for (int i = start; i <k; ++i)
+                }
+                return;
+            }
+            if(sum>=target)
             {
-               
+                return;
+            }
+            for (int i = start; i <=9; ++i)
+            {
+                
                 sum += i;
                 list.Add(i);
-                Recursive(ans, list, ref sum, k, target, i + 1);
+                Recursive(ans, list, ref sum, k, target, i+1);
                 list.RemoveAt(list.Count - 1);
                 sum -= i;
+              
             }
-
         }
         static void Main(string[] args)
         {
             CombinationSum3_ c = new();
-            var res = c.CombinationSum3(3, 7);
-            foreach (var i in res)
             {
-                Console.WriteLine(string.Join(",", i));
+                var res = c.CombinationSum3(3, 7);
+                foreach (var i in res)
+                {
+                    Console.WriteLine(string.Join(",", i));
+                }
+            }
+            {
+                var res = c.CombinationSum3(3, 9);
+                foreach (var i in res)
+                {
+                    Console.WriteLine(string.Join(",", i));
+                }
             }
         }
     }

@@ -8,147 +8,81 @@ namespace leetcode_exercise
 {
     internal class _SolveNQueens2
     {
-        public IList<IList<string>> SolveNQueens(int n)
+        public int TotalNQueens(int n)
         {
-            
-            IList<IList<string>> ls = new List<IList<string>>();
-            int[] arr = new int[n];
-            for(int i=0;i<n;++i)
-            {
-                arr[i] = i;
-            }
-            Permutation(arr, 0, n, ls);
-            return ls;
+            bool[,] map = new bool[n, n];
+            int ans = 0;
+            BackTracing(ref ans, 0, map, new bool[n]);
+            return ans;
         }
 
-        bool IsSafe(int[] arr, int i, int j)
+
+
+
+        void BackTracing(ref int ans, int row, bool[,] map, bool[] colFilled)
         {
-            int len = arr.Length;
+            if (row >= colFilled.Length)
             {
-                int m = i, n = j;
-                --m;
-                --n;
-                if(m<n)
-                {
-                    while (m >= 0)
-                    {
-                        if (IsInArr(arr, m, n))
-                            return false;
-                        --m;
-                        --n;
-                    }
-                }else
-                {
-                    while (n >= 0)
-                    {
-                        if (IsInArr(arr, m, n))
-                            return false;
-                        --m;
-                        --n;
-                    }
-                }
-           
+                ++ans;
+                return;
             }
+            for (int i = 0; i < colFilled.Length; i++)
             {
-                int m = i, n = j;
-                --m;
-                ++n;
-                if(m<len-n)
+                if (colFilled[i])
                 {
-                    while (m >= 0)
+                    continue;
+                }
+                else
+                {
+                    if (IsSafe(map, row, i))
                     {
-
-                        if (IsInArr(arr, m, n))
-                            return false;
-                        --m;
-                        ++n;
+                        map[row, i] = true;
+                        colFilled[i] = true;
+                        BackTracing(ref ans, row + 1, map, colFilled);
+                        map[row, i] = false;
+                        colFilled[i] = false;
                     }
-                }else
-                {
-                    while (n<len)
+                    else
                     {
-
-                        if (IsInArr(arr, m, n))
-                            return false;
-                        --m;
-                        ++n;
+                        continue;
                     }
                 }
-              
-            }
-            return true; 
-
-        }
-        void Permutation(int[] arr, int m, int n, IList<IList<string>> ls)
-        {
-            if (m <= n - 1)
-            {
-                Permutation(arr, m + 1, n,  ls);
-                for (var i = m + 1; i < n; i++)
-                {
-                    Swap(ref arr[m], ref arr[i]);
-                    Permutation(arr, m + 1, n, ls);
-                    Swap(ref arr[m], ref arr[i]);
-                }
-            }
-            else
-            {
-
-                if (ArrIsSafe(arr))
-                {
-                    ls.Add(ArrToList(arr));
-                }
-
 
             }
-
-        }
-        void Swap(ref int i, ref int j)
-        {
-            int temp = i;
-            i = j;
-            j = temp;
-
         }
 
-        List<string> ArrToList(int[] arr)
+        bool IsSafe(bool[,] map, int i, int j)
         {
-            List<string> list = new List<string>();
-            for(int i=0; i < arr.Length; i++)
+
             {
-                byte[] chars = new byte[arr.Length];
-              
-                for (int j=0;j<arr.Length;++j)
+                int m = i, n = j; //判断45度
+                while (m >= 0 && n < map.GetLength(0))
                 {
-                    chars[j] = (byte)'_';
-                }
-                chars[arr[i]] = (byte)'Q';
-                string s = Encoding.Default.GetString(chars);
-                list.Add(s);
-            }   
-            return list;
 
-        }
-
-        bool ArrIsSafe(int[] arr)
-        {
-            if (arr.Length == 1)
-                return true;
-            for(int i=1;i<arr.Length;i++)
-            {
-                if (!IsSafe(arr, i, arr[i]))
-                {
-                    return false;
+                    if (map[m, n])
+                        return false;
+                    --m;
+                    ++n;
                 }
 
             }
-            return true;
+            {
+                int m = i, n = j; //判断135度
+                while (m >= 0 && n >= 0)
+                {
+
+                    if (map[m, n])
+                        return false;
+                    --m;
+                    --n;
+                }
+            }
+
+            return true; ;
 
         }
-        bool IsInArr(int[] arr,int i,int j)
-        {
-            return arr[i] == j;
-        }
+
+      
     }
 }
 
