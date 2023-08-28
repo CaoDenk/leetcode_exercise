@@ -8,7 +8,6 @@ namespace leetcode_exercise
 {
     /// <summary>
     /// 62. 不同路径 
-    /// 效率太低了，需要重写下，c#会超时
     /// </summary>
     internal class _UniquePaths
     {
@@ -16,42 +15,26 @@ namespace leetcode_exercise
         {
             if (m == 1 || n == 1)
                 return 1;
-            if (m>n)
-            {
-                (m, n) = (n, m);
-            }
-            return Recursive(m,n);
-        }
-        int Recursive(int m, int n) //m<n
-        {
-         
-            if (m == 2)
-                return n;
-            if (n == 2)
-                return m;
-            else
-                return Recursive(m - 1, n) + Recursive(m, n - 1);
-        }
-        long Cn(int m, int n)
-        {
-            long ret1=1,ret2=1;
-            m=Math.Min(n-m,m);
-            for(int i=n,j=1;j<=m;--i,++j )
-            {
-                ret1*=i;
-                ret2*=j;
-            }
-            return ret1 / ret2; ;
-        }
 
-    
-        int Tn(int m)
-        {
-            if (m == 2)
-                return 2;
-            else
-                return Tn(m - 1) * 2;
+            int[,] dp = new int[m, n];
+            for(int i = 0; i < m; i++)
+            {
+                dp[i, 0] = 1;
+            }
+            for(int j=0; j < n; j++)
+            {
+                dp[0, j] = 1;
+            }
+            for(int i=1;i < m; i++)
+            {
+                for(int j=1; j < n;j++)
+                {
+                    dp[i, j] = dp[i - 1,j] + dp[i,j-1 ];
+                }
+            }
+            return dp[m - 1, n - 1];
         }
+      
 
         static void Main(string[] args)
         {
