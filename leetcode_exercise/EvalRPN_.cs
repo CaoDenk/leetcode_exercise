@@ -8,12 +8,12 @@ namespace leetcode_exercise
 {
     /// <summary>
     /// LCR 036. 逆波兰表达式求值
+    /// 150. 逆波兰表达式求值
     /// </summary>
     internal class EvalRPN_
     {
         public int EvalRPN(string[] tokens)
         {
-
             Stack<int> stack = new();
            
             foreach (string token in tokens)
@@ -49,20 +49,10 @@ namespace leetcode_exercise
                     int t = num2 / num1;
                     stack.Push(t);
                 }
-
-
-
             }
             return stack.Pop();
         }
-        void Parse(Stack<int> stack,string token)
-        {
-            if (char.IsDigit(token[0]))
-            {
-                stack.Push(int.Parse(token));
-            }
-
-        }
+      
 
     }
 }

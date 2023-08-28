@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,50 +15,120 @@ namespace leetcode_exercise
     {
         public int[][] Merge(int[][] intervals)
         {
-           
-            
-            return null;
-        }
-        
+            List<int[]> result = new List<int[]>();
 
-        /// <summary>
-        /// 得需要一个自动扩容排序的容器。
-        /// </summary>
-        class Result
-        {
-            List<int[]> list = new();
-
-
-            int min = 0;
-            int max = 0;
-            
-            public void Add(int[] num)
+            Array.Sort(intervals, (o1, o2) => { if (o1[0] != o2[0]) return o1[0] - o2[0]; else return o1[1] - o2[1]; });
+            result.Add(intervals[0]);
+            foreach (var i in intervals)
             {
-                if(list.Count==0)
+                Console.WriteLine($"{i[0]},{i[1]}");
+            }
+            for (int i=1;i<intervals.Length;++i)
+            {
+                if (intervals[i][0] > result[^1][1])
                 {
-                    list.Add(num);
-                    min = num[0];
-                    max= num[1];
+                    result.Add(intervals[i]);
                 }else
                 {
-                    if (num[1] < min )
-                    {
-                        list.Add(num);
-                        min = num[0];
-                    }else if (num[0]>max)
-                    {
-                        list.Add(num);
-                        max = num[1];
-                    }else
-                    {
-                        //合并 这样合并必定效率低下  n个数需要U(n^2) 时间复杂度,万一链式反应
-                        //思考，如果使用
-                    }
+                    result[^1][1] = Math.Max(result[^1][1], intervals[i][1]);
+                }
+
+            }
+            return result.ToArray();
+        }
 
 
+
+      
+
+
+
+
+
+        static void Main(string[] args)
+        {
+            //[1,3],[2,6],[8,10],[15,18]
+            Merge_ m = new();
+            #region
+            //{
+            //    int[][] intervals = new int[4][];
+            //    intervals[0] = new int[] { 1, 3 };
+            //    intervals[1] = new int[] { 2, 6 };
+            //    intervals[2] = new int[] { 8, 10 };
+            //    intervals[3] = new int[] { 15, 18 };
+            //    var res = m.Merge(intervals);
+            //    foreach (var i in res)
+            //    {
+            //        Console.WriteLine($"{i[0]},{i[1]}");
+            //    }
+            //}
+            //{
+            //    int[][] intervals = new int[2][];
+            //    intervals[0] = new int[] { 1, 4 };
+            //    intervals[1] = new int[] { 4, 5 };
+
+            //    var res = m.Merge(intervals);
+            //    foreach (var i in res)
+            //    {
+            //        Console.WriteLine($"{i[0]},{i[1]}");
+            //    }
+            //}
+
+
+            //{
+            //    //[2,3],[5,5],[2,2],[3,4],[3,4]
+            //    int[][] intervals = new int[5][];
+            //    intervals[0] = new int[] { 2, 3 };
+            //    intervals[1] = new int[] { 5, 5 };
+            //    intervals[2] = new int[] { 2, 2 };
+            //    intervals[3] = new int[] { 3, 4 };
+            //    intervals[4] = new int[] { 3, 4 };
+            //    var res = m.Merge(intervals);
+            //    foreach (var i in res)
+            //    {
+            //        Console.WriteLine($"{i[0]},{i[1]}");
+            //    }
+            //}
+            //{
+            //    //5,5],[1,3],[3,5],[4,6],[1,1],[3,3],[5,6],[3,3],[2,4],[0,0]
+            //    int[][] intervals = new int[10][];
+            //    intervals[0] = new int[] { 5, 5 };
+            //    intervals[1] = new int[] { 1, 3 };
+            //    intervals[2] = new int[] { 3, 5 };
+            //    intervals[3] = new int[] { 4, 6 };
+            //    intervals[4] = new int[] { 1, 1 };
+            //    intervals[5] = new int[] { 3, 3 };
+            //    intervals[6] = new int[] { 5, 6 };
+            //    intervals[7] = new int[] { 3, 3 };
+            //    intervals[8] = new int[] { 2, 4 };
+            //    intervals[9] = new int[] { 0, 0 };
+            //    var res = m.Merge(intervals);
+            //    foreach (var i in res)
+            //    {
+            //        Console.WriteLine($"{i[0]},{i[1]}");
+            //    }
+            //}
+            #endregion
+
+            {
+                //[5,7],[5,5],[1,1],[0,0],[3,3],[4,5],[1,1],[3,4]
+                int[][] intervals = new int[8][];
+                intervals[0] = new int[] { 5, 7 };
+                intervals[1] = new int[] { 5, 5 };
+                intervals[2] = new int[] { 1, 1 };
+                intervals[3] = new int[] { 0, 0 };
+                intervals[4] = new int[] { 3, 3 };
+                intervals[5] = new int[] { 4, 5 };
+                intervals[6] = new int[] { 1, 1 };
+                intervals[7] = new int[] { 3, 4 };
+                //intervals[8] = new int[] { 2, 4 };
+                //intervals[9] = new int[] { 0, 0 };
+                var res = m.Merge(intervals);
+                foreach (var i in res)
+                {
+                   Console.WriteLine($"{i[0]},{i[1]}");
                 }
             }
-
         }
     }
 }

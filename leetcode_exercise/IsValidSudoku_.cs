@@ -14,43 +14,51 @@ namespace leetcode_exercise
     {
         public bool IsValidSudoku(char[][] board)
         {
-            HashSet<char> set = new HashSet<char>();
-            //先判断行
-            foreach (char[] b in board)
+        
+           for(int i=0;i<board.Length;++i)
             {
-                //判断行
-             
-                foreach (char c in b)
+                for(int j = 0; j < board[i].Length;++j)
                 {
-                 
-                    if (c == '.')
-                        continue;
-                    if(set.Contains(c))
+                    if (board[i][j] == '.') continue;
+                    char c= board[i][j];
+                    board[i][j]= '.';
+                    if (!IsValid(i, j, c,board))
                         return false;
-                    set.Add(c);
-                    
-                }
-                set.Clear();
-            }
-            for(int row=0; row<board.Length; row++)
-            {
-                for (int col = 0; col < board[row].Length; col++)
-                {
-                    if (board[row][col] == '.')
-                        continue;
-
-                    if (set.Contains(board[row][col]))
-                        return false;
-                    set.Add(board[row][col]);
-
-
+                    board[i][j] = c;
                 }
             }
-            //判断列
-           
-
-
             return true;
         }
+        bool IsValid(int row, int col, char val, char[][] board)
+        {
+            for (int i = 0; i < 9; i++)
+            { // 判断行里是否重复
+                if (board[row][i] == val)
+                {
+                    return false;
+                }
+            }
+            for (int j = 0; j < 9; j++)
+            { // 判断列里是否重复
+                if (board[j][col] == val)
+                {
+                    return false;
+                }
+            }
+            int startRow = (row / 3) * 3;
+            int startCol = (col / 3) * 3;
+            for (int i = startRow; i < startRow + 3; i++)
+            { // 判断9方格里是否重复
+                for (int j = startCol; j < startCol + 3; j++)
+                {
+                    if (board[i][j] == val)
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
     }
 }

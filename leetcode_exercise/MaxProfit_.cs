@@ -18,29 +18,33 @@ namespace leetcode_exercise
         /// <returns></returns>
         public int MaxProfit(int[] prices)
         {
-            /*
-            只进行过一次买操作；buy1 
-            进行了一次买操作和一次卖操作，即完成了一笔交易；sell1
+            int buy1 = -prices[0]; //买1
+            int buy2 = -prices[0];//买1 再买1
+            int sell1 = 0;//买一 卖1
+            int sell2 = 0;//卖2
 
-            在完成了一笔交易的前提下，进行了第二次买操作；buy2
-
-            完成了全部两笔交易。sell2
-             */
-            int buy1 =-prices[0];
-            int buy2=-prices[0];
-            int sell1=0;
-            int sell2=0;
-            for(int i=1;i<prices.Length;++i)
+            //buy1 = Math.Max(buy1, -prices[i]);
+            //sell1 = Math.Max(sell1, buy1 + prices[i]);
+            //buy2 = Math.Max(buy2, sell1 - prices[i]);
+            //sell2 = Math.Max(sell2, buy2 + prices[i]);
+            for (int i=1;i<prices.Length;++i)
             {
-                buy1 = Math.Max(buy1, -prices[i]);
-                sell1 = Math.Max(sell1, buy1 + prices[i]);
-                buy2 = Math.Max(buy2, sell1 - prices[i]);
-                sell2 = Math.Max(sell2, buy2 + prices[i]);
-
-
+                buy1=Math.Max(buy1, - prices[i]);
+                sell1 = Math.Max(sell1 , buy1 + prices[i]);
+                buy2 =Math.Max(buy2, sell1 - prices[i]);
+          
+                sell2=Math.Max(sell2,buy2 + prices[i]);
             }
 
+
             return sell2;
+
+        }
+        static void Main(string[] args)
+        {
+            //3,3,5,0,0,3,1,4
+            MaxProfit_ max = new();
+            Console.WriteLine(max.MaxProfit(new int[] { 3, 3, 5, 0, 0, 3, 1, 4 }));
         }
     }
 }

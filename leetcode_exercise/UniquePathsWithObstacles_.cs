@@ -31,7 +31,6 @@ namespace leetcode_exercise
                 if (obstacleGrid[0][j] == 0)
                 {
                     dp[0, j] = 1;
-
                 }
                 else break;
             }

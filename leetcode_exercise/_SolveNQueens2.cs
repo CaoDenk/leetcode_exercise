@@ -16,9 +16,6 @@ namespace leetcode_exercise
             return ans;
         }
 
-
-
-
         void BackTracing(ref int ans, int row, bool[,] map, bool[] colFilled)
         {
             if (row >= colFilled.Length)

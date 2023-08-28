@@ -39,9 +39,7 @@ namespace leetcode_exercise
             //Console.WriteLine(m.MaxProfit(new int[] {3, 3}));
             //Console.WriteLine(m.MaxProfit(new int[] {7, 2, 4, 1}));
             Console.WriteLine(m.MaxProfit(new int[] { 2, 4, 1 }));
-            int[] arr = new int[]
-            {
-            };
+            int[] arr = Array.Empty<int>();
             Console.WriteLine(m.MaxProfit(arr));
         }
     }
