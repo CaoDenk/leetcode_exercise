@@ -12,15 +12,12 @@ namespace leetcode_exercise
         {
             Stack<(int, int)> stack = new();
             int ans = 0;
-            //int[] newHeight= new int[height.Length];
-            stack.Push((height[0], 0));
+            stack.Push((height[0], 0));//height,position
             for(int i=1;i<height.Length;++i)
             {
                 while(stack.Count > 0 && stack.Peek().Item1 < height[i])
                 {
                     (int h,int pos)=stack.Pop();//洼地的高度
-                    //Array.Fill(newHeight, pos, h, i - h);//填不是很好的方法
-
                     if (stack.Count > 0) //还有左墙
                     {
                         (int leftWallHeight,int leftWallPos)=stack.Peek();
@@ -32,8 +29,6 @@ namespace leetcode_exercise
                     {
                         break;
                     }
-                     
-
                 }
                 stack.Push((height[i], i));
 

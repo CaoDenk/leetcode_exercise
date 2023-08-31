@@ -8,6 +8,7 @@ namespace leetcode_exercise
 {
     /// <summary>
     /// 121. 买卖股票的最佳时机
+    /// 一支股票
     /// </summary>
     internal class _MaxProfit3
     {

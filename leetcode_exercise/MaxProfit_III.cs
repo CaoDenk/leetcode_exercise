@@ -9,7 +9,7 @@ namespace leetcode_exercise
     /// <summary>
     /// 123. 买卖股票的最佳时机 III
     /// </summary>
-    internal class MaxProfit_
+    internal class MaxProfit_III
     {
         /// <summary>
         /// 
@@ -43,7 +43,7 @@ namespace leetcode_exercise
         static void Main(string[] args)
         {
             //3,3,5,0,0,3,1,4
-            MaxProfit_ max = new();
+            MaxProfit_III max = new();
             Console.WriteLine(max.MaxProfit(new int[] { 3, 3, 5, 0, 0, 3, 1, 4 }));
         }
     }

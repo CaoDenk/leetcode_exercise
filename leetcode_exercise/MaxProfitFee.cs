@@ -16,7 +16,19 @@ namespace leetcode_exercise
         /// <returns></returns>
         public int MaxProfit(int[] prices, int fee)
         {
-            return 0;
+            int[,] dp = new int[prices.Length, 2];
+                dp[0, 0] = -prices[0];
+            for(int i=1;i<prices.Length;++i)
+            {
+                dp[i, 0] = Math.Max(dp[i - 1, 1] - prices[i], dp[i-1, 0]);
+                dp[i, 1] = Math.Max(dp[i - 1, 1], dp[i - 1, 0] + prices[i] - fee);
+            }
+            return dp[prices.Length-1,1];
+        }
+        static void Main(string[] args)
+        {
+            MaxProfitFee m = new();
+            Console.WriteLine(m.MaxProfit(new int[] { 1, 3, 2, 8, 4, 9 },2));
         }
     }
 }
