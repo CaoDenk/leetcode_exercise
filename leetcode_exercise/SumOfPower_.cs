@@ -9,74 +9,35 @@ namespace leetcode_exercise
 {
     /// <summary>
     /// 2681. 英雄的力量
-    /// 暂时没有思路
     /// </summary>
     internal class SumOfPower_
     {
-        public int SumOfPower(int[] nums)
+        public int SumOfPower(int[] nums) 
         {
+            const int mod = 10_0000_0000 + 7;
+            if (nums.Length==1)
+                return (int)(BigInteger.Pow(nums[0], 3) % mod);
             Array.Sort(nums);
-            long[] square = new long[nums.Length];
-            square[0] = (long)nums[0]* nums[0];
-            BigInteger[] col = new BigInteger[nums.Length];
-            col[0] = 1;
-            col[1] = 1;
-            for (int i = 2; i < nums.Length; ++i)
+            long res = nums[^1];
+            long lastNum=0;
+            long t = (long)nums[^1] * nums[^1]%mod;
+            res *= t;
+            int i = nums.Length - 2;
+            while(true)
             {
-                col[i] = col[i - 1] * 2;
-            }
-            for (int i = 1; i < nums.Length; ++i)
-            {
-                if (nums[i] == nums[i - 1])
-                {
-                    square[i] = square[i - 1];
-                }
-                else
-                {
-                    square[i] = (long)nums[i]*nums[i];
-                }
-            }
-            //Console.WriteLine(string.Join(",", col));
-            BigInteger res = new();
-            BigInteger latNumI = BigInteger.One;
-            for (int i = 0; i < nums.Length; ++i)
-            {
+                lastNum += t;
+                var square = (long)nums[i] * nums[i] ;
+                var n= (lastNum +square) % mod* nums[i]%mod ;//在可能取值超出的都取模
+                res += n;
+                if (i == 0)
+                    break;
 
-                if (i > 0 && nums[i] == nums[i-1])
-                {
-                    latNumI /= 2;
-                    res += latNumI;
-                    //Console.WriteLine($"49 lastnumI {latNumI},res={res}");
-                    continue;
-                }
-                latNumI = BigInteger.Zero;
-                BigInteger latNum = BigInteger.Zero;
-                for (int j = i; j < nums.Length; ++j)
-                {
-                    if (j > i && nums[j] == nums[j-1])
-                    {
-                        int mark = j;
-                        do
-                        {
-                            ++mark;
-                        }
-                        while (mark<nums.Length && nums[mark] == nums[mark - 1]);
-                        latNum *= col[mark - j];
-                        latNumI += latNum;
-                        j = mark -1;
-                    }
-                    else
-                    {
-                        latNum =nums[i] * square[j] * col[j - i];
-                        latNumI += latNum  ;
-                    }
-                    //Console.WriteLine(res);
-                    //Console.WriteLine($"lastnum {latNum},res={res}");
-                }
-                //Console.WriteLine($"69 lastnumI {latNumI},res={res}");
-                res += latNumI;
+                t = square;
+                lastNum = lastNum % mod * 2;
+                --i;
             }
-            return (int)(res % (10_0000_0000 + 7));
+
+            return (int)(res % mod);
         }
         static void Main(string[] args)
         {
@@ -86,13 +47,17 @@ namespace leetcode_exercise
                 Console.WriteLine(res);
             }
             {
-                var res = s.SumOfPower(new int[] { 1,1,1 });
+                var res = s.SumOfPower(new int[] { 1, 1, 1 });
                 Console.WriteLine(res);
             }
-            //{
-            //    var res = s.SumOfPower(new int[] { 625006, 846432, 764290, 653039 });
-            //    Console.WriteLine(res);
-            //}
+            {
+                var res = s.SumOfPower(new int[] { 658, 489, 777, 2418, 1893, 130, 2448, 178, 1128, 2149, 1059, 1495, 1166, 608, 2006, 713, 1906, 2108, 680, 1348, 860, 1620, 146, 2447, 1895, 1083, 1465, 2351, 1359, 1187, 906, 533, 1943, 1814, 1808, 2065, 1744, 254, 1988, 1889, 1206 });
+                Console.WriteLine(res);
+            }
+            {
+                var res = s.SumOfPower(new int[] { 2342, 1892, 2349, 1217, 2073, 73, 813, 68, 1569, 1041, 1912, 43, 838, 1315, 2290, 18, 2283, 2374, 1815, 1433, 544, 505, 1881, 1876, 293, 160, 1327, 408, 1913, 2415, 94, 256, 222, 2434, 2103, 1483, 2038, 213, 900, 2218, 212, 514, 955, 1968, 1344, 1409 });
+                Console.WriteLine(res);
+            }
         }
     }
 }

@@ -10,80 +10,11 @@ namespace leetcode_exercise
     {
         public int Divide(int dividend, int divisor)
         {
-            if (divisor == 1)
-            {
-                if (dividend != int.MinValue)
-                    return dividend;
-                return int.MinValue;
-            }
-            if (divisor == -1)
-            {
-                if (dividend != int.MinValue)
-                    return -dividend;
-                return int.MaxValue;
-            }
-               
+            long res = 0;
 
-            
-            if (dividend > 0)
-            {
-                if (divisor > 0)
-                {                   
-                    int ret = 0;
-                    while ((dividend -= divisor) >= 0)
-                    {
-                        ++ret;
-                    }
-                    return ret;
-                }
-                else
-                {
-                    if (divisor == -1)
-                    {
-                        return -dividend;   
-                    }
 
-                    int ret = 0;
-                    while ((dividend += divisor) >= 0)
-                    {
-                        ++ret;
-                    }
-                    return -ret;
 
-                }
-
-            }
-            else
-            {
-                if (divisor > 0)
-                {
-                   
-
-                    int d = -dividend;
-                    int ret = 0;
-                    //num1 = dividend - divisor;
-                    while ((d -= divisor) >= 0)
-                    {
-                        ++ret;
-                    }
-                    return -ret;
-                }
-                else
-                {
-                   
-                    int d = -dividend;
-                    int ret = 0;
-                    //num1 = dividend - divisor;
-                    while ((d += divisor) >= 0)
-                    {
-                        ++ret;
-                    }
-                    return ret;
-
-                }
-            }
-
-        
+            return 0;
         }
 
         static void Main()
