@@ -13,7 +13,7 @@ namespace leetcode_exercise
     {
         public int Search(int[] nums, int target)
         {
-            return Cur(0,nums.Length,nums,target);
+            return Recurive(0,nums.Length,nums,target);
         }
         /// <summary>
         /// 左边包含，右边不包含
@@ -23,7 +23,7 @@ namespace leetcode_exercise
         /// <param name="nums"></param>
         /// <param name="target"></param>
         /// <returns></returns>
-        int Cur(int start,int end,int[] nums,int target)
+        int Recurive(int start,int end,int[] nums,int target)
         {
             if(end-start==0)
             {
@@ -34,9 +34,9 @@ namespace leetcode_exercise
             if (nums[mid] == target)
                 return mid;
             else if (nums[mid] > target)
-                return Cur(start, mid, nums, target);
+                return Recurive(start, mid, nums, target);
             else
-                return Cur(mid+1, end, nums, target);
+                return Recurive(mid+1, end, nums, target);
 
         }
 

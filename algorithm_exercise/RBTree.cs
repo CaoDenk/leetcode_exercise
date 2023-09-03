@@ -55,13 +55,6 @@ namespace algorithm_exercise
             if (node.parent.parent == null)
                 return;
             FixInsert(node);
-            //if(root == null )
-            //{
-            //    root= new RBTreeNode(value, color: Color.BLACK);
-            //}else
-            //{
-            //    Insert(root, value);
-            //}
         }
 
         private void FixInsert(RBTreeNode k) //消除红红相连
