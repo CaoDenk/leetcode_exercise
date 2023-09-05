@@ -14,7 +14,7 @@ namespace leetcode_exercise
         public int LargestRectangleArea(int[] heights)
         {
             Stack<(int, int)> stack = new();//(pos,value)
-            int[] h = new int[heights.Length + 2];
+            int[] h = new int[heights.Length +1];
             Array.Copy(heights, 0, h, 1, heights.Length);
             stack.Push((0, 0));
             int max = 0;

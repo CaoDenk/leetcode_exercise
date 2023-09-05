@@ -6,21 +6,17 @@ using System.Threading.Tasks;
 
 namespace algorithm_exercise
 {
-    /// <summary>
-    /// 堆排序 挖坑
-    /// </summary>
-    internal class HeapSort_
+    internal class HeapSortMin
     {
         public int[] SortArray(int[] nums)
         {
 
             int len = nums.Length - 1;
             BuildMaxHeap(nums, len);
-            while (len >= 1)
-            {
+          
                 (nums[len], nums[0]) = (nums[0], nums[len]);
                 MaxHeapfy(nums, 0, --len);
-            }
+            (nums[len], nums[0]) = (nums[0], nums[len]);
             return nums;
         }
         void BuildMaxHeap(int[] nums, int len)
@@ -41,36 +37,36 @@ namespace algorithm_exercise
         {
             while ((i << 1) + 1 <= len)
             {
-                int larger = i;
+                int min = i;
                 int lson = (i << 1) + 1;
                 int rson = (i << 1) + 2;
-                if (lson <= len && nums[lson] > nums[i])
+                if (lson <= len && nums[lson] < nums[i])
                 {
-                    larger = lson;
+                    min = lson;
                 }
-                if (rson <= len && nums[rson] > nums[larger])
+                if (rson <= len && nums[rson] <nums[min])
                 {
-                    larger = rson;
+                    min = rson;
                 }
-                if (larger != i)//再交换后新成为原i的孩子的也要判断下是不是最大堆
+                if (min != i)//再交换后新成为原i的孩子的也要判断下是不是最大堆
                 {
-                    (nums[larger], nums[i]) = (nums[i], nums[larger]);
-                    i = larger;
+                    (nums[min], nums[i]) = (nums[i], nums[min]);
+                    i = min;
                 }
                 else break;
 
             }
         }
-        
+
 
         static void Main(string[] args)
         {
             {
-                HeapSort_ h = new();
+                HeapSortMin h = new();
                 var arr = new int[] { -4, 0, 7, 4, 9, -5, -1, 0, -7, -1 };
-                Console.WriteLine(string.Join(",",arr));
+                Console.WriteLine(string.Join(",", arr));
                 h.SortArray(arr);
-                Console.WriteLine(string.Join(",",arr));
+                Console.WriteLine(string.Join(",", arr));
 
 
             }

@@ -12,12 +12,6 @@ namespace algorithm_exercise
     internal class MergeSort_
     {
 
-
-        void MergeSort(int[] arr)
-        {
-
-
-        }
         public int[] SortArray(int[] nums)
         {
             var arrBlock = new int[nums.Length];

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using leetcode_exercise;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -179,22 +180,68 @@ namespace algorithm_exercise
             var y = z;
             var yOriginalColor=y.color;
             RBTreeNode x;
+            //删除只有一个叶子结点的,进行交换
             if(z.left==TNULL)
             {
+                x = z.right;
                 Transplant(z, z.right);
+            }else if(z.right==TNULL)
+            {
+                x=z.left;
+                Transplant(z,z.left);
+            }else //左右孩子结点都不为空，
+            {
+                y= GetMin(z.right);//找到右结点最小的，作为后继(找到左边最大的也可以)  //按照bst那样处理
+                yOriginalColor=y.color;//?
+                x = y.parent;
+                if(y.parent==z)
+                {
+                    x.parent = y;
+                }else
+                {
+                    Transplant(y,y.right);// y只可能有右结点
+                    y.right = z.left;
+                    y.left.parent = y;
+                    y.color = z.color;
+                }
             }
-
+            if(yOriginalColor==Color.BLACK)
+            {
+                FixDelete(x);
+            }
 
 
         }
 
+        private void FixDelete(RBTreeNode x)
+        {
+            throw new NotImplementedException();
+        }
+
         private void Transplant(RBTreeNode u, RBTreeNode v)//交换
         {
-            //挖坑
+            //如果u的parent=TNULL
+            //  u的
             if(u.parent==TNULL)
             {
                 root = v;
+            }else if(u==u.left.parent)
+            {
+                 u.left.parent= v ;
+            }else
+            {
+                u.right.parent= v ;
             }
+            v.parent = u;
+        }
+
+        RBTreeNode GetMin(RBTreeNode node)
+        {
+            while(node.left!=TNULL)
+            {
+                node=node.left;
+            }
+            return node;
         }
     }
 }
