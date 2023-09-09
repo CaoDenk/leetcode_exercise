@@ -26,7 +26,6 @@ namespace leetcode_exercise
             Recursive(list, visited,n,count,ref flag);
             return list;
         }
-        int cnt = 0;
         void Recursive(List<int> l,HashSet<int> r,int n,int count,ref bool flag)
         {
 

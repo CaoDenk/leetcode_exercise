@@ -33,5 +33,32 @@ namespace leetcode_exercise
             }
             return 0;
         }
+        public int MajorityElement2(int[] nums)
+        {
+            if(nums.Length==1)
+                return nums[0];
+
+            int count = 1;
+            int num = nums[0];
+            for(int i=1;i<nums.Length;++i)
+            {
+                if (num == nums[i])
+                    count++;
+                else
+                {
+                    --count;
+                    if(count==0)
+                    {
+                        num= nums[i];
+                    }
+                }    
+
+            }
+            
+            return num;
+        }
+
+
+
     }
 }

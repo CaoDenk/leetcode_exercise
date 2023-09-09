@@ -12,34 +12,57 @@ namespace algorithm_exercise
     /// </summary>
     internal class PopStack
     {
+        
 
-
-        void Recursive(Stack<int> inistack,Stack<int> stack, Stack<int> outStack)
+        static void  Recursive(Stack<int> stack, List<int> list,int start,List<List<int>> ans,List<int> l)
         {
-            if (inistack.Count == 0)
-                return;
 
-            if(stack.Count==0)
+            if(stack.Count==0)//只能进栈
             {
-                stack.Push(inistack.Pop());//进栈
-                Recursive(inistack, stack, outStack);
-                outStack.Push(inistack.Pop());
+                if(start < list.Count)
+                {
+                    stack.Push(list[start]);
+                    Recursive(stack, list, start + 1, ans, l);
+                    stack.Pop();                   
+                }else
+                {
+                    ans.Add(l.ToList());
+                }
+            }else if(start==list.Count)//只能出栈
+            {
+                int count=stack.Count;
+                l.AddRange(stack.ToList());
+                ans.Add(l.ToList());
+                l.RemoveRange(l.Count-count,count);
+
             }else
             {
-                stack.Push(inistack.Pop());//进栈
-                Recursive(inistack, stack, outStack);
+                stack.Push(list[start]);
+                Recursive(stack, list, start + 1, ans, l);//先进栈
                 stack.Pop();
-                outStack.Push(inistack.Pop());
-                Recursive(inistack, stack, outStack);//出栈
 
+                int v = stack.Pop();
+                l.Add(v);
+                Recursive(stack, list, start, ans, l);//后出栈
+                l.RemoveAt(l.Count-1);
+                stack.Push(v);
             }
-
-
         }
 
         static void Main(string[] args)
         {
-
+            List<int> list = new();
+            for(int i=0;i<5;++i)
+            {
+                list.Add(i);
+            }
+            List<List<int>> ans = new();
+            Recursive( new Stack<int>(), list,0,ans,new List<int>());
+            //Console.WriteLine(ans.Count);
+            foreach (var item in ans)
+            {
+                Console.WriteLine(string.Join(",",item));
+            }
         }
 
 

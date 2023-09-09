@@ -17,43 +17,50 @@ namespace leetcode_exercise
         {
             //i和j都包含
             List<IList<string>> ans=new();
-            List<string> l=new();
-            StringBuilder sb = new();
-            int start=0;
-            for (int i=0;i<s.Length;++i)
-            {
-                for(int j=i;j<s.Length;++j)
-                {
-                    if(j==i)
-                    {
-
-                    }
-
-                }
-
-            }
-
-
-            return null;
+            Recursive(ans, new List<string>(), s, 0);
+            return ans;
         }
 
 
-        void Recursive(List<IList<string>> ans,List<string> l,string s,StringBuilder sb,int start) 
+        void Recursive(List<IList<string>> ans,List<string> l,string s,int start) 
         {
             if(start>=s.Length)
             {
                 ans.Add(l.ToList());
+                return;
             }
-
-
-            for (int i = start+1; i < s.Length; ++i)
+            for (int i = start; i < s.Length; ++i)
             {
-
+                if (IsPalindrome(s,start,i))
+                {
+                    l.Add(s[start..(i+1)]);
+                    Recursive(ans, l, s, i + 1);
+                    l.RemoveAt(l.Count - 1);
+                }
             }
 
         }
+        bool IsPalindrome(string s, int start, int end)
+        {
+            if (end == start) return true;
+            for (; start < end; ++start, --end)
+            {
+                if (s[start] != s[end])
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+        static void Main(string[] args)
+        {
+            Partition_ p = new();
+            var res=p.Partition("aab");
+            foreach(var item in res)
+            {
+                Console.WriteLine(string.Join(",",item));
+            }
 
-
-
+        }
     }
 }

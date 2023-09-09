@@ -46,7 +46,7 @@ namespace leetcode_exercise
 
         static void Main(string[] args)
         {
-            Candy_ c = new();
+            Candy2 c = new();
             {
                 int[] rate = { 1, 2, 2 };
                 int res = c.Candy(rate);
