@@ -209,13 +209,76 @@ namespace algorithm_exercise
             {
                 FixDelete(x);
             }
-
-
         }
 
-        private void FixDelete(RBTreeNode x)
+        private void FixDelete(RBTreeNode node)
         {
-            throw new NotImplementedException();
+            while (node != root && node.color == Color.BLACK)
+            {
+                if (node == node.parent.left)
+                {
+                    var sibling = node.parent.right;
+                    if (sibling.color == Color.RED)
+                    {
+                        sibling.color = Color.BLACK;
+                        node.parent.color = Color.RED;
+                        LeftRotate(node.parent);
+                        sibling = node.parent.right;
+                    }
+                    if (sibling.left.color == Color.BLACK && sibling.right.color == Color.BLACK)
+                    {
+                        sibling.color = Color.RED;
+                        node = node.parent;
+                    }
+                    else
+                    {
+                        if (sibling.right.color == Color.BLACK)
+                        {
+                            sibling.left.color = Color.BLACK;
+                            sibling.color = Color.RED;
+                            RightRotate(sibling);
+                            sibling = node.parent.right;
+                        }
+                        sibling.color = node.parent.color;
+                        node.parent.color = Color.BLACK;
+                        sibling.right.color = Color.BLACK;
+                        LeftRotate(node.parent);
+                        node = root;
+                    }
+                }
+                else
+                {
+                    var sibling = node.parent.left;
+                    if (sibling.color == Color.RED)
+                    {
+                        sibling.color = Color.BLACK;
+                        node.parent.color = Color.RED;
+                        RightRotate(node.parent);
+                        sibling = node.parent.left;
+                    }
+                    if (sibling.right.color == Color.BLACK && sibling.left.color == Color.BLACK)
+                    {
+                        sibling.color = Color.RED;
+                        node = node.parent;
+                    }
+                    else
+                    {
+                        if (sibling.left.color == Color.BLACK)
+                        {
+                            sibling.right.color = Color.BLACK;
+                            sibling.color = Color.RED;
+                            LeftRotate(sibling);
+                            sibling = node.parent.left;
+                        }
+                        sibling.color = node.parent.color;
+                        node.parent.color = Color.BLACK;
+                        sibling.left.color = Color.BLACK;
+                        RightRotate(node.parent);
+                        node = root;
+                    }
+                }
+            }
+            node.color = Color.BLACK;
         }
 
         private void Transplant(RBTreeNode u, RBTreeNode v)//交换

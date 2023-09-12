@@ -13,39 +13,110 @@ namespace leetcode_exercise
     /// </summary>
     internal class PalindromePartition_
     {
+       
+        public int PalindromePartition2(string s, int k)
+        {
+            if (s.Length == k)
+                return 0;
+            int[,] dp = new int[s.Length+1,k+1];//i开头 , j结束，分了几段
+            int[,] vt=new int[s.Length,s.Length];
+            int len = s.Length;
+            for(int i=0;i< s.Length;++i)
+            {
+                vt[i, i] = 0;
+            }
+            for(int i=0;i<s.Length-1;++i)
+            {
+                vt[i, i + 1] = s[i] == s[i + 1] ? 0 : 1;
+            }
+            for(int step=2;step<s.Length;++step)
+            {
+                for(int i=0;i+step<len;++i)
+                {
+                    int j=i+step;
+                    vt[i, j] = vt[i + 1, j - 1] + (s[i] == s[j] ? 0 : 1);
+                }
+            }
+            for(int i=1;i<=len;++i)
+            {
+                dp[i, 1] = vt[0,i - 1];
+            }
+            for(int i=1;i<=len;++i)
+            {
+                for (int j = 2; j <= k && j <= i; ++j)
+                {
+                    if (i == j)
+                    {
+                        dp[i,j] = 0;
+                        continue;
+                    }
+                    else
+                    {
+                        int curmin = i;
+                        for (int pre = i - 1; pre >= j - 1; --pre)
+                        {
+                            curmin = Math.Min(curmin, dp[pre,j - 1] + vt[pre,i - 1]);
+                        }
+                        dp[i,j] = curmin;
+                    }
+                }
+
+            }
+
+
+
+            return dp[ s.Length , k];
+        }
+
         public int PalindromePartition(string s, int k)
         {
             if (s.Length == k)
                 return 0;
-            int[,,] dp = new int[s.Length, s.Length,k];//i开头 , j结束，分了u段
-            for(int i=0; i < s.Length;++i)
+            int[,] dp = new int[s.Length,  k];//i开头 , j结束，分了几段
+            int[,] vt = new int[s.Length, s.Length];
+            int len = s.Length;
+            for (int i = 0; i < s.Length; ++i)
             {
-                for(int j=i+1;j<s.Length;++j)
+                vt[i, i] = 0;
+            }
+            for (int i = 0; i < s.Length - 1; ++i)
+            {
+                vt[i, i + 1] = s[i] == s[i + 1] ? 0 : 1;
+            }
+            for (int step = 2; step < s.Length; ++step)
+            {
+                for (int i = 0; i + step < len; ++i)
                 {
-                    int start = i;
-                    int end = j;
-                    while (start < end)
-                    {
-                        if (s[start] != s[end]) ++dp[i,j,0];
-                        ++start;
-                        --end;
-                    }
+                    int j = i + step;
+                    vt[i, j] = vt[i + 1, j - 1] + (s[i] == s[j] ? 0 : 1);
                 }
             }
+         
 
+            for (int i = 0; i < dp.GetLength(0); i++)
+            {
+                dp[i, 0] = vt[0, i];
+               
+                for (int u = 1; u < k; ++u)
+                {
+                    dp[ i, u] = s.Length;
+                }
+                
+            }
             for (int i = 1; i < s.Length; ++i)
-            {                               
+            {
                 for (int j = i; j < s.Length; ++j)
                 {
-
                     for (int u = 1; u < k; ++u)
                     {
-                        dp[0, j, u] = Math.Min(dp[0, i-1, u - 1] + dp[i, j,0], dp[0, j, u]);                        
+                        //dp[ j, u] = Math.Min(dp[ i - 1, u - 1] + dp[i, j, 0], dp[0, j, u]);
+                        dp[ j, u] = Math.Min(dp[ i - 1, u - 1] + vt[i, j], dp[j, u]);
                     }
                 }
             }
-            return dp[0, s.Length-1,k-1] ;
+            return dp[ s.Length - 1, k - 1];
         }
+
 
 
         static void Main(string[] args)
