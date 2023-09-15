@@ -5,7 +5,8 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-	  <StartupObject>algorithm_exercise.Avl</StartupObject>
+	  <!--<StartupObject>algorithm_exercise.OrderCount</StartupObject>-->
+	  <StartupObject>algorithm_exercise.MergeTwoListDesc</StartupObject>
   </PropertyGroup>
 
 	<ItemGroup>

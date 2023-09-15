@@ -14,8 +14,12 @@ namespace leetcode_exercise
 
         class Bucket
         {
-            public int maxValue=int.MinValue;
-            public int minValue=int.MaxValue;
+            public int maxValue;
+            public int minValue;
+            public Bucket(int value)
+            {
+                minValue= maxValue= value;
+            }
         }
         public int MaximumGap(int[] nums)
         {
@@ -24,13 +28,13 @@ namespace leetcode_exercise
       
             int min = nums[0];
             int max = nums[0];
-            //int pos = 0;
+            int pos = 0;
             for(int i=1;i<nums.Length;++i)
             {
                 if (nums[i]>max)
                 {
                     max= nums[i];
-                    //pos = i;
+                    pos = i;
                 }
                 else if (nums[i]<min)
                 {
@@ -38,63 +42,77 @@ namespace leetcode_exercise
                 }
             }
             if(max==min) return 0;
-            int BucketLen = 0;
             Bucket[] buckets;
-            if (max-min<nums.Length-1)
+            int res=0;
+            if (max-min>nums.Length-1)
             {
-                BucketLen = (max - min) / (nums.Length - 1);
-            }else
-            {
-                Bucket
-                 buckets = new Bucket[nums.Length - 1];
-            }
-          
-            
-            int res = BucketLen;
-   
-            buckets[^1]=new Bucket();
-            for(int i=0;i<nums.Length;++i)
-            {
-                int no = (nums[i]-min)/(BucketLen);
-                if(no>=buckets.Length)
+                buckets=new Bucket[nums.Length-1];
+                int bucketLen = (max - min) / (nums.Length - 1);
+                res = bucketLen;
+                buckets[^1] = new Bucket(nums[pos]);
+                for (int i = 0; i < nums.Length; ++i)
                 {
-                    //if (nums[i] > buckets[^1].maxValue)
-                    //{
-                    //    buckets[^1].maxValue = nums[i];
-                    //}
-                    if (nums[i] < buckets[^1].minValue)
+                    int no = (nums[i] - min) / (bucketLen);
+                    if (no >= buckets.Length)
                     {
-                        buckets[^1].minValue = nums[i];
+                        if (nums[i] < buckets[^1].minValue)
+                        {
+                            buckets[^1].minValue = nums[i];
+                        }
+                        continue;
                     }
-                    continue;
+                    buckets[no] = buckets[no] ?? new Bucket(nums[i]);
+                    if (nums[i] > buckets[no].maxValue)
+                    {
+                        buckets[no].maxValue = nums[i];
+                    }
+                    else if (nums[i] < buckets[no].minValue)
+                    {
+                        buckets[no].minValue = nums[i];
+                    }
                 }
-                buckets[no]=buckets[no] ?? new Bucket();
-                if (nums[i]> buckets[no].maxValue)
+                int ii = 0;
+                int jj = ii + 1;
+                while (jj < buckets.Length)
                 {
-                    buckets[no].maxValue = nums[i];
+                    if (buckets[jj] == null)
+                    {
+                        ++jj;
+                    }
+                    else
+                    {
+                        res = Math.Max(res, buckets[jj].minValue - buckets[ii].maxValue);
+                        ii = jj;
+                        ++jj;
+                    }
                 }
-                if (nums[i]< buckets[no].minValue)
-                {
-                    buckets[no].minValue = nums[i];
-                }
-
             }
-           
-            int ii = 0;
-            int jj = ii + 1;
-            while (jj < buckets.Length)
+            else
             {
-                if (buckets[jj]==null)
+                int?[] arr = new int?[max - min+1];
+                for(int i=0;i<nums.Length;i++)
                 {
-                    ++jj;
+                    if (arr[nums[i]-min]==null)
+                    {
+                        arr[nums[i] - min] = nums[i]; ;
+                    }
                 }
-                else
+                int ii = 0;
+                int jj = ii + 1;
+                while (jj < arr.Length)
                 {
-                    res=Math.Max(res, buckets[jj].minValue - buckets[ii].maxValue);
-                    ii = jj;
-                    ++jj;
-                }
+                    if (arr[jj] == null)
+                    {
+                        ++jj;
+                    }
+                    else
+                    {
+                        res = Math.Max(res, arr[jj].Value - arr[ii].Value);
+                        ii = jj;
+                        ++jj;
+                    }
 
+                }
             }
             return res;
         }
