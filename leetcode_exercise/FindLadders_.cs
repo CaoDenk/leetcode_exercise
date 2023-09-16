@@ -9,6 +9,7 @@ namespace leetcode_exercise
 {
     /// <summary>
     /// 126. 单词接龙 II
+    /// 挖坑，怎么改都超时，要不报错
     /// </summary>
     internal class FindLadders_
     {
@@ -17,78 +18,93 @@ namespace leetcode_exercise
             if (!wordList.Contains(endWord))
                 return Array.Empty<List<string>>();
 
-            List<IList<string>> res = new()
-            {
-                new List<string>() { beginWord }
-            };
+            List<IList<string>> res = new();
+  
             HashSet<string> beginSet = new HashSet<string>() { beginWord };
-            HashSet<string> endSet = new HashSet<string>() { endWord };
-
             HashSet<string> surroudings;
-            while (beginSet.Count > 0 && endSet.Count > 0)
+            Dictionary<string, HashSet<string>> dict = new();
+            int level = 0;
+            HashSet<string> lastLevel = new HashSet<string>();
+            while (beginSet.Count > 0 )
             {
                 surroudings = new HashSet<string>();
                 bool flag = false;
+
                 for (int i = 0; i < beginSet.Count; i++)
                 {
                     string word = beginSet.ElementAt(i);
-
                     wordList.Remove(word);
                     int count = wordList.Count - 1;
-                    if (res.Count == 0)
-                        return Array.Empty<List<string>>();
-                    int len = res[0].Count;
+                    dict[word] = new HashSet<string>();
                     for (int j = count; j >= 0; j--)
                     {
                         if (Compare(word, wordList[j]))
                         {
-                            Add(res, word,wordList[j]);
-
-                            if ( endSet.Contains(wordList[j]))
+                            if (lastLevel.Contains(wordList[j]))
                             {
+                                continue;
+                            }
 
-                                Add(res, wordList[j],endWord);
+                            dict[word].Add(wordList[j]);
+                            if (endWord == wordList[j])
+                            {
+                               
+
+                                dict[word].Clear();
+                                dict[word].Add(endWord);
                                 flag = true;
-                                
+                                break;
                             }
                             surroudings.Add(wordList[j]);
-                            wordList.RemoveAt(j);
                         }
                     }
-                    for(int k=res.Count - 1; k >= 0; k--)
-                    {
-                        if (res[k].Count==len)
-                            res.RemoveAt(k);
-                    }
-
+                    wordList.Add(word);
                 }
+                ++level;
                 if (flag)
-                    return res;
+                {
+                    List<HashSet<string>> lhh = new();
+                    AddRecurse(lhh, new HashSet<string>() { beginWord }, dict, 0, level,endWord);
+                    
+                    foreach(var  l in lhh)
+                    {
+                        res.Add(l.ToList());
+                    }
+                    return  res;
+                }
+               
                 beginSet = surroudings;
             }
-           
-
-
             return Array.Empty<List<string>>();
         }
 
-        void Add(List<IList<string>> ans,string wordbegin,string end)
+        void AddRecurse(List<HashSet<string>> ans,HashSet<string> l, Dictionary<string, HashSet<string>> dict,int start,int level,string endword)
         {
-            
-            foreach(var a in ans)
+            if(start>=level)
             {
-                if (a[^1]== wordbegin)
+                if(l.ElementAt(^ 1)==endword)
+                    ans.Add(l);
+                return;
+            }
+            
+            string key = l.ElementAt(^1);
+            if(!dict.TryGetValue(key,out var set))
+            {
+                return;
+            }
+            foreach(var item in set)
+            {
+                if(l.Contains(item))
                 {
-
-                    ans.Add(a.ToList());
-                    a.Add(end);
-                    break;
-
+                    continue;
                 }
+                var newl=l.ToHashSet();
+                newl.Add(item);
+                AddRecurse(ans, newl,dict,start+1,level,endword);
             }
         }
 
-        
+      
         bool Compare(string s, string charArray)
         {
             int count = 0;
@@ -111,10 +127,46 @@ namespace leetcode_exercise
                 string beginWord = "hit";
                 string endWord = "cog";
                 List<string> wordlist = new() { "hot", "dot", "dog", "lot", "log", "cog" };
-                var res=f.FindLadders(beginWord, endWord,wordlist);
-                foreach(var a in res)
+                var res = f.FindLadders(beginWord, endWord, wordlist);
+                foreach (var a in res)
                 {
-                    Console.WriteLine(string.Join(",",a));
+                    Console.WriteLine(string.Join(",", a));
+                }
+            }
+            {
+                //beginWord = "hit", endWord = "cog"
+                string beginWord = "a";
+                string endWord = "c";
+                List<string> wordlist = new() { "a", "b", "c" };
+                var res = f.FindLadders(beginWord, endWord, wordlist);
+                foreach (var a in res)
+                {
+                    Console.WriteLine(string.Join(",", a));
+                }
+            }
+
+            {
+                //beginWord = "hit", endWord = "cog"
+                string beginWord = "red";
+                string endWord = "tax";
+                List<string> wordlist = new() { "ted", "tex", "red", "tax", "tad", "den", "rex", "pee" };
+                var res = f.FindLadders(beginWord, endWord, wordlist);
+                foreach (var a in res)
+                {
+                    Console.WriteLine(string.Join(",", a));
+                }
+            }
+
+            {
+                //beginWord = "hit", endWord = "cog"
+                string beginWord = "qa";
+                string endWord = "sq";
+                List<string> wordlist = new() { "si", "go", "se", "cm", "so", "ph", "mt", "db", "mb", "sb", "kr", "ln", "tm", "le", "av", "sm", "ar", "ci", "ca", "br", "ti", "ba", "to", "ra", "fa", "yo", "ow", "sn", "ya", "cr", "po", "fe", "ho", "ma", "re", "or", "rn", "au", "ur", "rh", "sr", "tc", "lt", "lo", "as", "fr", "nb", "yb", "if", "pb", "ge", "th", "pm", "rb", "sh", "co", "ga", "li", "ha", "hz", "no", "bi", "di", "hi", "qa", "pi", "os", "uh", "wm", "an", "me", "mo", "na", "la", "st", "er", "sc", "ne", "mn", "mi", "am", "ex", "pt", "io", "be", "fm", "ta", "tb", "ni", "mr", "pa", "he", "lr", "sq", "ye" };
+                var res = f.FindLadders(beginWord, endWord, wordlist);
+                Console.WriteLine(res.Count);
+                foreach (var a in res)
+                {
+                    Console.WriteLine(string.Join(",", a));
                 }
             }
         }
