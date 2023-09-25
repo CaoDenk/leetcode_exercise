@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace algorithm_exercise
 {
     /// <summary>
-    /// 堆排序 挖坑
+    /// 堆排序
     /// </summary>
     internal class HeapSort_
     {
@@ -65,14 +65,12 @@ namespace algorithm_exercise
 
         static void Main(string[] args)
         {
+            HeapSort_ h = new();
             {
-                HeapSort_ h = new();
                 var arr = new int[] { -4, 0, 7, 4, 9, -5, -1, 0, -7, -1 };
                 Console.WriteLine(string.Join(",",arr));
                 h.SortArray(arr);
                 Console.WriteLine(string.Join(",",arr));
-
-
             }
         }
     }

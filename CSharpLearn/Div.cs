@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace CSharpLearn
 {
+    /// <summary>
+    /// 判断n! 可以整除m不
+    /// </summary>
     internal class Div
     {
         public static List<int> GetPrimeFactors(int n)

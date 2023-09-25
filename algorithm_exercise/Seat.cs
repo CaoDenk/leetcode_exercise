@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CSharpLearn
+namespace algorithm_exercise
 {
+    /// <summary>
+    /// 最大舒适度
+    /// </summary>
     internal class Seat
     {
      
-    
-      
         static int MaxComfort(int n, int m, List<ValueTuple<int, int>> comfort)
         {
             switch((n,m))

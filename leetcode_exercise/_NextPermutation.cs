@@ -6,39 +6,34 @@ using System.Threading.Tasks;
 
 namespace leetcode_exercise
 {
+    /// <summary>
+    /// 31. 下一个排列
+    /// </summary>
     internal class _NextPermutation
     {
 
         public void NextPermutation(int[] nums)
         {
-            int len=nums.Length;
 
             for(int i=nums.Length-2; i>=0; i--)
             {
-                //int[] t = nums[i..len];
-                (bool ret,int index)=FindBigRight(nums, i);
-                if(ret)
+                int index=FindBigRight(nums, i);
+                if(index>=0)
                 {
                     (nums[i], nums[index]) = (nums[index], nums[i]);
                     int idex = i + 1;
                     int leng = nums.Length - idex;
-                    //Span<int> ints = new Span<int>(nums,index+1,len);
                     Array.Sort(nums, idex,leng);
-
                     return;
                 }
-                
             }
-            Array.Sort(nums);   
-            
+            Array.Sort(nums);              
         }
 
-
-
-        (bool, int) FindBigRight(int[] nums, int start)
+        int FindBigRight(int[] nums, int start)
         {
             bool ret = false;
-            int mark = 0;
+            int mark = -1;
             for (int i = start + 1; i < nums.Length ; ++i)
             {
                 if (nums[i] > nums[start])
@@ -53,11 +48,9 @@ namespace leetcode_exercise
                         ret = true;
                         mark = i;
                     }
-     
-                }
-                  
+                }                 
             }
-            return (ret, mark);
+            return mark;
         }
 
 

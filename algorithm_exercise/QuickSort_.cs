@@ -42,7 +42,7 @@ namespace algorithm_exercise
                 else
                     break;
             }
-            nums[left] = nums[i];  // i位置的数一定小于基准数，两者可以进行交换
+            nums[left] = nums[i];  // i位置的数一定小于等于基准数，两者可以进行交换
             nums[i] = pivot;  // i位置为基准数的最终位置
             QuickSort(nums, left, i - 1);
             QuickSort(nums, i + 1, right);
