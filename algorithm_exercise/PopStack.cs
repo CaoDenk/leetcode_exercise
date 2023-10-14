@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,13 +9,18 @@ namespace algorithm_exercise
 {
     /// <summary>
     /// 所有出栈顺序
-    /// 挖坑
     /// </summary>
-    internal class PopStack
+    internal class PopStack<T> where T:IEquatable<T>
     {
-        
 
-        static void  Recursive(Stack<int> stack, List<int> list,int start,List<List<int>> ans,List<int> l)
+
+        internal List<List<T>> Dfs(List<T> list)
+        {
+            List<List<T>> ans = new();
+            Dfs(new Stack<T>(),list , 0, ans, new List<T>());
+            return ans;
+        }
+        void  Dfs(Stack<T> stack, List<T> list,int start,List<List<T>> ans,List<T> l)
         {
 
             if(stack.Count==0)//只能进栈
@@ -22,7 +28,7 @@ namespace algorithm_exercise
                 if(start < list.Count)
                 {
                     stack.Push(list[start]);
-                    Recursive(stack, list, start + 1, ans, l);
+                    Dfs(stack, list, start + 1, ans, l);
                     stack.Pop();                   
                 }else
                 {
@@ -38,35 +44,50 @@ namespace algorithm_exercise
             }else
             {
                 stack.Push(list[start]);
-                Recursive(stack, list, start + 1, ans, l);//先进栈
+                Dfs(stack, list, start + 1, ans, l);//先进栈
                 stack.Pop();
 
-                int v = stack.Pop();
+                var v = stack.Pop();
                 l.Add(v);
-                Recursive(stack, list, start, ans, l);//后出栈
+                Dfs(stack, list, start, ans, l);//后出栈
                 l.RemoveAt(l.Count-1);
                 stack.Push(v);
             }
         }
 
-        static void Main(string[] args)
+        public bool Judge(List<List<T>> ans,List<T> arr) 
         {
-            List<int> list = new();
-            for(int i=0;i<5;++i)
+            for(int i=0;i<ans.Count;++i)
             {
-                list.Add(i);
+                if (Judge(ans[i],arr))
+                    return true;
             }
-            List<List<int>> ans = new();
-            Recursive( new Stack<int>(), list,0,ans,new List<int>());
-            //Console.WriteLine(ans.Count);
-            foreach (var item in ans)
-            {
-                Console.WriteLine(string.Join(",",item));
-            }
+            return false;
+        }
+        bool Judge(List<T> sample,List<T> arr)
+        {
+            return sample.SequenceEqual(arr);
         }
 
+    }
+    class PopStack
+    {
+        static void Main(string[] args)
+        {
+            List<int> list = new List<int> { 1, 2, 3, 4 };
+
+            PopStack<int> pstack = new PopStack<int>();
+            var res = pstack.Dfs(list);
+
+            bool judge = pstack.Judge(res, new List<int> { 3,1,2,4 });
+            Console.WriteLine(judge);
+
+            foreach (var i in res)
+            {
+                Console.WriteLine(string.Join(",", i));
+            }
 
 
-
+        }
     }
 }

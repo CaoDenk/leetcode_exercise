@@ -17,7 +17,7 @@ namespace leetcode_exercise
 
         }
         //bfs 方向 下 左右
-        bool bfs(char[][] board,int i,int j, bool[,] visited)
+        bool Bfs(char[][] board,int i,int j, bool[,] visited)
         {
             visited[i, j] = true;
             //Queue<(int,int)>

@@ -6,46 +6,44 @@ using System.Threading.Tasks;
 
 namespace algorithm_exercise
 {
-    /// <summary>
-    /// 前k大元素
-    /// </summary>
-    internal class TopK
+    internal class SortedTopK<T>
     {
-        public int[] FindTopK(int[] nums,int k)
+        public T[] FindTopK(T[] nums, int k,Comparison<T> cmp)
         {
-            BuildKMinHeap(nums,k-1);
+            BuildKMinHeap(nums, k - 1,cmp);
 
-            for(int i=k;i<nums.Length;++i)
+            for (int i = k; i < nums.Length; ++i)
             {
-                if (nums[i] > nums[0])
+                if (cmp(nums[k], nums[0])>0)
                 {
                     (nums[i], nums[0]) = (nums[0], nums[i]);
-                    MinHeapfy(nums,0,k-1);
+                    MinHeapfy(nums, 0, k - 1,cmp);
                 }
             }
 
+
             return nums[..k];
         }
-        void BuildKMinHeap(int[] nums,int k)
+        void BuildKMinHeap(T[] nums, int k,Comparison<T> cmp)
         {
-            for(int i=k/2;i>=0;--i)
+            for (int i = k / 2; i >= 0; --i)
             {
-                MinHeapfy(nums,i,k);
+                MinHeapfy(nums, i, k, cmp);
             }
         }
 
-        void MinHeapfy(int[] nums, int i, int len)
+        void MinHeapfy(T[] nums, int i, int len,Comparison<T> cmp)
         {
             while ((i << 1) + 1 <= len)
             {
                 int less = i;
                 int lson = (i << 1) + 1;
                 int rson = (i << 1) + 2;
-                if (lson <= len && nums[lson] < nums[i])
+                if (lson <= len && cmp(nums[lson], nums[i])<0)
                 {
                     less = lson;
                 }
-                if (rson <= len && nums[rson] < nums[less])
+                if (rson <= len && cmp(nums[rson], nums[less]) < 0)
                 {
                     less = rson;
                 }
@@ -66,7 +64,7 @@ namespace algorithm_exercise
                 int[] nums = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
                 int k = 3;
                 int[] topK = t.FindTopK(nums, k);
-                Console.WriteLine(string.Join(",",topK));
+                Console.WriteLine(string.Join(",", topK));
             }
             {
                 int[] nums = { 5, 3, 1, 9, 2, 4, 7, 8, 6 };
@@ -77,7 +75,5 @@ namespace algorithm_exercise
             }
 
         }
-
-
     }
 }

@@ -39,28 +39,14 @@ namespace algorithm_exercise
         static void Main(string[] args)
         {
             
-          var res=  Permute(new int[] { 1, 2, 3, 4, });
+            var res=  Permute(new int[] { 1, 2, 3, 4, });
             foreach(var i in res)
             {
                 Console.WriteLine(string.Join(",",i));
             }
         }
 
-        void Generate(int n)
-        {
-           var arr=   Enumerable.Range(2, n - 2).ToArray();
-           var res= Permute(arr);
-            foreach(var i in res)
-            {
-                for(int j=1;j<i.Count;++j)
-                {
-
-
-                }
-
-            }
-
-        }
+    
 
     }
 }
