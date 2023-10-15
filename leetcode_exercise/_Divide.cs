@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace leetcode_exercise
 {
+    /// <summary>
+    /// 29. 两数相除
+    /// </summary>
     internal class _Divide
     {
         public int Divide(int dividend, int divisor)

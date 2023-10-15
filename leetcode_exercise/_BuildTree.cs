@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace leetcode_exercise
 {
     /// <summary>
-    /// 前序和中序 构建二叉树
+    /// 105. 从前序与中序遍历序列构造二叉树
     /// </summary>
     internal class _BuildTree
     {
@@ -16,58 +16,39 @@ namespace leetcode_exercise
         {
             if (preorder.Length == 0)
                 return null;          
-            return Cur(preorder, inorder);
+            return Dfs(preorder, inorder);
         }
         int Find(Span<int> arr,int val)
         {
             int i = 0;
-            for(; i<arr.Length; i++) {
-                if (arr[i] == val)
-                    break;
-            }
+            for(; i<arr.Length; i++) 
+                if (arr[i] == val)break;
             return i;
         }
-        TreeNode Cur(Span<int> preorder, Span<int> inorder)
+        TreeNode Dfs(Span<int> preorder, Span<int> inorder)
         {            
             TreeNode root = new TreeNode(preorder[0]);
             int index = Find(inorder, preorder[0]);//找到主根          
-            if(index==0)
-            {
-                root.left = null;
-            }else
-            {
-                root.left = Cur(preorder[1..(index + 1)], inorder[..index]);
-            }
-            if(index+1>=preorder.Length)
-            {
-                root.right = null;
-            } else
-            {
-
-                root.right = Cur(preorder[(index + 1)..], inorder[(index + 1)..]);
-            }
-          
+            if(index!=0)
+                root.left = Dfs(preorder[1..(index + 1)], inorder[..index]);
+            if(index+1<preorder.Length)
+                root.right = Dfs(preorder[(index + 1)..], inorder[(index + 1)..]);
             return root;
         }
         void PreVisit(TreeNode n)
         {
             Console.Write(n.val+",");
             if (n.left != null)
-            {
                 PreVisit(n.left);
-            }
             if (n.right != null)
                 PreVisit(n.right);
-
         }
 
         void InVisit(TreeNode n)
         {
             
             if (n.left != null)
-            {
                 InVisit(n.left);
-            }
             Console.Write(n.val+",");
             if (n.right != null)
                 InVisit(n.right);
@@ -82,8 +63,6 @@ namespace leetcode_exercise
                 b.PreVisit(node);
                 Console.WriteLine();
                 b.InVisit(node);
-               
-
             }
         }
     }

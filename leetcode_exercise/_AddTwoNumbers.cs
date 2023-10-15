@@ -6,32 +6,41 @@ using System.Threading.Tasks;
 
 namespace leetcode_exercise
 {
+    /// <summary>
+    /// 2. 两数相加
+    /// </summary>
     internal class _AddTwoNumbers
     {
 
         public ListNode AddTwoNumbers(ListNode l1, ListNode l2)
         {
-            int carry = 0;
-            var p1=l1;
+            var p1 =l1;
             var p2=l2;
-            ListNode l=new ListNode();
-            while(p1!=null&&p2!=null)
+            ListNode l=new();
+            ListNode cur = l;
+            int add = 0;
+            while(p1!=null||p2!=null||add!=0)
             {
-                (carry,l.val)=(p1.val,p2.val);
-                p1 = p1.next;
-                p2=p2.next;
-                 l = l.next;
+                int n1=p1!=null?p1.val:0;
+                int n2 = p2 != null ? p2.val : 0;
+                int result = n1 + n2 + add;
+                cur.next = new ListNode();
+                add = Math.DivRem(result, 10, out cur.next.val);
+                
+               
+                cur = cur.next;
+                if(p1!=null) { p1=p1.next; }
+                if(p2!=null) { p2=p2.next; }
             }
-            return l;
+            return l.next;
         }
-        (int ,int) Add(int i1,int i2,int carry)
+        static void Main(string[] args)
         {
-            int num = i1 + i2+carry;
-            if(num>9)
+            _AddTwoNumbers add = new();
             {
-                return (1, num - 10);
-            }else
-                return (0, num);
+                ListNode n1 = Utils.MakeListNodes([2,4,3]);
+                ListNode n2 = Utils.MakeListNodes([5, 6, 4]);
+            }
         }
     }
 }

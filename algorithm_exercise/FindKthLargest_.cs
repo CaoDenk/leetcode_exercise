@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace leetcode_exercise
+namespace algorithm_exercise
 {
     /// <summary>
     /// top k

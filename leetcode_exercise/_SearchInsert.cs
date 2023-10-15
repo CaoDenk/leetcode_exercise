@@ -32,7 +32,6 @@ namespace leetcode_exercise
             else
             {
                 right = mid;
-  
             }
 
             if (left < right)

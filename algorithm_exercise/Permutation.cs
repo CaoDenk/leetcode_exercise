@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace algorithm_exercise
 {
-    internal class Permutation
+    public class Permutation
     {
 
         public static List<List<int>> Permute(int[] arr)

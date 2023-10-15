@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace leetcode_exercise
 {
+    /// <summary>
+    /// 21. 合并两个有序链表
+    /// </summary>
     internal class _MergeTwoLists2
     {
 

@@ -30,19 +30,14 @@ namespace leetcode_exercise
                 ans.Add(list.ToList());
                 return;
             }
-            if(sum>target)
-            {
-                return;
-            }
-
+            if(sum>target)return;
             for(int i=start;i<candidates.Length;++i)
-            {
-                
-                    sum += candidates[i];
-                    list.Add(candidates[i]);
-                    Recursive(ans, list, ref sum, candidates, target, i);
-                    list.RemoveAt(list.Count - 1);
-                    sum -= candidates[i];
+            {                
+                sum += candidates[i];
+                list.Add(candidates[i]);
+                Recursive(ans, list, ref sum, candidates, target, i);
+                list.RemoveAt(list.Count - 1);
+                sum -= candidates[i];
             }
            
         }

@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace leetcode_exercise
 {
+    /// <summary>
+    /// 415. 字符串相加
+    /// </summary>
     internal class _AddStrings
     {
         public string AddStrings(string num1, string num2)
@@ -52,7 +55,7 @@ namespace leetcode_exercise
             return (flag, c);
         }
 
-        static char[] map = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+        static char[] map = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
 
         static void Main(string[] args)

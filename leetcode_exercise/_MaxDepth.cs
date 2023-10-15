@@ -10,8 +10,6 @@ namespace leetcode_exercise
     {
         public int MaxDepth(TreeNode root)
         {
-            
-
             return GetDepth(root,0);
         }
 

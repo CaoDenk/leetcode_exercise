@@ -48,7 +48,6 @@ namespace leetcode_exercise
                             dict[word].Add(wordList[j]);
                             if (endWord == wordList[j])
                             {
-                               
 
                                 dict[word].Clear();
                                 dict[word].Add(endWord);

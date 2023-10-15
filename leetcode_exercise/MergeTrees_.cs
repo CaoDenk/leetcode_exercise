@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace leetcode_exercise
 {
     /// <summary>
-    /// 接着挖坑
+    /// 617. 合并二叉树
     /// </summary>
     internal class MergeTrees_
     {

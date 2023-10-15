@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace leetcode_exercise
 {
     /// <summary>
-    /// 挖坑 超时
+    /// 23. 合并 K 个升序链表
     /// </summary>
     internal class _MergeKLists
     {

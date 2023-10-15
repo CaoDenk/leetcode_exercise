@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace leetcode_exercise
 {
+    /// <summary>
+    /// Combine
+    /// </summary>
     internal class Combine_
     {
         public IList<IList<int>> Combine(int n, int k)
@@ -28,7 +31,6 @@ namespace leetcode_exercise
                 Recursive(ans,l,i+1,n,k);
                 l.RemoveAt(l.Count - 1);
             }
-
         }
         static void Main(string[] args)
         {

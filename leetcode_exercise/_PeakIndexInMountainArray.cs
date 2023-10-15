@@ -26,9 +26,6 @@ namespace leetcode_exercise
                 {
                     right = mid;
                 }
-
-
-
             }
 
 

@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 namespace leetcode_exercise
 {
     /// <summary>
-    /// 后序和中序构建二叉树
-    /// 挖坑
+    /// 106. 从中序与后序遍历序列构造二叉树
     /// </summary>
     internal class _BuildTree3
     {
@@ -16,40 +15,23 @@ namespace leetcode_exercise
         {
             if (inorder.Length == 0)
                 return null;
-            return Cur(inorder, postorder);
+            return Dfs(inorder, postorder);
         }
       
         int Find(Span<int> arr, int val)
         {
             int i = 0;
-            for (; i < arr.Length; i++)
-            {
-                if (arr[i] == val)
-                    break;
-            }
+            for (; i < arr.Length; i++)if (arr[i] == val)break;
             return i;
         }
-        TreeNode Cur(Span<int> inorder, Span<int> postorder)
+        TreeNode Dfs(Span<int> inorder, Span<int> postorder)
         {
-            TreeNode root = new TreeNode(postorder[postorder.Length-1]);
-            int index = Find(inorder, postorder[postorder.Length - 1]);//找到主根          
-            if (index == 0)
-            {
-                root.left = null;
-            }
-            else
-            {
-                root.left = Cur(inorder[..index], postorder[..index]);
-            }
-            if (index + 1 >= inorder.Length)
-            {
-                root.right = null;
-            }
-            else
-            {
-                root.right = Cur(inorder[(index + 1)..], postorder[index..(postorder.Length-1)]);
-            }
-
+            TreeNode root = new TreeNode(postorder[^1]);
+            int index = Find(inorder, postorder[^1]);//找到主根          
+            if (index != 0)
+                root.left = Dfs(inorder[..index], postorder[..index]);
+            if (index + 1 < inorder.Length)
+                root.right = Dfs(inorder[(index + 1)..], postorder[index..(postorder.Length - 1)]);
             return root;
         }
         void PreVisit(TreeNode n)

@@ -11,7 +11,6 @@ namespace algorithm_exercise
         public void NextPermutation(int[] nums)
         {
             //int len = nums.Length;
-
             for (int i = nums.Length - 2; i >= 0; i--)
             {
                 //int[] t = nums[i..len];
@@ -23,7 +22,6 @@ namespace algorithm_exercise
                     int leng = nums.Length - idex;
                     //Span<int> ints = new Span<int>(nums,index+1,len);
                     Array.Sort(nums, idex, leng);
-
                     return;
                 }
 
@@ -71,11 +69,9 @@ namespace algorithm_exercise
         }
         static void Main()
         {
-
             Permute p = new();
             {
-
-                int[] nums = { 1, 2, 3, 4,5,6 };
+                int[] nums = [1, 2, 3, 4,5,6];
                 int size = p.fact(nums.Length);
                 HashSet<int[]> set = new HashSet<int[]>
                 {
@@ -83,7 +79,6 @@ namespace algorithm_exercise
                 };
                 for (int i = 0; i < size-1; ++i)
                 {
-
                     p.NextPermutation(nums);
                     string s=string.Join(',',nums.Select(x=>x.ToString()).ToArray());
                     Console.WriteLine(s);

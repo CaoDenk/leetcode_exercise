@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace leetcode_exercise
 {
+    /// <summary>
+    /// 160. 相交链表
+    /// </summary>
     internal class _GetIntersectionNode
     {
         public ListNode GetIntersectionNode(ListNode headA, ListNode headB)
