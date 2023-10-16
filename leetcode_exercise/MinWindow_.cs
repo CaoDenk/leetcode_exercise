@@ -11,7 +11,6 @@ namespace leetcode_exercise
     /// </summary>
     internal class MinWindow_
     {
-       
         public string MinWindow(string s, string t)
         {
             if (s.Length < t.Length)

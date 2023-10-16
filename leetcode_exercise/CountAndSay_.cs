@@ -8,7 +8,6 @@ namespace leetcode_exercise
 {
     /// <summary>
     /// 38. 外观数列
-    /// 挖坑
     /// </summary>
     internal class CountAndSay_
     {
@@ -17,10 +16,9 @@ namespace leetcode_exercise
             return Qn(n);
         }
 
-       
-
         string Qn(int n)
-        {   if (n == 1) return "1";
+        {   
+            if (n == 1) return "1";
             string res =Qn(n-1);
             int count = 0;
             StringBuilder sb = new StringBuilder();
@@ -31,7 +29,6 @@ namespace leetcode_exercise
                 {
                     sb.Append($"{count}{res[i - 1]}");
                     count = 1;
-
                 }
                 else
                 {
@@ -43,29 +40,6 @@ namespace leetcode_exercise
             return sb.ToString();
         }
 
-        static string Test()
-        {
-            string res = "21";
-            int count = 0;
-            StringBuilder sb = new StringBuilder();
-            int i = 0;
-            for (; i < res.Length; i++)
-            {
-                if (i > 0 && res[i] != res[i - 1])
-                {
-                    sb.Append($"{count}{res[i-1]}");
-                    count = 1;
-
-                }
-                else
-                {
-                    count++;
-                }
-            }
-            if (i>0)
-                sb.Append($"{count}{res[^1]}");
-            return sb.ToString();
-        }
 
         static void Main(string[] args)
         {

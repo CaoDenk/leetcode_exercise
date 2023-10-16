@@ -6,32 +6,28 @@ using System.Threading.Tasks;
 
 namespace leetcode_exercise
 {
+    /// <summary>
+    /// 2544. 交替数字和
+    /// </summary>
     internal class _AlternateDigitSum
     {
         public int AlternateDigitSum(int n)
         {
-            List<int> list = new List<int>();
+           Stack<int> q = new Stack<int>();
             do
             {
-
                 n = Math.DivRem(n, 10, out int i);
-                list.Add(i);
+                q.Push(i);
             } while (n != 0);
 
-            bool flag=true;
-            list.Reverse();
+            bool flag = true;
             int sum = 0;
-            foreach(var item in list)
+            while(q.Count > 0) 
             {
-                if (flag)
-                {
-                    sum += item;
-                }
-                else
-                    sum -= item;
-                flag=!flag;
+                if (flag)sum += q.Pop();
+                else sum -= q.Pop();
+                flag = !flag;
             }
-            
             return sum;
         }
     }

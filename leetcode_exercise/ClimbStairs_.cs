@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace leetcode_exercise
 {
+    /// <summary>
+    /// 70. 爬楼梯
+    /// </summary>
     internal class ClimbStairs_
     {
         class Matrix
@@ -17,9 +20,6 @@ namespace leetcode_exercise
             public Matrix(Matrix m) { this.matrix = (int[,])m.matrix.Clone(); }
             public int GetLength(int i) => this.matrix.GetLength(i);
 
-            //public static explicit operator=(Matrix left, int[,] m){}
-             
-
 
             public int this[int row,int col]
             {
@@ -28,66 +28,56 @@ namespace leetcode_exercise
             }
             public static Matrix operator *(Matrix left, Matrix right)
             {
+#if DEBUG
                 Debug.Assert(left.GetLength(1)==right.GetLength(0));
+#endif
                 int[,] ret=new int[left.GetLength(0),right.GetLength(1)];   
                 for(int i=0;i<left.GetLength(0);++i)
-                {
-
                     for(int j=0;j<right.GetLength(1);++j)
-                    {
-                        
                         for(int k=0;k<left.GetLength(1);++k)
-                        {
                             ret[i,j] += left[i, k] * right[k, j];
-                        }
-
-                    }
-                }
+                        
                 return new Matrix(ret);
             }
 
 
             public static Matrix operator ^(Matrix left, int exp)
             {
+#if DEBUG
                 Debug.Assert(left.GetLength(0)==left.GetLength(1));
-                if (exp == 1)
-                    return left;
-                if (exp == 2)
-                    return left * left;
+#endif
+                if (exp == 1) return left;
+                if (exp == 2) return left * left;
                 Matrix m = left;
                 Matrix ret=left;
                 int e = exp;
                 while(e!=0)
                 {
-                    if((e&1)==1)
-                    {
-                        ret *= m; 
-                    }
+                    if((e&1)==1) ret *= m; 
                     m *= m;
                     e >>= 1;
                 }
-
                 return ret;
             }
+        }
 
+        int _ClimbStairs(int n)
+        {
+            Matrix m = new int[2, 2] { { 0, 1 }, { 1, 1 } };
+            var ret = m ^ (n - 2);
+            var res = ret * new int[2, 1] { { 1 }, { 2 } };
+            return res[0, 0];
         }
         public int ClimbStairs(int n)
         {
-            if (n < 2)
-                return 1;
-            if (n == 2)
-                return 2;
-            if (n == 3)
-                return 3;
-            if (n == 4)
-                return 5;
-            Matrix m = new int[2, 2] { { 0, 1 }, { 1, 1 } };
-
-            var ret = m ^ (n-2);
-            var res = ret * new int[2, 1] { { 1 }, { 2 } };
-            return res[0,0];
-
-
+            return n switch
+            {
+                < 2 => 1,
+                2 => 2,
+                3 => 3,
+                4 => 5,
+                _ => _ClimbStairs(n)
+            };
         }
 
         static void Main(string[] args)
@@ -97,7 +87,6 @@ namespace leetcode_exercise
             for (int i = 3; i < 8; ++i)
             {
                 Console.WriteLine($"{i}={c.ClimbStairs(i)}");
-
             }
 
 

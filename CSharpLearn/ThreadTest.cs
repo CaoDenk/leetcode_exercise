@@ -2,12 +2,11 @@
 
 namespace CSharpLearn
 {
-    internal class Program
+    internal class ThreadTest
     {
         int num = 1;
 
         object obj=new object();
-
 
         void Run2()
         {
@@ -48,7 +47,7 @@ namespace CSharpLearn
         static void Main(string[] args)
         {
             //ThreadPool.SetMaxThreads()
-            Program p=new Program();
+            ThreadTest p=new ThreadTest();
             Thread t1 = new Thread(p.Run1);
             Thread t2 = new Thread(p.Run2);
             t2.Start();

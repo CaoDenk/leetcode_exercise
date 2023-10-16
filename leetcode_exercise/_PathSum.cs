@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace leetcode_exercise
 {
     /// <summary>
-    /// 路劲和
+    /// 路径和
     /// </summary>
     internal class _PathSum
     {

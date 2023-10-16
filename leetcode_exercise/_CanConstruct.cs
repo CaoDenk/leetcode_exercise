@@ -6,45 +6,25 @@ using System.Threading.Tasks;
 
 namespace leetcode_exercise
 {
+    /// <summary>
+    /// 383. 赎金信
+    /// </summary>
     internal class _CanConstruct
     {
         public bool CanConstruct(string ransomNote, string magazine)
         {
-            Dictionary<char, int> note = new();
+     
             Dictionary<char, int> mag = new();
             foreach (char c in magazine) 
             {
-                if(mag.ContainsKey(c))
-                {
-                    ++mag[c] ;
-                }else
-                {
-                    mag[c] = 1 ;
-                }
+                mag[c] = mag.GetValueOrDefault(c) + 1;
             }
             foreach (char c in ransomNote)
             {
-                if (note.ContainsKey(c))
-                {
-                    ++note[c];
-                }
-                else
-                {
-                    note[c] = 1;
-                }
-            }
-
-            var noteKey = note.Keys;
-            foreach (var k in noteKey)
-            {
-                if (!mag.ContainsKey(k))
+                if (mag.GetValueOrDefault(c)==0)
                     return false;
-                if (mag[k] < note[k])
-                {
-                    return false;
-                }
+                mag[c]--;
             }
-
             return true;
 
         }

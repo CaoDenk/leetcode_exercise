@@ -8,11 +8,9 @@ namespace leetcode_exercise
 {
     /// <summary>
     /// 377. 组合总和 Ⅳ
-    /// 挖坑怎么去重
     /// </summary>
     internal class CombinationSum4_
     {
-        
         public int CombinationSum4(int[] nums, int target)
         {
             int[] dp = new int[target + 1];

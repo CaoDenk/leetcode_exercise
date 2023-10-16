@@ -10,7 +10,7 @@ namespace leetcode_exercise
     {
         public string ReplaceSpace(string s)
         {
-          StringBuilder sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             foreach (char c in s)
             {
                 if (c!=' ')

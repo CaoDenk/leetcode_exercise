@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace leetcode_exercise
 {
+    /// <summary>
+    /// 67. 二进制求和
+    /// </summary>
     internal class _AddBinary
     {
         public string AddBinary(string a, string b)
         {
            
-            if(a.Length<b.Length)
-            {
-                (a,b)=(b,a);
-            }
+            if(a.Length<b.Length)  (a,b)=(b,a);
             int maxLen = a.Length;
             char[] chars = new char[maxLen+1];
             
@@ -44,7 +44,6 @@ namespace leetcode_exercise
             {
                 return new string(chars, 1, chars.Length - 1);
             }
-
 
         }
 

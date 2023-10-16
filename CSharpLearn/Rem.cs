@@ -10,8 +10,6 @@ namespace CSharpLearn
 {
     internal class Rem
     {
-
-
         static void Main()
         {
             // Create a cancellation token source.
