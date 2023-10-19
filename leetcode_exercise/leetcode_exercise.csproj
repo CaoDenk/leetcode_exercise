@@ -6,13 +6,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 	  <!--<StartupObject>leetcode_exercise._AddStrings</StartupObject>-->
-<<<<<<< HEAD
 	
 	  <StartupObject>leetcode_exercise.AvoidFlood_</StartupObject>
-=======
-	  <StartupObject>leetcode_exercise._AddStrings2</StartupObject>
-	  <!--<StartupObject>leetcode_exercise._ClimbStairs</StartupObject>-->
->>>>>>> a4b498e8bb72773d9651c8089c048bbfd8319f2a
   </PropertyGroup>
 
   <ItemGroup>

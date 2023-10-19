@@ -19,7 +19,6 @@ namespace leetcode_exercise
             {
                 if(key.Contains(i))
                 {
-
                     set.Remove(i);
                 }else
                 {
