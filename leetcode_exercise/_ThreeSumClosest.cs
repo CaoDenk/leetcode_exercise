@@ -36,9 +36,6 @@ namespace leetcode_exercise
                     {
                         k--;
                     }
-
-
-
                 }
 
             }

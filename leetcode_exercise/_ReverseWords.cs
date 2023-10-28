@@ -6,13 +6,15 @@ using System.Threading.Tasks;
 
 namespace leetcode_exercise
 {
+    /// <summary>
+    /// 151. 反转字符串中的单词
+    /// </summary>
     internal class _ReverseWords
     {
         public string ReverseWords(string s)
         {
  
             string[] strings = Split(s);
-           
             return string.Join(" ", strings);
         }
         string[] Split(string s)
@@ -38,9 +40,7 @@ namespace leetcode_exercise
                             stringBuilder.Append(s[i]);
                             ++i;
                         }
-                        else
-                            break;
-                       
+                        else break;          
                     }
                     strings.Add(stringBuilder.ToString());
                 }

@@ -24,11 +24,11 @@ namespace leetcode_exercise
         }
         public int SingleNumber(int[] nums)
         {
-            int ret =0;
+           int ret =0;
            foreach(var i in nums)
-            {
+           {
                 ret ^= i;
-            }
+           }
             return ret;
         }
     }

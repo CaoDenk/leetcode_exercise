@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace leetcode_exercise
 {
+    /// <summary>
+    /// 344. 反转字符串
+    /// </summary>
     internal class _ReverseString
     {
         public void ReverseString(char[] s)

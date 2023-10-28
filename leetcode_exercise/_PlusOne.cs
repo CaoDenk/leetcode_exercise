@@ -41,9 +41,9 @@ namespace leetcode_exercise
         {
 
             _PlusOne p = new();
-           var res= p.PlusOne(new int[] { 9,9,9 });
-           var res1= p.PlusOne(new int[] { 9 });
-           var res2= p.PlusOne(new int[] { 8,9,9 });
+           var res= p.PlusOne([9,9,9]);
+           var res1= p.PlusOne([9]);
+           var res2= p.PlusOne([8,9,9]);
             foreach (int i in res)
             {
                 Console.Write(i);

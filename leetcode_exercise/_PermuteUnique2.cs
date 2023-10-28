@@ -8,6 +8,9 @@ using System.Xml.Linq;
 
 namespace leetcode_exercise
 {
+    /// <summary>
+    /// 47. 全排列 II
+    /// </summary>
     internal class _PermuteUnique2
     {
         bool[] vis;
@@ -59,7 +62,7 @@ namespace leetcode_exercise
         static void Main()
         {
             _PermuteUnique2 p = new();
-            int[] arr ={1, 1,1,2};
+            int[] arr =[1, 1,1,2];
             var ret= p.PermuteUnique(arr);
             Print(ret);
         }

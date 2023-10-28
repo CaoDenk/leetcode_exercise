@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace leetcode_exercise
 {
+    /// <summary>
+    /// 9. 删除链表的倒数第 N 个结点
+    /// </summary>
     internal class _RemoveNthFromEnd
     {
         public ListNode RemoveNthFromEnd(ListNode head, int n)
@@ -34,19 +37,19 @@ namespace leetcode_exercise
         static void Main(string[] args)
         {
             {
-                var head = Utils.MakeListNodes(new int[] { 1, 2, 3, 4, 5, });
+                var head = Utils.MakeListNodes([1, 2, 3, 4, 5,]);
                 _RemoveNthFromEnd r = new();
                 var ret = r.RemoveNthFromEnd(head, 2);
                 Utils.Print(ret);
             }
             {
-                var head = Utils.MakeListNodes(new int[] { 1, });
+                var head = Utils.MakeListNodes([1,]);
                 _RemoveNthFromEnd r = new();
                 var ret = r.RemoveNthFromEnd(head, 1);
                 Utils.Print(ret);
             }
             {
-                var head = Utils.MakeListNodes(new int[] { 1, 2});
+                var head = Utils.MakeListNodes([1, 2]);
                 _RemoveNthFromEnd r = new();
                 var ret = r.RemoveNthFromEnd(head, 1);
                 Utils.Print(ret);

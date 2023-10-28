@@ -13,7 +13,7 @@ namespace leetcode_exercise
     {
         public IList<int> PostorderTraversal(TreeNode root)
         {
-            List<int> result = new List<int>();
+            List<int> result = [];
             if(root == null) 
                 return result;
             PostVisit(root, result);

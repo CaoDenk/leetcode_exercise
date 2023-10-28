@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace algorithm_exercise
 {
+    /// <summary>
+    /// 多核处理器解决依赖关系的任务
+    /// </summary>
     internal class TaskHandle
     {
 
@@ -24,7 +27,6 @@ namespace algorithm_exercise
 
         List<GraphNode> Make(int[] times, int[] dep)
         {
-
             GraphNode[] graph = new GraphNode[times.Length];
             for (int i = 0; i < times.Length; i++)
             {
@@ -42,13 +44,15 @@ namespace algorithm_exercise
             return graph.ToList();
         }
 
-        GraphNode FindZeroInNumber(List<GraphNode> graph)
+        GraphNode? FindZeroInNumber(List<GraphNode> graph)
         {
             foreach (GraphNode node in graph)
             {
                 if (node.inNumber == 0)
                     return node;
             }
+            if (graph.Count > 0)
+                throw new Exception();
             return null;
         }
         

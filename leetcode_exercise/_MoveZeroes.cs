@@ -21,7 +21,6 @@ namespace leetcode_exercise
             {
                 count++;
             }
-
             for(int i = 0; i < count;++i)
             {
                 list.AddLast(0);

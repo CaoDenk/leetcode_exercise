@@ -11,10 +11,10 @@ namespace leetcode_exercise
     /// </summary>
     internal class _reverseBits
     {
-        //public uint reverseBits(uint n)
-        //{
-
-        //    Convert.ToString(n);
-        //}
+        public uint reverseBits(uint n)
+        {
+            string s = new(Convert.ToString(n, 2).PadLeft(32, '0').Reverse().ToArray());
+            return Convert.ToUInt32(s, 2);
+        }
     }
 }

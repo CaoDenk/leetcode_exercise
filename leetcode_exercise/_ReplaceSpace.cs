@@ -10,13 +10,12 @@ namespace leetcode_exercise
     {
         public string ReplaceSpace(string s)
         {
-            StringBuilder sb = new StringBuilder();
+            StringBuilder sb = new();
             foreach (char c in s)
             {
                 if (c!=' ')
                 {
                     sb.Append(c);
-
                 }else
                 {
                     sb.Append("%20");

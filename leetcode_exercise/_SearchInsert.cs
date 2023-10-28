@@ -6,14 +6,16 @@ using System.Threading.Tasks;
 
 namespace leetcode_exercise
 {
+    /// <summary>
+    /// 35. 搜索插入位置
+    /// </summary>
     internal class _SearchInsert
     {
-
         public int SearchInsert(int[] nums, int target)
         {
             if (target < nums[0])
                 return 0;
-             if (nums[nums.Length - 1] <target)
+             if (nums[^1] <target)
                 return nums.Length;
             return BinSearch(nums,target,0,nums.Length-1);
         }
@@ -27,7 +29,6 @@ namespace leetcode_exercise
             else if(nums[mid] < target)
             {
                 left = mid+1;
-              
             }
             else
             {
@@ -36,28 +37,22 @@ namespace leetcode_exercise
 
             if (left < right)
                 return BinSearch(nums, target, left, right);
-            else
-                return left;
-
-
-
+            else return left;
         }
 
 
         static void Main()
         {
             _SearchInsert searchInsert = new _SearchInsert();
-
-
             {
-                int[] nums = new int[] { 1, 3, 5, 6 };
+                int[] nums = [1, 3, 5, 6];
                 int target = 5;
                 int ret = searchInsert.SearchInsert(nums, target);
 
                 Console.WriteLine(ret);
             }
             {
-                int[] nums = new int[] { 1, 3, 5, 6 };
+                int[] nums = [1, 3, 5, 6];
                 int target = 2;
                 int ret = searchInsert.SearchInsert(nums, target);
 
@@ -65,7 +60,7 @@ namespace leetcode_exercise
             }
 
             {
-                int[] nums = new int[] { 1, 3, 5, 6 };
+                int[] nums = [1, 3, 5, 6];
                 int target = 7;
                 int ret = searchInsert.SearchInsert(nums, target);
 
