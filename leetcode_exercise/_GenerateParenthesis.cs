@@ -6,84 +6,63 @@ using System.Threading.Tasks;
 
 namespace leetcode_exercise
 {
+    /// <summary>
+    /// 22. 括号生成
+    /// </summary>
     internal class _GenerateParenthesis
     {
-        List<string> result = new List<string>();
+       
         public IList<string> GenerateParenthesis(int n)
         {
           
-            StringBuilder sb = new StringBuilder();
-            solve(0,2*n, sb);
 
+            List<string> result = new List<string>();
+            GenerateParenthesis(n,0,0,result,new StringBuilder());
             return result;
         }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="count">左括号数量</param>
-        /// <param name="n"></param>
-        /// <param name="sb"></param>
-        void solve(int count,int n,StringBuilder sb)
+        void GenerateParenthesis(int n,int leftCount,int rightCount,IList<string> list,StringBuilder sb)
         {
-            if(sb.Length == n)
+            if (sb.Length == n * 2)
             {
-  
-                result.Add(sb.ToString());
-                 //   sb = new StringBuilder();
-                    return;
-                 
+                list.Add(sb.ToString());
+                return;
             }
-            if (count > 0)
-            {
-                sb.Append(')');
-
-                solve(count - 1, n, sb);
-                sb.Remove(sb.Length - 1,1);
-
-            }
-            if (n-sb.Length >count)
+            if(leftCount==0)
             {
                 sb.Append('(');
-               
-                solve(count+1,n,sb);
+                GenerateParenthesis(n, leftCount + 1,rightCount, list, sb);
                 sb.Remove(sb.Length - 1, 1);
             }
-
-         
-
+            else if(leftCount<n) 
+            {
+                sb.Append('(');
+                GenerateParenthesis(n, leftCount+1,rightCount, list, sb);
+                sb.Remove(sb.Length - 1, 1);
+                if(leftCount>rightCount)
+                {
+                    sb.Append(')');
+                    GenerateParenthesis(n, leftCount, rightCount + 1, list, sb);
+                    sb.Remove(sb.Length - 1, 1);
+                }
+            }
+            else
+            {
+                int start = sb.Length;
+                sb.Append(Enumerable.Repeat(')',2*n-start).ToArray());
+                GenerateParenthesis(n, leftCount, rightCount+1, list, sb);
+                sb.Remove(start, 2 * n - start);
+            }
 
         }
 
-        //public void solve2(int leftCount,int n,StringBuilder sb)
-        //{
-
-        //    if (sb.Length < n)
-        //    {
-        //        sb.Append('(');
-        //        solve2(leftCount,n,sb);
-                
-        //    }
-
-           
        
-        //    if (sb.Length < n)
-        //    {
-        //        return;
-        //    }
 
-
-        //    sb.Append(')');
-        //    solve2(leftCount, n, sb);
-            
-           
-
-        //}
-
+ 
         public static void Main()
         {
             _GenerateParenthesis g = new();
-            g.GenerateParenthesis(2);
-            foreach(var s in g.result)
+            var res= g.GenerateParenthesis(3);
+            foreach(var s in res)
             {
 
                 Console.WriteLine(s);

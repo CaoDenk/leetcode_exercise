@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace leetcode_exercise
 {
+    /// <summary>
+    /// 46. 全排列
+    /// </summary>
     internal class _Permute2
     {
 
@@ -15,11 +18,6 @@ namespace leetcode_exercise
             IList<IList<int>> res = new List<IList<int>>();
 
             List<int> output = new List<int>(nums);
-            //foreach(int num in nums)
-            //{
-            //    output.Add(num);
-            //}
-
             int n = nums.Length;
             Backtrack(n, output, res, 0);
             return res;

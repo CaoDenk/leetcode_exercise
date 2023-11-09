@@ -13,10 +13,8 @@ namespace leetcode_exercise
     {
         public int SearchInsert(int[] nums, int target)
         {
-            if (target < nums[0])
-                return 0;
-             if (nums[^1] <target)
-                return nums.Length;
+            if (target < nums[0])return 0;
+            if (nums[^1] <target) return nums.Length;
             return BinSearch(nums,target,0,nums.Length-1);
         }
         int BinSearch(int[] nums,int target,int left,int right)
@@ -24,8 +22,7 @@ namespace leetcode_exercise
             //int left = 0, right = nums.Length - 1;
          
             int mid =(left+right)/2;
-            if (nums[mid] == target)
-                return mid;
+            if (nums[mid] == target)return mid;
             else if(nums[mid] < target)
             {
                 left = mid+1;

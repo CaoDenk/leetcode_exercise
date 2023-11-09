@@ -39,13 +39,11 @@ namespace leetcode_exercise
                 {
                     continue;
                 }
-                
                 perm.Add(nums[i]);
                 vis[i] = true;
                 backtrack(nums, ans, idx + 1, perm);
                 vis[i] = false;
                 perm.RemoveAt(idx);
-                //perm.Remove(idx);
             }
         }
         static void Print( IList<IList<int>> list)

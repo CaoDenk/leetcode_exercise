@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace leetcode_exercise
 {
+    /// <summary>
+    /// 46. 全排列
+    /// </summary>
     internal class _Permute
     {
         public IList<IList<int>> Permute(int[] nums)

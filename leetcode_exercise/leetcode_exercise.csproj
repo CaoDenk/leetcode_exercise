@@ -7,12 +7,11 @@
     <Nullable>enable</Nullable>
 	  <!--<StartupObject>leetcode_exercise._AddStrings</StartupObject>-->
 	
-	  <StartupObject>leetcode_exercise.FindRepeatedDnaSequences_</StartupObject>
+	  <StartupObject>leetcode_exercise.MaximumMinutes_</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="MSTest.TestFramework" Version="3.1.1" />
-    <PackageReference Include="Nito.Collections.Deque" Version="1.1.1" />
     <PackageReference Include="System.Runtime" Version="4.3.1" />
   </ItemGroup>
 

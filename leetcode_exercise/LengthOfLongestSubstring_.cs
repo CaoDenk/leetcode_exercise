@@ -19,7 +19,7 @@ namespace leetcode_exercise
             int newStart;
             for (int i=1;i<s.Length;++i)
             {
-                if (map.ContainsKey(s[i]) && (newStart = map[s[i]]+1)>start)
+                if (map.TryGetValue(s[i], out int value) && (newStart = value + 1)>start)
                 {
                         start = newStart;
                 }else

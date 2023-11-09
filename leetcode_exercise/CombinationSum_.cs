@@ -8,7 +8,6 @@ namespace leetcode_exercise
 {
     /// <summary>
     /// 39. 组合总和
-    /// 挖坑
     /// </summary>
     internal class CombinationSum_
     {
@@ -19,11 +18,11 @@ namespace leetcode_exercise
             List<IList<int>> ans=new List<IList<int>>();
             int sum = 0;
             int start = 0;
-            Recursive(ans, ints, ref sum, candidates, target,  start);
+            Dfs(ans, ints, ref sum, candidates, target,  start);
             return ans;
         }
 
-        void Recursive(List<IList<int>> ans, List<int> list,ref int sum, int[] candidates,int target, int start)
+        void Dfs(List<IList<int>> ans, List<int> list,ref int sum, int[] candidates,int target, int start)
         {
             if(sum==target)
             {
@@ -35,7 +34,7 @@ namespace leetcode_exercise
             {                
                 sum += candidates[i];
                 list.Add(candidates[i]);
-                Recursive(ans, list, ref sum, candidates, target, i);
+                Dfs(ans, list, ref sum, candidates, target, i);
                 list.RemoveAt(list.Count - 1);
                 sum -= candidates[i];
             }

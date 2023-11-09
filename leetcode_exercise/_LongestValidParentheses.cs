@@ -6,46 +6,34 @@ using System.Threading.Tasks;
 
 namespace leetcode_exercise
 {
+    /// <summary>
+    /// 32. 最长有效括号
+    /// </summary>
     internal class _LongestValidParentheses
     {
 
-        struct Data
-        {
-            public bool isleft;
-            public int pos;
-            public Data(bool isleft, int pos)
-            {
-
-                this.isleft = isleft;
-                this.pos = pos;
-
-            }
-        }
+  
         class MyStack
-     {
-
-            Stack<Data> stack = new Stack<Data>();
-            public void Push(int i)
-            {
-                stack.Push(new Data(true,i));                        
-            }
-
+        {
+            readonly Stack<(int pos,bool isLeft)> stack = new();
+            public void Push(int i)=> stack.Push((i,true));        
             public int Pop(int pos)
             {
-
-                if (stack.Count > 0&&stack.Peek().isleft)
+                int ans = 0;
+                if (stack.Count > 0 && stack.Peek().isLeft)
                 {
                     stack.Pop();
-                    if (stack.Count == 0)
-                        return pos +1;
-                  return pos- stack.Peek().pos;
-                  
-                }else
-                    stack.Push(new Data(false,pos));
-                return 0;
+                    if (stack.Count == 0) ans= pos + 1;
+                    else ans= pos - stack.Peek().pos;
+                }
+                else
+                {
+                    stack.Push((pos,false));
+                }
+                return ans;
             }
 
-     }
+        }
 
         public int LongestValidParentheses(string s)
         {
@@ -61,7 +49,7 @@ namespace leetcode_exercise
                 else
                 {
                     int len = my.Pop(i);
-                    max = max < len ? len : max;
+                    max=Math.Max(max, len);
                 }
                 i++;
             }

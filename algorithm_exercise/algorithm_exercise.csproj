@@ -5,7 +5,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-	  <StartupObject>algorithm_exercise.TaskHandle</StartupObject>
+	  <StartupObject>algorithm_exercise.MakeMoney</StartupObject>
   </PropertyGroup>
 
 	<ItemGroup>

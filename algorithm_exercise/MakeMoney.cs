@@ -52,23 +52,23 @@ namespace algorithm_exercise
             // money  2，5，5，3，4  
             // out 14
             {
-                int[] orders=new int[] { 1, 3, 6, 7, 11 };
-                int[] time=new int[] { 4,3,4,3,9 };
-                int[] money=new int[] { 2,5,5,3,4 };
+                int[] orders=[1, 3, 6, 7, 11];
+                int[] time=[4,3,4,3,9];
+                int[] money=[2,5,5,3,4];
                 int res=Make(orders, time, money);
                 Console.WriteLine(res);
             }
             {
-                int[] orders = new int[] { 1, 2,4,6 };
-                int[] time = new int[] { 3,2,3,1 };
-                int[] money = new int[] { 10,20,15,30 };
+                int[] orders = [1, 2,4,6];
+                int[] time = [3,2,3,1];
+                int[] money = [10,20,15,30];
                 int res = Make(orders, time, money);
                 Console.WriteLine(res);
             }
             {
-                int[] orders = new int[] { 1, 2, 3,};
-                int[] time = new int[] { 2, 2, 3,};
-                int[] money = new int[] { 1, 3, 3,};
+                int[] orders = [1, 2, 3,];
+                int[] time = [2, 2, 3,];
+                int[] money = [1, 3, 3,];
                 int res = Make(orders, time, money);
                 Console.WriteLine(res);
             }

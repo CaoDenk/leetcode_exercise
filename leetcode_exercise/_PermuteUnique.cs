@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace leetcode_exercise
 {
+    /// <summary>
+    /// 47. 全排列 II
+    /// </summary>
     internal class _PermuteUnique
     {
         public IList<IList<int>> PermuteUnique(int[] nums)
