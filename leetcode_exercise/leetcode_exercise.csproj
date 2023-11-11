@@ -7,7 +7,7 @@
     <Nullable>enable</Nullable>
 	  <!--<StartupObject>leetcode_exercise._AddStrings</StartupObject>-->
 	
-	  <StartupObject>leetcode_exercise.MaximumMinutes_</StartupObject>
+	  <StartupObject>leetcode_exercise.MinSwapsCouples2</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>

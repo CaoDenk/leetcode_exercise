@@ -14,149 +14,130 @@ namespace leetcode_exercise
     {
         public int MaximumMinutes(int[][] grid)
         {
-            Stack<(int x, int y)> stack = new Stack<(int x, int y)>();
-            bool[,] map=new bool[grid.Length,grid[0].Length];
-            stack.Push((0, 0));
-            map[0, 0] = true;
-            int time=0;
-            int max=0;
-            int x = 0, y = 0;
-            while(true)
+            int m = grid.Length;
+            int n = grid[0].Length;
+            int[,] fireTime = FireBfs(grid);
+            int[,] humanTime=HumanBfs(grid);
+
+            if (humanTime[m-1,n-1]==int.MaxValue)
             {
-
-
-                (int nx, int ny) = GetNextStep(x, y, grid, map);
-                if (nx == grid.Length - 1 && y == grid[0].Length - 1)
-                {
-                    while(true)
-                    {
-                        State _state= Spread(grid, nx, ny);
-                        if (_state == State.Never) return 10_0000_0000;
-                        if (_state == State.Safe)
-                        {
-                            time++;
-                            max=Math.Max(max, time);
-                        }
-                        else return max;
-                    }
-                }
-
-                if (nx<0)
-                {
-                    if (stack.Count > 0)
-                    {
-                        map[x, y] = false;
-                        (x, y) = stack.Pop();
-                        time--;
-                    } else
-                    {
-                        return max;
-                    }
-                       
-                }else
-                {
-                    State _state = Spread(grid, nx, ny);
-                    if (_state == State.Never) return 10_0000_0000;
-                    if(_state== State.Safe)
-                    {
-                        map[nx, ny] = true;
-                        stack.Push((nx, ny));
-                        time++;
-                        max=Math.Max(max, time);
-                        x = nx;
-                        y = ny;
-                    }else
-                    {
-                        if (stack.Count > 0)
-                        {
-                            map[x, y] = false;
-                            (x, y) = stack.Pop();
-                            time--;
-                        }
-                        else
-                        {
-                            return max;
-                        }
-                    }
-            
-                }
+                return -1;
             }
-
+            if (fireTime[m-1,n-1]==int.MaxValue)
+            {
+                return 10_0000_0000;
+            }
+            int ans = fireTime[m - 1, n - 1] - humanTime[m - 1, n - 1];
+            if(ans < 0)
+            {
+                return -1;
+            }
+            if (humanTime[m - 1, n - 2] != int.MaxValue && ans + humanTime[m - 1, n - 2] < fireTime[m - 1, n - 2])
+                return ans;
+            if (humanTime[m - 2, n - 1] != int.MaxValue && ans + humanTime[m - 2, n - 1] < fireTime[m - 2, n - 1])
+                return ans;
+            return ans-1;
         }
 
-        enum State
+
+
+
+        int[,] FireBfs(int[][] grid)
         {
-            Never,
-            Safe,
-            Fire
-        }
-        /// <summary>
-        /// 返回true说明人被烧到了
-        /// </summary>
-        /// <param name="grid"></param>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        /// <returns></returns>
-        State Spread(int[][] grid,int x,int y)
-        {
-            List<(int pos1, int pos2)> pos = new();
+            Queue<(int, int)> q = new();
+            
+            int[,] time = new int[grid.Length, grid[0].Length];
+            int[][] visited = new int[grid.Length][];
+            for(int i=0;i < grid.Length;++i)
+            {
+                visited[i]=new int[grid[i].Length];
+                grid[i].CopyTo(visited[i],0);
+            }
             for(int i = 0;i<grid.Length;++i)
             {
-                for(int j = 0; j < grid[i].Length;++j)
+                for(int j = 0; j < visited[0].Length;++j)
                 {
-                    if (grid[i][j] == 0)
+                    if (visited[i][j] == 1)
                     {
-                        if (i > 0 && grid[i - 1][j] == 0)
-                            pos.Add((i - 1, j));
-                        if (j > 0 && grid[i][j - 1] == 0)
-                            pos.Add((i, j - 1));
-                        if (i < grid.Length - 1 && grid[i + 1][j] == 0)
-                            pos.Add((i + 1, j));
-                        if (j < grid[i].Length - 1 && grid[i][j + 1] == 0)
-                            pos.Add((i, j + 1));
+                        q.Enqueue((i, j));
+                        time[i, j] = 0;
                     }
-             
+                    else
+                        time[i, j] = int.MaxValue;
+
                 }
             }
-            if(pos.Count == 0) 
+            return Bfs(q,visited,time);
+        }
+        int[,] HumanBfs(int[][] grid)
+        {
+            Queue<(int, int)> q = new();
+            q.Enqueue((0, 0));
+            int[,] time = new int[grid.Length, grid[0].Length];
+
+            int[][] visited = grid.ToArray();
+            for (int i = 0; i < grid.Length; ++i)
             {
-                return State.Never;
+                for (int j = 0; j < visited[0].Length; ++j)
+                {
+                    time[i, j] = int.MaxValue;
+                }
             }
-            foreach((int pos1, int pos2) in pos)
-            {
-                grid[pos1][pos2] = 1;
-            }
-             if(grid[x][y]==1)return State.Fire;
-             else return State.Safe;
+            visited[0][0] = 1;
+            time[0, 0] = 0;
+            
+            return Bfs(q, visited, time);
         }
 
-        (int x, int y) GetNextStep(int x, int y, int[][] grid, bool[,] map)
+        int[,] Bfs(Queue<(int, int)> q,int[][] visited, int[,] time)
         {
-            if (x <grid.Length-1 && grid[x + 1][y] == 0&& !map[x+1,y])
+            while (q.Count > 0)
             {
-                return (x+1,y);
+    
+                (int i, int j) = q.Dequeue();
+                if (i > 0 && visited[i - 1][j] == 0)
+                {
+                    visited[i - 1][j] = 1; 
+                    time[i - 1, j] = time[i, j] + 1;
+                    q.Enqueue((i - 1, j));
+                }
+
+                if (j > 0 && visited[i][j - 1] == 0)
+                {
+                    visited[i][j - 1] = 1;
+                    time[i, j - 1] = time[i, j] + 1;
+                    q.Enqueue((i, j - 1));
+                }
+
+                if (i < visited.Length - 1 && visited[i + 1][j] == 0)
+                {
+                    visited[i + 1][j] = 1;
+                    time[i + 1, j] = time[i, j] + 1;
+                    q.Enqueue((i + 1, j));
+                }
+
+                if (j < visited[i].Length - 1 && visited[i][j + 1] == 0)
+                {
+                    visited[i][j + 1] = 1;
+                    time[i, j + 1] = time[i, j] + 1;
+                    q.Enqueue((i, j + 1));
+                }
             }
-            if (y < grid.Length - 1 && grid[x ][y+1] == 0 && !map[x , y+1])
-            {
-                return (x, y+1);
-            }
-            if (x < grid.Length - 1 && grid[x + 1][y] == 0 && !map[x + 1, y])
-            {
-                return (x + 1, y);
-            }
-            if (y < grid.Length - 1 && grid[x][y + 1] == 0 && !map[x, y + 1])
-            {
-                return (x, y + 1);
-            }
-            return (-1, -1);
+            return time;
+
         }
+
 
 
         static void Main(string[] args)
         {
             MaximumMinutes_ m = new();
+            //{
+            //    Console.WriteLine(m.MaximumMinutes([[0, 2, 0, 0, 0, 0, 0], [0, 0, 0, 2, 2, 1, 0], [0, 2, 0, 0, 1, 2, 0], [0, 0, 2, 2, 2, 0, 2], [0, 0, 0, 0, 0, 0, 0]]));
+            //}
             {
-                Console.WriteLine(m.MaximumMinutes([[0, 2, 0, 0, 0, 0, 0], [0, 0, 0, 2, 2, 1, 0], [0, 2, 0, 0, 1, 2, 0], [0, 0, 2, 2, 2, 0, 2], [0, 0, 0, 0, 0, 0, 0]]));
+                int[][] grid = [[0, 2, 0, 0, 0, 0, 0, 0, 0, 2, 0, 2, 0, 2, 2, 0, 2, 0, 0, 0, 0, 0], [0, 0, 0, 2, 2, 2, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2], [0, 2, 2, 2, 2, 2, 2, 2, 2, 0, 2, 2, 2, 0, 2, 2, 2, 0, 0, 2, 0, 2], [0, 0, 2, 0, 0, 0, 2, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0], [2, 0, 0, 0, 2, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 2, 2, 0, 2, 0], [0, 0, 2, 0, 2, 0, 2, 2, 0, 0, 0, 2, 2, 2, 2, 0, 2, 2, 0, 0, 2, 0], [2, 2, 2, 0, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 2, 0, 0, 2, 2, 0, 2, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 2, 0, 2, 2, 2, 2, 2, 2, 0, 2, 0], [2, 0, 2, 0, 2, 0, 2, 0, 2, 2, 0, 2, 0, 0, 0, 0, 2, 0, 2, 0, 2, 2], [0, 0, 2, 0, 2, 0, 2, 0, 2, 2, 0, 2, 2, 0, 2, 0, 0, 0, 2, 2, 2, 2], [0, 2, 2, 0, 2, 0, 2, 0, 2, 1, 0, 0, 2, 2, 2, 0, 2, 0, 0, 2, 0, 0], [0, 2, 2, 0, 2, 2, 2, 0, 2, 2, 2, 0, 0, 0, 2, 0, 2, 2, 0, 0, 0, 2], [0, 2, 2, 0, 2, 0, 0, 0, 0, 0, 2, 2, 0, 2, 2, 2, 1, 2, 2, 0, 2, 1], [0, 2, 2, 0, 2, 2, 2, 0, 2, 0, 2, 2, 0, 0, 0, 0, 2, 2, 0, 0, 0, 2], [0, 2, 0, 0, 2, 0, 0, 0, 2, 0, 2, 0, 0, 2, 0, 2, 2, 0, 0, 2, 0, 0], [2, 2, 2, 0, 2, 2, 0, 2, 2, 0, 2, 2, 0, 2, 2, 2, 2, 2, 0, 2, 2, 0], [0, 0, 0, 0, 2, 2, 0, 2, 0, 0, 2, 2, 0, 0, 0, 0, 0, 2, 0, 2, 0, 0]];
+                Console.WriteLine(m.MaximumMinutes(grid));
             }
         }
     }

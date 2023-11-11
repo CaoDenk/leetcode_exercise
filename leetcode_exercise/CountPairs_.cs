@@ -8,56 +8,49 @@ namespace leetcode_exercise
 {
     /// <summary>
     /// 2316. 统计无向图中无法互相到达点对数
-    /// copy 
+    /// 挖坑
     /// </summary>
     internal class CountPairs_
     {
 
-            private int[] parents;
-            private int[] counts;
+       
 
-            public long CountPairs(int n, int[][] edges)
+        public long CountPairs(int n, int[][] edges)
+        {
+            int[] pa= Enumerable.Range(0, n).ToArray();
+            int[] count = Enumerable.Repeat(1,n).ToArray();
+            foreach(var edge in edges)
             {
-                parents = new int[n];
-                counts = new int[n];
-                Array.Fill(parents, -1);
-                Array.Fill(counts, 1);
-                foreach (int[] edge in edges)
-                {
-                    Union(edge[0], edge[1]);
-                }
-                int count = 0;
-                long ans = 0;
-                for (int i = 0; i < n; ++i)
-                {
-                    ans += (long)count * counts[i];
-                    count += counts[i];
-                }
-                return ans;
+                Union(edge[0], edge[1], pa,count);
+            }
+            long ans = 0;
+            long t = 0;
+            for (int i = 0; i < n; i++)
+            {
+                if (count[i] == 0) continue;
+                ans += t * count[i];
+                t += count[i];
+            }
+                
+            return ans;
+        }
+
+        int Find(int x, int[] pa) => pa[x] == x ? x : Find(pa[x], pa);
+
+        void Union(int x,int y, int[] pa, int[] count)
+        {
+            int px=Find(x, pa);
+            int py=Find(y, pa);
+            if(px!=py)
+            {
+                pa[py]= px;
+                count[px] += count[py];
+                count[py] = 0;
             }
 
-            private int Find(int a)
-            {
-                if (parents[a] == -1)
-                {
-                    return a;
-                }
-                int root = Find(parents[a]);
-                parents[a] = root;
-                return root;
-            }
+        }
 
-            private void Union(int a, int b)
-            {
-                int s = Find(a);
-                int t = Find(b);
-                if (s != t)
-                {
-                    parents[t] = s;
-                    counts[s] += counts[t];
-                    counts[t] = 0;
-                }
-            }
+          
         
         static void Main(string[] args)
         {
