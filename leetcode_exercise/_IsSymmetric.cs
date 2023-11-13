@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace leetcode_exercise
 {
+    /// <summary>
+    /// 101. 对称二叉树
+    /// </summary>
     internal class _IsSymmetric
     {
         public bool IsSymmetric(TreeNode root)

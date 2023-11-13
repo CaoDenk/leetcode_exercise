@@ -6,20 +6,11 @@ using System.Threading.Tasks;
 
 namespace leetcode_exercise
 {
+    /// <summary>
+    /// 349. 两个数组的交集
+    /// </summary>
     internal class _Intersection
     {
-        public int[] Intersection(int[] nums1, int[] nums2)
-        {
-            HashSet<int> set = new HashSet<int>(nums1);
-
-            HashSet<int>  ret= new HashSet<int>();
-            foreach(int i in nums2) 
-            {
-                if(set.Contains(i))
-                    ret.Add(i);
-            
-            }
-            return ret.ToArray();
-        }
+        public int[] Intersection(int[] nums1, int[] nums2) => nums1.Intersect(nums2).ToArray();
     }
 }

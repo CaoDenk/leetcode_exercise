@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace leetcode_exercise
 {
+    /// <summary>
+    /// 2600. K 件物品的最大和
+    /// </summary>
     internal class _KItemsWithMaximumSum
     {
         public int KItemsWithMaximumSum(int numOnes, int numZeros, int numNegOnes, int k)
@@ -23,38 +26,7 @@ namespace leetcode_exercise
 
         }
 
-       
-        //int Recur(int numOnes, int numZeros, int numNegOnes, int k,ref int t)
-        //{
-        //    if(t==0)
-        //    {
-        //        return k == 0 ? 1 : 0;
-        //    }
-        //    int sum = 0;
-        //    if (numOnes > 0)
-        //    {
-        //        --t;
-        //        sum += Recur(numOnes - 1, numZeros, numNegOnes, k - 1,ref t);
-        //        ++t;
-        //    }
-        //    if (numZeros > 0)
-        //    {
-        //        --t;
-        //        sum += Recur(numOnes, numZeros - 1, numNegOnes, k,ref t);
-        //        ++t;
-        //    }
 
-        //    if (numNegOnes > 0)
-        //    {
-        //        --t;
-        //        sum += Recur(numOnes, numZeros, numNegOnes - 1, k + 1,ref t);
-        //        ++t;
-        //    }
-
-
-        //    return sum;
-
-        //}
 
         static void Main(string[] args)
         {

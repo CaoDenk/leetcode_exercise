@@ -62,7 +62,7 @@ namespace leetcode_exercise
         static void Main(string[] args)
         {
             _FourSum2 f = new();
-            var ret= f.FourSum(new int[] { -1000000000, -1000000000, 1000000000, -1000000000, -1000000000 }, 294967296);
+            var ret= f.FourSum([-1000000000, -1000000000, 1000000000, -1000000000, -1000000000], 294967296);
             foreach( var i in ret )
             {
                 Console.WriteLine(string.Join(",",i));

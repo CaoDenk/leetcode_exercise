@@ -25,10 +25,8 @@ namespace leetcode_exercise
             }
             else if (flowerbed.Length == 2)
             {
-                if (n == 1)
-                    return flowerbed[0] == 0 && flowerbed[1] == 0;
-                else
-                    return false;
+                if (n == 1)return flowerbed[0] == 0 && flowerbed[1] == 0;
+                else return false;
             }
             else
             {
@@ -38,11 +36,11 @@ namespace leetcode_exercise
                     --n;
                     flowerbed[0] = 1;
                 }
-                return Cur(flowerbed, n, 2);
+                return Dfs(flowerbed, n, 2);
             }
 
         }
-        bool Cur(int[] flowerbed, int n, int start)
+        bool Dfs(int[] flowerbed, int n, int start)
         {
             for (int i = start; i < flowerbed.Length - 1; ++i)
             {
@@ -51,7 +49,7 @@ namespace leetcode_exercise
                     flowerbed[i] = 1;
                     if (n == 1)
                         return true;
-                    return Cur(flowerbed, --n, i + 2);
+                    return Dfs(flowerbed, --n, i + 2);
                 }
             }
             if (n == 1 && flowerbed[^1] == 0 && flowerbed[^2] == 0)
@@ -64,31 +62,31 @@ namespace leetcode_exercise
         {
             _CanPlaceFlowers c = new();
             {
-                int[] flowered = { 1, 0, 0, 0, 1 };
+                int[] flowered = [1, 0, 0, 0, 1];
                 Console.WriteLine(c.CanPlaceFlowers(flowered, 2) == false);
             }
             {
-                int[] flowered = { 1, 0, 1, 0, 1, 0, 1 };
+                int[] flowered = [1, 0, 1, 0, 1, 0, 1];
                 Console.WriteLine(c.CanPlaceFlowers(flowered, 2) == false);
             }
             {
-                int[] flowered = { 1, 0, 1, 0, 1, 0, 1 };
+                int[] flowered = [1, 0, 1, 0, 1, 0, 1];
                 Console.WriteLine(c.CanPlaceFlowers(flowered, 0) == true);
             }
             {
-                int[] flowered = { 0, 0, 1, 0, 1 };
+                int[] flowered = [0, 0, 1, 0, 1];
                 Console.WriteLine(c.CanPlaceFlowers(flowered, 1) == true);
             }
             {
-                int[] flowered = { 1 };
+                int[] flowered = [1];
                 Console.WriteLine(c.CanPlaceFlowers(flowered, 1) == false);
             }
             {
-                int[] flowered = { 1, 0 };
+                int[] flowered = [1, 0];
                 Console.WriteLine(c.CanPlaceFlowers(flowered, 1) == false);
             }
             {
-                int[] flowered = { 0,1, 0 };
+                int[] flowered = [0,1, 0];
                 Console.WriteLine(c.CanPlaceFlowers(flowered, 1) == false);
             }
         }

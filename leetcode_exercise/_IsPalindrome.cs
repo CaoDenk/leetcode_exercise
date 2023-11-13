@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace leetcode_exercise
 {
+    /// <summary>
+    /// 125. 验证回文串
+    /// </summary>
     internal class _IsPalindrome
     {
         public bool IsPalindrome(string s)
@@ -19,7 +22,6 @@ namespace leetcode_exercise
             for(int i=0;i<arr.Length;++i)
             {
                 if(arr[i] != l[i]) return false;
-
             }
             return true;
         }

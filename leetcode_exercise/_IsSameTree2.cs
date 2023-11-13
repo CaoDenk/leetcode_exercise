@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace leetcode_exercise
 {
+    /// <summary>
+    ///  100. 相同的树
+    /// </summary>
     internal class _IsSameTree2
     {
 

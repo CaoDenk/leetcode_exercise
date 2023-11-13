@@ -6,21 +6,18 @@ using System.Threading.Tasks;
 
 namespace leetcode_exercise
 {
+    /// <summary>
+    /// 231. 2 的幂
+    /// </summary>
     internal class _IsPowerOfTwo
     {
 
         public bool IsPowerOfTwo(int n)
         {
-            if(n < 1)
-                return false;
+            if(n < 1) return false;
             return (n & (n - 1)) == 0;
-          
         }
-        public bool IsPowerOfTwo2(int n)
-        {
 
-            return false;
-        }
         static void Main()
         {
             _IsPowerOfTwo i = new _IsPowerOfTwo();

@@ -47,10 +47,8 @@ namespace leetcode_exercise
         static void Main(string[] args)
         {
 
-
-
             {
-                TreeNode root = Utils.Make(new int?[] { 5, 4, 6, null, null, 3, 7 });
+                TreeNode root = Utils.Make([5, 4, 6, null, null, 3, 7]);
                 _IsValidBST isValidBST = new _IsValidBST();
                 Console.WriteLine(isValidBST.IsValidBST(root));
 

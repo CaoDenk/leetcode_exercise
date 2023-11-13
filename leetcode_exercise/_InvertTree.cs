@@ -14,8 +14,7 @@ namespace leetcode_exercise
     {
         public TreeNode InvertTree(TreeNode root)
         {
-            if (root == null)
-                return null;
+            if (root == null)return null;
             TreeNode treeNode;
             PreVisit(root, out  treeNode);
             return treeNode;

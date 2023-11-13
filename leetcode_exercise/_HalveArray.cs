@@ -7,17 +7,17 @@ using System.Threading.Tasks;
 
 namespace leetcode_exercise
 {
+    /// <summary>
+    /// 2208. 将数组和减半的最少操作次数
+    /// </summary>
     internal class _HalveArray
     {
         public int HalveArray(int[] nums)
         {
-            long sum = 0;
-            foreach(var i in nums)
-            {
-                sum += i;
-            }
+            //long sum = nums.Sum();
+            long sum = nums.Select(x=>(long)x).Sum();
             double half = sum / 2d;
-            PriorityQueue<double,double> priorityQueue = new(new ReverComparer());
+            PriorityQueue<double,double> priorityQueue = new(Comparer<double>.Create((o1,o2)=>o2.CompareTo(o1)));
             foreach (int i in nums)
             {
                 priorityQueue.Enqueue(i,i);
@@ -27,7 +27,6 @@ namespace leetcode_exercise
             double tsum = 0;
             while (true)
             {
-
                 double v= priorityQueue.Dequeue();
                 double halfV = v / 2;
                 tsum += halfV;
@@ -46,18 +45,12 @@ namespace leetcode_exercise
         {
             _HalveArray h = new();
             {
-                int[] nums = new int[] { 3, 8, 20 };
+                int[] nums = [3, 8, 20];
                 int ret = h.HalveArray(nums);
                 Console.WriteLine(ret);
             }
         }
-        class ReverComparer : IComparer<double>
-        {
-            public int Compare(double x, double y)
-            {
-                return y.CompareTo(x);
-            }
-        }
+
 
     }
 

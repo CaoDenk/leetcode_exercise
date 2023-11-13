@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace leetcode_exercise
 {
+    /// <summary>
+    /// 44. 通配符匹配
+    /// </summary>
     internal class _IsMatch
     {
         /// <summary>
@@ -25,7 +28,6 @@ namespace leetcode_exercise
                     if (p[j] != '*')
                         return false;
                 return true;
-
             }
 
             bool[,] dp = new bool[p.Length + 1, s.Length + 1];

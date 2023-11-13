@@ -61,7 +61,7 @@ namespace leetcode_exercise
         {
             _MaxSlidingWindow2 maxSlidingWindow = new();
             { 
-                var ret = maxSlidingWindow.MaxSlidingWindow(new int[] { 1, 3, -1, -3, 5, 3, 6, 7 }, 3);
+                var ret = maxSlidingWindow.MaxSlidingWindow([1, 3, -1, -3, 5, 3, 6, 7], 3);
                 Console.WriteLine(string.Join(",", ret));
             } 
         }

@@ -70,8 +70,8 @@ namespace leetcode_exercise
         {
             _BuildTree3 b = new();
             {
-                int[] pre = new int[] {  9,3, 15,20, 7 };
-                int[] inodr = new int[] { 9,  15, 7,20, 3};
+                int[] pre = [9,3, 15,20, 7];
+                int[] inodr = [9,  15, 7,20, 3];
                 var node = b.BuildTree(pre, inodr);
                 b.InVisit(node);
                 Console.WriteLine();

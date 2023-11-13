@@ -20,9 +20,8 @@ namespace leetcode_exercise
             ListNode p= head;
             do
             {
-                if(visited.Contains(p)) return true;
-                visited.Add(p);
-                p = p.next;
+                if(!visited.Add(p)) return true;
+                 else p = p.next;
             } while (p != null);
             return false;
 

@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace leetcode_exercise
 {
+    /// <summary>
+    /// 中序遍历
+    /// </summary>
     internal class _InorderTraversal
     {
         List<int> ret= new List<int>();
