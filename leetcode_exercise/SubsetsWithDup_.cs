@@ -45,7 +45,7 @@ namespace leetcode_exercise
         {
             SubsetsWithDup_ s = new();
             {
-                int[] nums = { 1, 2, 2 };
+                int[] nums = [1, 2, 2];
                 var res=s.SubsetsWithDup(nums);
                 Console.WriteLine(res.Count);
                 foreach (var i in res)

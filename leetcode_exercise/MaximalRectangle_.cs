@@ -60,7 +60,6 @@ namespace leetcode_exercise
                     {
                         int mid = stack.Pop().Item2;
 
-
                         int left = stack.Peek().Item1;
                         int area = mid * (i - left - 1);
 
@@ -77,11 +76,13 @@ namespace leetcode_exercise
         {
             MaximalRectangle_ m = new();
             {
-                char[][] matrix = new char[4][];
-                matrix[0] = new char[5] { '1', '0', '1', '0', '0' };
-                matrix[1] = new char[5] { '1', '0', '1', '1', '1' };
-                matrix[2] = new char[5] { '1', '1', '1', '1', '1' };
-                matrix[3] = new char[5] { '1', '0', '0', '1', '0' };
+                char[][] matrix =
+                [
+                    ['1', '0', '1', '0', '0'],
+                    ['1', '0', '1', '1', '1'],
+                    ['1', '1', '1', '1', '1'],
+                    ['1', '0', '0', '1', '0'],
+                ];
                 var res = m.MaximalRectangle(matrix);
                 Console.WriteLine(res);
             }

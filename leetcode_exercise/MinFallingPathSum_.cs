@@ -135,26 +135,22 @@ namespace leetcode_exercise
         {
             MinFallingPathSum_ m = new();
             {
-                int[][] grid = new int[3][];
-                grid[0] = new int[] { 1, 2, 3 };
-                grid[1] = new int[] { 4, 5, 6 };
-                grid[2] = new int[] { 7, 8, 9 };
+                int[][] grid = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
                 Console.WriteLine(m.MinFallingPathSum(grid));
             }
             {
-                int[][] grid = new int[3][];
-                grid[0] = new int[] { 1, 99, 99 };
-                grid[1] = new int[] { 0, 2, 1 };
-                grid[2] = new int[] { 99, 99, 4 };
+                int[][] grid = [[1, 99, 99], [0, 2, 1], [99, 99, 4]];
                 Console.WriteLine(m.MinFallingPathSum(grid));
             }
             {//[[-37,51,-36,34,-22],[82,4,30,14,38],[-68,-52,-92,65,-85],[-49,-3,-77,8,-19],[-60,-71,-21,-62,-73]]
-                int[][] grid = new int[5][];
-                grid[0] = new int[] { -37, 51, -36, 34, -22 };
-                grid[1] = new int[] { 82, 4, 30, 14, 38 };
-                grid[2] = new int[] { -68, -52, -92, 65, -85 };
-                grid[3] = new int[] { -49, -3, -77, 8, -19 };
-                grid[4] = new int[] { -60, -71, -21, -62, -73 };
+                int[][] grid =
+                [
+                    [-37, 51, -36, 34, -22],
+                    [82, 4, 30, 14, 38],
+                    [-68, -52, -92, 65, -85],
+                    [-49, -3, -77, 8, -19],
+                    [-60, -71, -21, -62, -73],
+                ];
                 Console.WriteLine(m.MinFallingPathSum(grid));
             }
 

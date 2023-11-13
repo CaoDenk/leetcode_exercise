@@ -54,7 +54,7 @@ namespace algorithm_exercise
         static void Main(string[] args)
         {
             //Order("abce", "", "");
-            Order<int>(new List<int>() { 1, 2, 3, 4 }, new  List<int>(), new List<int>());
+            Order<int>([1, 2, 3, 4], [], []);
         }
     }
 }

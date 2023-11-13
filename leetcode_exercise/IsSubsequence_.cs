@@ -13,13 +13,10 @@ namespace leetcode_exercise
     {
         public bool IsSubsequence(string s, string t)
         {
-
             int lastPos = -1;
             foreach (var c in s)
             {
-                lastPos = t.IndexOf(c, lastPos + 1);
-                if (lastPos == -1)
-                    return false;
+                if ((lastPos = t.IndexOf(c, lastPos + 1)) == -1) return false;
             }
             return true;
         }

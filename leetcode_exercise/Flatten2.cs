@@ -6,13 +6,16 @@ using System.Threading.Tasks;
 
 namespace leetcode_exercise
 {
-    internal class _Flatten
+    /// <summary>
+    /// 114. 二叉树展开为链表
+    /// </summary>
+    internal class Flatten2
     {
         public void Flatten(TreeNode root)
         {
             if(root == null)
                 return;
-            List<TreeNode> list = new List<TreeNode>();
+            List<TreeNode> list = new();
             MidVistit(root, list);
             //var head = list[0];
             for(int i=0; i<list.Count-1; i++)

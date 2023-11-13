@@ -6,13 +6,16 @@ using System.Threading.Tasks;
 
 namespace leetcode_exercise
 {
+    /// <summary>
+    /// 3. 无重复字符的最长子串
+    /// </summary>
     internal class LengthOfLongestSubstring_
     {
        
         public int LengthOfLongestSubstring(string s)
         {
             if(s.Length == 0) return 0;
-            Dictionary<char,int> map = new Dictionary<char,int>();
+            Dictionary<char,int> map = new();
             int start = 0;
             int maxLen = 0;
             map[s[0]] = 0;
@@ -21,7 +24,7 @@ namespace leetcode_exercise
             {
                 if (map.TryGetValue(s[i], out int value) && (newStart = value + 1)>start)
                 {
-                        start = newStart;
+                    start = newStart;
                 }else
                 {
                     int end = i;

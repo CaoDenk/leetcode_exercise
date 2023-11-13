@@ -61,13 +61,13 @@ namespace algorithm_exercise
         {
             TopK t = new();
             {
-                int[] nums = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+                int[] nums = [1, 2, 3, 4, 5, 6, 7, 8, 9];
                 int k = 3;
                 int[] topK = t.FindTopK(nums, k);
                 Console.WriteLine(string.Join(",", topK));
             }
             {
-                int[] nums = { 5, 3, 1, 9, 2, 4, 7, 8, 6 };
+                int[] nums = [5, 3, 1, 9, 2, 4, 7, 8, 6];
                 int k = 4;
 
                 int[] topK = t.FindTopK(nums, k);

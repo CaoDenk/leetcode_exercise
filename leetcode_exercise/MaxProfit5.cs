@@ -30,7 +30,7 @@ namespace leetcode_exercise
         static void Main(string[] args)
         {
             MaxProfit5 m = new();
-            Console.WriteLine(m.MaxProfit(new int[] { 1, 2, 3, 0, 2 }));
+            Console.WriteLine(m.MaxProfit([1, 2, 3, 0, 2]));
         }
     }
 }

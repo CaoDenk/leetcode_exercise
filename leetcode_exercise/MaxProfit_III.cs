@@ -44,7 +44,7 @@ namespace leetcode_exercise
         {
             //3,3,5,0,0,3,1,4
             MaxProfit_III max = new();
-            Console.WriteLine(max.MaxProfit(new int[] { 3, 3, 5, 0, 0, 3, 1, 4 }));
+            Console.WriteLine(max.MaxProfit([3, 3, 5, 0, 0, 3, 1, 4]));
         }
     }
 }

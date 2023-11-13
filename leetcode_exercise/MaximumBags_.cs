@@ -31,8 +31,8 @@ namespace leetcode_exercise
         static void Main(string[] args)
         {
             MaximumBags_ m = new();
-            int[] capacity = { 2, 3, 4, 5 };
-            int[] rocks = { 1, 2, 4, 4 };
+            int[] capacity = [2, 3, 4, 5];
+            int[] rocks = [1, 2, 4, 4];
             int additionalRocks = 2;
             Console.WriteLine(m.MaximumBags(capacity,rocks,additionalRocks));
         }

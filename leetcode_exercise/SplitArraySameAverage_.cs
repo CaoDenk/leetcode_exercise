@@ -44,9 +44,9 @@ namespace leetcode_exercise
         static void Main(string[] args)
         {
             SplitArraySameAverage_ s = new();
-            Console.WriteLine(s.SplitArraySameAverage(new int[] { 1, 2, 3, 4, 5, 6, 7, 8 }));
-            Console.WriteLine(s.SplitArraySameAverage(new int[] { 3, 1 }));
-            Console.WriteLine(s.SplitArraySameAverage(new int[] { 9990, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30 }));
+            Console.WriteLine(s.SplitArraySameAverage([1, 2, 3, 4, 5, 6, 7, 8]));
+            Console.WriteLine(s.SplitArraySameAverage([3, 1]));
+            Console.WriteLine(s.SplitArraySameAverage([9990, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30]));
         }
 
 

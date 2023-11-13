@@ -21,9 +21,9 @@ namespace leetcode_exercise
             foreach (var i in strs)
             {
                 var d = BreakUp(i);
-                if (map.ContainsKey(d))
+                if (map.TryGetValue(d, out List<string>? value))
                 {
-                    map[d].Add(i);
+                    value.Add(i);
                 }else
                 {
                     map[d] = new List<string>() { i };

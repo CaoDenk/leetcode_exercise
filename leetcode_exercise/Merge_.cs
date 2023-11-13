@@ -38,13 +38,6 @@ namespace leetcode_exercise
         }
 
 
-
-      
-
-
-
-
-
         static void Main(string[] args)
         {
             //[1,3],[2,6],[8,10],[15,18]
@@ -112,15 +105,17 @@ namespace leetcode_exercise
 
             {
                 //[5,7],[5,5],[1,1],[0,0],[3,3],[4,5],[1,1],[3,4]
-                int[][] intervals = new int[8][];
-                intervals[0] = new int[] { 5, 7 };
-                intervals[1] = new int[] { 5, 5 };
-                intervals[2] = new int[] { 1, 1 };
-                intervals[3] = new int[] { 0, 0 };
-                intervals[4] = new int[] { 3, 3 };
-                intervals[5] = new int[] { 4, 5 };
-                intervals[6] = new int[] { 1, 1 };
-                intervals[7] = new int[] { 3, 4 };
+                int[][] intervals =
+                [
+                    [5, 7],
+                    [5, 5 ],
+                    [1, 1 ],
+                    [0, 0 ],
+                    [3, 3 ],
+                    [4, 5 ],
+                    [1, 1 ],
+                    [3, 4 ],
+                ];
                 //intervals[8] = new int[] { 2, 4 };
                 //intervals[9] = new int[] { 0, 0 };
                 var res = m.Merge(intervals);

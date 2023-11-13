@@ -35,7 +35,7 @@ namespace algorithm_exercise
         }
         static void Main(string[] args)
         {
-            int[] keys = { 5, 3,6, 1, 2, 4 };
+            int[] keys = [5, 3,6, 1, 2, 4];
             var res=Solve(keys);
             Console.WriteLine(string.Join(" ",res));
         }

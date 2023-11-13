@@ -6,16 +6,7 @@ using System.Threading.Tasks;
 
 namespace algorithm_exercise
 {
-    //class VNode
-    //{
-    //    public string name;
-    //}
-    //class Edge
-    //{
-    //   public VNode v1, v2;
-    //   public int weight;
 
-    //}
     public class Dijkstra
     {
         int start;

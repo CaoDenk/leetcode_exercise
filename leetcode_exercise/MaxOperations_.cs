@@ -71,7 +71,7 @@ namespace leetcode_exercise
             //    Console.WriteLine(m.MaxOperations(nums, 5));
             //}
             {
-                int[] nums = { 3, 1, 3, 4, 3 };
+                int[] nums = [3, 1, 3, 4, 3];
                 Console.WriteLine(m.MaxOperations(nums, 6));
             }
 

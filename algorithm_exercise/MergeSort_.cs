@@ -71,7 +71,7 @@ namespace algorithm_exercise
             //}
             {
                 MergeSort_ m = new();
-                var arr = m.SortArray(new int[] { 5, 1, 1, 2, 0, 0 });
+                var arr = m.SortArray([5, 1, 1, 2, 0, 0]);
                 Console.WriteLine(string.Join(",", arr));
             }
         }

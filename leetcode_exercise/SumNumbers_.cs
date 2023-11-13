@@ -46,11 +46,11 @@ namespace leetcode_exercise
         {
             SumNumbers_ s = new();
             {
-                TreeNode root = Utils.Make(new int?[] { 1, 2, 3 });
+                TreeNode root = Utils.Make([1, 2, 3]);
                 Console.WriteLine(s.SumNumbers(root));
             }
             {
-                TreeNode root = Utils.Make(new int?[] { 4, 9, 0, 5, 1 });
+                TreeNode root = Utils.Make([4, 9, 0, 5, 1]);
                 Console.WriteLine(s.SumNumbers(root));
             }
         }

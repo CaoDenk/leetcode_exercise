@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace leetcode_exercise
 {
+    /// <summary>
+    /// 83. 删除排序链表中的重复元素
+    /// </summary>
     internal class _DeleteDuplicates2
     {
         public ListNode DeleteDuplicates(ListNode head)
@@ -23,7 +26,6 @@ namespace leetcode_exercise
                 }
                 if (p.next==null) break;
                 p =p.next;
-               
             }           
             return head;
         }

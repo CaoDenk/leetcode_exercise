@@ -30,13 +30,13 @@ namespace algorithm_exercise
             }
             if (s1.Length > 0)
             {
-                char c = s1[s1.Length - 1];
+                char c = s1[^1];
 
                 Order(s1.Remove(s1.Length - 1), s2 + c, s3);
             }
             if (s2.Length > 0)
             {
-                char c = s2[s2.Length - 1];
+                char c = s2[^1];
 
                 Order(s1, s2.Remove(s2.Length - 1), s3 + c);
 

@@ -50,8 +50,8 @@ namespace algorithm_exercise
 
         static void Main(string[] args)
         {
-            var node1= Utils.MakeListNodes(new int[] { 8,5, 3, 1 });
-            var node2= Utils.MakeListNodes(new int[] { 9,4,2});
+            var node1= Utils.MakeListNodes([8,5, 3, 1]);
+            var node2= Utils.MakeListNodes([9,4,2]);
             MergeTwoListDesc m = new();
             var res=m.Megre(node1, node2);
             Utils.Print(res);

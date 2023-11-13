@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace leetcode_exercise
 {
+    /// <summary>
+    /// 217. 存在重复元素
+    /// </summary>
     internal class _ContainsDuplicate
     {
         public bool ContainsDuplicate(int[] nums)
@@ -13,11 +16,10 @@ namespace leetcode_exercise
             HashSet<int> result = new HashSet<int>();
             foreach (int i in nums)
             {
-                if (result.Contains(i))
+                if (!result.Add(i))
                 {
                     return true;
-                }else
-                    result.Add(i);
+                }
             }
             return false;
         }

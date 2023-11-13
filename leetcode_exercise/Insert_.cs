@@ -7,13 +7,15 @@ using System.Threading.Tasks;
 
 namespace leetcode_exercise
 {
+    /// <summary>
+    /// 57. 插入区间
+    /// </summary>
     internal class Insert_
     {
 
         public int[][] Insert(int[][] intervals, int[] newInterval)
         {
-            List<int[]> list = new List<int[]>();
-            list.Add(newInterval);
+            List<int[]> list = new List<int[]>() { newInterval};
             foreach (var interval in intervals)
             {
                 list.Add(interval);

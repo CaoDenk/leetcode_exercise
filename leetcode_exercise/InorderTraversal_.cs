@@ -48,7 +48,7 @@ namespace leetcode_exercise
         }
         static void Main(string[] args)
         {
-            TreeNode root = Utils.Make(new int?[] { 1, null, 2, 3 });
+            TreeNode root = Utils.Make([1, null, 2, 3]);
             InorderTraversal_ i = new();
             var res=i.InorderTraversal(root);
             Console.WriteLine(string.Join(",",res));

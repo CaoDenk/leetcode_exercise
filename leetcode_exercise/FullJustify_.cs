@@ -101,7 +101,7 @@ namespace leetcode_exercise
             //    }
             //}
             {
-                string[] words = { "Science", "is", "what", "we", "understand", "well", "enough", "to", "explain", "to", "a", "computer.", "Art", "is", "everything", "else", "we", "do" };
+                string[] words = ["Science", "is", "what", "we", "understand", "well", "enough", "to", "explain", "to", "a", "computer.", "Art", "is", "everything", "else", "we", "do"];
                 var res = f.FullJustify(words, 16);
                 foreach (string s in res)
                 {

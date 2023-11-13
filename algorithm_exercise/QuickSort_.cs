@@ -52,7 +52,7 @@ namespace algorithm_exercise
         {
             {
                 QuickSort_ m = new();
-                var nums = new int[] { 5, 2, 3, 1 };
+                int[] nums = [5, 2, 3, 1];
                 Console.WriteLine(string.Join(",", nums));
                 var arr = m.SortArray(nums);
                 Console.WriteLine(string.Join(",", arr));
@@ -69,7 +69,7 @@ namespace algorithm_exercise
             //}
             {
                 QuickSort_ m = new();
-                var nums = new int[] { -4, 0, 7, 4, 9, -5, -1, 0, -7, -1 };
+                int[] nums = [-4, 0, 7, 4, 9, -5, -1, 0, -7, -1];
                 Console.WriteLine(string.Join(",", nums));
                 var arr = m.SortArray(nums);
                 Console.WriteLine(string.Join(",", arr));

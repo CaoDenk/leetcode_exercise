@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace leetcode_exercise
 {
+    /// <summary>
+    /// 233. 数字 1 的个数
+    /// </summary>
     internal class _CountDigitOne
     {
         public int CountDigitOne(int n)
@@ -25,7 +28,7 @@ namespace leetcode_exercise
 
         static void Main()
         {
-            _CountDigitOne _CountDigitOne = new _CountDigitOne();
+            _CountDigitOne _CountDigitOne = new();
             Console.WriteLine(_CountDigitOne.CountDigitOne(824883294));
 
         }

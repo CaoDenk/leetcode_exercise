@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace leetcode_exercise
 {
+    /// <summary>
+    /// 6. N 字形变换
+    /// </summary>
     internal class _Convert
     {
         public string Convert(string s, int numRows)
@@ -20,23 +23,17 @@ namespace leetcode_exercise
                 if (i < numRows && i >= 0)
                 {
                     arr[i] += s[j];
-                    _=flag? ++i : --i;
+                    i += flag ? 1 : -1;
                 }
                 else
                 {
                     flag = !flag;
-                    _=flag? i+= 2:i -= 2;
+                    i += flag ? 2 : -2;
                     continue;
                 }
                 j++;
             }
-            StringBuilder res = new StringBuilder();
-           
-            foreach(var ar in arr) 
-            {
-                res.Append(ar);
-            }
-            return res.ToString();
+            return string.Concat( arr);
         }
     }
 }

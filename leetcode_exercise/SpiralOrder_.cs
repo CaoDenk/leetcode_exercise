@@ -141,12 +141,14 @@ namespace leetcode_exercise
         static void Main(string[] args)
         {
             SpiralOrder_ s = new();
-            int[][] matrix = new int[4][];
-            matrix[0] =new int[]{ 1,2,3,4};
-            matrix[1] =new int[]{ 5,6,7,8};
-            matrix[2] =new int[]{ 9,10,11,12};
-            matrix[3] =new int[] { 13,14,15,16};
-            var res=s.SpiralOrder(matrix);
+            int[][] matrix =
+            [
+                [1,2,3,4],
+                [5, 6, 7, 8],
+                [9,10,11,12],
+                [13,14,15,16],
+            ];
+            var res =s.SpiralOrder(matrix);
             Console.WriteLine(string.Join(",",res));
         }
     }

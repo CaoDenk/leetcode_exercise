@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace leetcode_exercise
 {
+    /// <summary>
+    /// 59. 螺旋矩阵 II
+    /// </summary>
     internal class GenerateMatrix_
     {
         public int[][] GenerateMatrix(int n)
@@ -66,13 +69,13 @@ namespace leetcode_exercise
             while (true)
             {
                 Direction direction = (Direction)(direct % 4);
-                bool b = Go(ans, matrix, direction, vis, ref ii, ref jj);
+                bool b = Go(matrix, direction, vis, ref ii, ref jj);
                 ++direct;
                 if (!b)
                     break;
             }
         }
-        bool Go(List<int> ans, int[][] matrix, Direction direction, bool[,] vis, ref int i, ref int j)
+        bool Go(int[][] matrix, Direction direction, bool[,] vis, ref int i, ref int j)
         {
             switch (direction)
             {

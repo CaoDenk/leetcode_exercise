@@ -7,11 +7,10 @@ using System.Threading.Tasks;
 namespace leetcode_exercise
 {
     /// <summary>
-    /// 获取excel表头
+    /// 168. Excel表列名称
     /// </summary>
     internal class _ConvertToTitle
     {
-
         char[] init()
         {
             char[] ret = new char[26];
@@ -39,7 +38,6 @@ namespace leetcode_exercise
                 --columnNumber;
                 columnNumber = Math.DivRem(columnNumber, 26, out int i);
                 ints.Push(i);
-
             }while(columnNumber!=0);
 
             char[] ret = new char[ints.Count];

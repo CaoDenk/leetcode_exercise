@@ -22,7 +22,7 @@ namespace algorithm_exercise
                 case (2, _):
                     return Math.Max(comfort[0].Item2 + comfort[1].Item2, comfort[0].Item1 + comfort[1].Item1);//要不都有人，要不都没人
             }
-            int[] arr = new int[] { 1 };  
+            int[] arr = [1];  
             PriorityQueue<(int,int), int> unsitted = new(Comparer<int>.Create((o1,o2)=>o2-o1));
             int sum = 0;
             foreach (var i in comfort)
@@ -91,27 +91,27 @@ namespace algorithm_exercise
 
             //Console.ReadLine();
             {
-                List<(int, int)> list = new List<(int, int)>() { (1, 100), (100, 1), (100, 1), (100, 1) };
+                List<(int, int)> list = [(1, 100), (100, 1), (100, 1), (100, 1)];
                 int res = MaxComfort(4, 5, list);
                 Console.WriteLine(res);
             }
             {
-                List<(int, int)> list = new List<(int, int)>() { (1, 10), (1, 10) };
+                List<(int, int)> list = [(1, 10), (1, 10)];
                 int res = MaxComfort(2, 2, list);
                 Console.WriteLine(res);
             }
             {
-                List<(int, int)> list = new List<(int, int)>() { (100, 50), (1, 1000) };
+                List<(int, int)> list = [(100, 50), (1, 1000)];
                 int res = MaxComfort(2, 3, list);
                 Console.WriteLine(res);
             }
             {
-                List<(int, int)> list = new List<(int, int)>() { (3, 5), (2, 6),(4,3),(1,2) };
+                List<(int, int)> list = [(3, 5), (2, 6),(4,3),(1,2)];
                 int res = MaxComfort(4, 6, list);
                 Console.WriteLine(res);
             }
             {
-                List<(int, int)> list = new List<(int, int)>() { (2, 4), (2, 4), (2, 4)};
+                List<(int, int)> list = [(2, 4), (2, 4), (2, 4)];
                 int res = MaxComfort(3, 5, list);
                 Console.WriteLine(res);
             }

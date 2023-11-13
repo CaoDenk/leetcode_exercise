@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace CSharpFeature
 {
+    /// <summary>
+    /// 455. 分发饼干
+    /// </summary>
     internal class _FindContentChildren
     {
         public int FindContentChildren(int[] g, int[] s)
@@ -31,8 +34,8 @@ namespace CSharpFeature
         static void Main(string[] args)
         {
             _FindContentChildren f = new();
-            int[] g=new int[]{ 1, 2, 3};
-            int[] s=new int[]{ 1, 1};
+            int[] g=[1, 2, 3];
+            int[] s=[1, 1];
             Console.WriteLine(f.FindContentChildren(g,s));
         }
     }

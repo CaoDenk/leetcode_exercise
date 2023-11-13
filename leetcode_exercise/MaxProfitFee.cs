@@ -28,7 +28,7 @@ namespace leetcode_exercise
         static void Main(string[] args)
         {
             MaxProfitFee m = new();
-            Console.WriteLine(m.MaxProfit(new int[] { 1, 3, 2, 8, 4, 9 },2));
+            Console.WriteLine(m.MaxProfit([1, 3, 2, 8, 4, 9],2));
         }
     }
 }

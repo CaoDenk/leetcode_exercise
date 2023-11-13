@@ -24,7 +24,7 @@ namespace algorithm_exercise
         static void Main(string[] args)
         {
             MakeArray m = new();
-            Console.WriteLine(m.MinCount(new int[] { 1,5,6,7}));
+            Console.WriteLine(m.MinCount([1,5,6,7]));
 
         }
 

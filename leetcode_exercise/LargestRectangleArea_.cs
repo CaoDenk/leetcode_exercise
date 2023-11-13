@@ -29,9 +29,7 @@ namespace leetcode_exercise
                 {
                     do
                     {
-                        int mid = stack.Pop().Item2;
-                  
-
+                        int mid = stack.Pop().Item2;               
                         int left = stack.Peek().Item1;
                         int area = mid * (i - left - 1);
                        
@@ -53,23 +51,23 @@ namespace leetcode_exercise
             //    Console.WriteLine(l.LargestRectangleArea(arr));
             //}
             {
-                int[] arr = new int[] { 5, 4, 1, 2 };
+                int[] arr = [5, 4, 1, 2];
                 Console.WriteLine(l.LargestRectangleArea(arr));
             }
             {
-                int[] arr = new int[] { 9, 0 };
+                int[] arr = [9, 0];
                 Console.WriteLine(l.LargestRectangleArea(arr));
             }
             {
-                int[] arr = new int[] { 2, 1, 2 };
+                int[] arr = [2, 1, 2];
                 Console.WriteLine(l.LargestRectangleArea(arr));
             }
             {
-                int[] arr = new int[] { 2, 1, 5, 6, 2, 3 };
+                int[] arr = [2, 1, 5, 6, 2, 3];
                 Console.WriteLine(l.LargestRectangleArea(arr));
             }
             {
-                int[] arr = new int[] { 0, 2, 0 };
+                int[] arr = [0, 2, 0];
                 Console.WriteLine(l.LargestRectangleArea(arr));
             }
             //{

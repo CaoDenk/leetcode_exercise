@@ -13,17 +13,11 @@ namespace leetcode_exercise
     internal class IsInterleave_
     {
 
-        enum S
-        {
-            S1,
-            S2
-        }
+    
         public bool IsInterleave(string s1, string s2, string s3)
         {
-            if (s1.Length + s2.Length != s3.Length)
-            {
-                return false;
-            }
+            if (s1.Length + s2.Length != s3.Length) return false;
+
             bool[,,] dp=new bool[s1.Length+1, s2.Length+1,s3.Length+1];
             bool[,,] visited=new bool[s1.Length + 1, s2.Length + 1, s3.Length + 1];
             int i= 0;

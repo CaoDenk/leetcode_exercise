@@ -16,7 +16,6 @@ namespace leetcode_exercise
             foreach (int[] arr in nums)
             {
                 Array.Sort(arr);
-
             }
             int colCount = nums[0].Length;
             int rowCount = nums.Length;

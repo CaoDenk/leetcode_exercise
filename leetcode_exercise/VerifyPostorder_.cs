@@ -59,10 +59,10 @@ namespace leetcode_exercise
         static void Main(string[] args)
         {
             VerifyPostorder_ v = new();
-            Console.WriteLine(v.VerifyPostorder(new int[] { 1, 6, 3, 2, 5 }));
-            Console.WriteLine(v.VerifyPostorder(new int[] { 1, 3, 2, 6, 5 }));
-            Console.WriteLine(v.VerifyPostorder(new int[] { 4, 8, 6, 12, 16, 14, 10 }));
-            Console.WriteLine(v.VerifyPostorder(new int[] { 4, 6, 12, 8, 16, 14, 10 }));
+            Console.WriteLine(v.VerifyPostorder([1, 6, 3, 2, 5]));
+            Console.WriteLine(v.VerifyPostorder([1, 3, 2, 6, 5]));
+            Console.WriteLine(v.VerifyPostorder([4, 8, 6, 12, 16, 14, 10]));
+            Console.WriteLine(v.VerifyPostorder([4, 6, 12, 8, 16, 14, 10]));
         }
     }
 }

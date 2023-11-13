@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace leetcode_exercise
 {
+    /// <summary>
+    /// 739. 每日温度
+    /// </summary>
     internal class _DailyTemperatures
     {
         public int[] DailyTemperatures(int[] temperatures)
@@ -20,7 +23,6 @@ namespace leetcode_exercise
                 {
                     (_,int day)= stack.Pop();
                     res[day] =i-day;
-
                 }                
                 stack.Push((temperatures[i],i));
 

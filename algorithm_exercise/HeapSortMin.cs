@@ -63,7 +63,7 @@ namespace algorithm_exercise
         {
             {
                 HeapSortMin h = new();
-                var arr = new int[] { -4, 0, 7, 4, 9, -5, -1, 0, -7, -1 };
+                int[] arr =[-4, 0, 7, 4, 9, -5, -1, 0, -7, -1];
                 Console.WriteLine(string.Join(",", arr));
                 h.SortArray(arr);
                 Console.WriteLine(string.Join(",", arr));

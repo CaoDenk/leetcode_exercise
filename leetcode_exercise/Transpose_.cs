@@ -40,7 +40,7 @@ namespace leetcode_exercise
 
         static void Main(string[] args)
         {
-            int[][] arr = new int[][] { new int[] { 1, 2, 3 }, new int[] { 4, 5, 6 }, new int[] { 7, 8, 9 } };
+            int[][] arr = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
             Transpose_ t = new();
             var ret= t.Transpose(arr);
             foreach(var i in ret)

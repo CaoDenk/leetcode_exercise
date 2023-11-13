@@ -16,11 +16,11 @@ namespace leetcode_exercise
             bool[] vis = new bool[n];
             string ans=null;
             int count = 0;
-            PermuteRecur(vis, n, 0, new List<int>(), ref ans, ref  count, k);
+            Dfs(vis, n, 0, new List<int>(), ref ans, ref  count, k);
             return ans;
         }
 
-        bool PermuteRecur(in bool[] vis, in int n, int idx, List<int> l, ref string ans,ref int count,in int k)
+        bool Dfs(in bool[] vis, in int n, int idx, List<int> l, ref string ans,ref int count,in int k)
         {
             
             if (idx == n)
@@ -41,8 +41,8 @@ namespace leetcode_exercise
                 }
                 l.Add(i);
                 vis[i-1] = true;
-                bool res= PermuteRecur(vis, in n, idx + 1, l,ref ans, ref count,k);
-                if (res)
+                //bool res= ;
+                if (Dfs(vis, in n, idx + 1, l, ref ans, ref count, k))
                 {
                     return true;  
                 }

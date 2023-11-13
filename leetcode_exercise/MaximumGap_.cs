@@ -119,10 +119,10 @@ namespace leetcode_exercise
         static void Main(string[] args)
         {
             MaximumGap_ m = new();
-            Console.WriteLine(m.MaximumGap(new int[] { 3, 6, 9, 1 }));
-            Console.WriteLine(m.MaximumGap(new int[] { 1, 3, 100 }));
-            Console.WriteLine(m.MaximumGap(new int[] { 100, 3, 2, 1 }));
-            Console.WriteLine(m.MaximumGap(new int[] { 1, 1, 1, 1, 1, 5, 5, 5, 5, 5 }));
+            Console.WriteLine(m.MaximumGap([3, 6, 9, 1]));
+            Console.WriteLine(m.MaximumGap([1, 3, 100]));
+            Console.WriteLine(m.MaximumGap([100, 3, 2, 1]));
+            Console.WriteLine(m.MaximumGap([1, 1, 1, 1, 1, 5, 5, 5, 5, 5]));
 
         }
 

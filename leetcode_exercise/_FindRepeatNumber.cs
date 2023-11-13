@@ -11,15 +11,16 @@ namespace leetcode_exercise
         public int FindRepeatNumber(int[] nums)
         {
             HashSet<int> result = new HashSet<int>();
+            int ans = 0;
             foreach (int num in nums)
             {
-                if (result.Contains(num))
+                if (!result.Add(num))
                 {
-                    return num;
-                }else
-                { result.Add(num); }
+                    ans = num;
+                    break;
+                }
             }
-            throw new Exception();
+            return ans;
         }
     }
 }

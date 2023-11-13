@@ -132,10 +132,10 @@ student_id =
 k =
 3
                  */
-                string[] positive_feedback = { "fkeofjpc", "qq", "iio" };
-                string[] negative_feedback = { "jdh", "khj", "eget", "rjstbhe", "yzyoatfyx", "wlinrrgcm" };
-                string[] report = { "rjstbhe eget kctxcoub urrmkhlmi yniqafy fkeofjpc iio yzyoatfyx khj iio", "gpnhgabl qq qq fkeofjpc dflidshdb qq iio khj qq yzyoatfyx", "tizpzhlbyb eget z rjstbhe iio jdh jdh iptxh qq rjstbhe", "jtlghe wlinrrgcm jnkdbd k iio et rjstbhe iio qq jdh", "yp fkeofjpc lkhypcebox rjstbhe ewwykishv egzhne jdh y qq qq", "fu ql iio fkeofjpc jdh luspuy yzyoatfyx li qq v", "wlinrrgcm iio qq omnc sgkt tzgev iio iio qq qq", "d vhg qlj khj wlinrrgcm qq f jp zsmhkjokmb rjstbhe" };
-                int[] student_id = { 96537918, 589204657, 765963609, 613766496, 43871615, 189209587, 239084671, 908938263 };
+                string[] positive_feedback = ["fkeofjpc", "qq", "iio"];
+                string[] negative_feedback = ["jdh", "khj", "eget", "rjstbhe", "yzyoatfyx", "wlinrrgcm"];
+                string[] report = ["rjstbhe eget kctxcoub urrmkhlmi yniqafy fkeofjpc iio yzyoatfyx khj iio", "gpnhgabl qq qq fkeofjpc dflidshdb qq iio khj qq yzyoatfyx", "tizpzhlbyb eget z rjstbhe iio jdh jdh iptxh qq rjstbhe", "jtlghe wlinrrgcm jnkdbd k iio et rjstbhe iio qq jdh", "yp fkeofjpc lkhypcebox rjstbhe ewwykishv egzhne jdh y qq qq", "fu ql iio fkeofjpc jdh luspuy yzyoatfyx li qq v", "wlinrrgcm iio qq omnc sgkt tzgev iio iio qq qq", "d vhg qlj khj wlinrrgcm qq f jp zsmhkjokmb rjstbhe"];
+                int[] student_id = [96537918, 589204657, 765963609, 613766496, 43871615, 189209587, 239084671, 908938263];
                 int k = 3;
                 var res = t.TopStudents(positive_feedback, negative_feedback, report, student_id, k);
                 Console.WriteLine(string.Join(",", res));

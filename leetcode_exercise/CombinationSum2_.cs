@@ -51,7 +51,7 @@ namespace leetcode_exercise
         {
             {
                 CombinationSum2_ c = new();
-                var res = c.CombinationSum2(new int[] { 10, 1, 2, 7, 6, 1, 5 }, 8);
+                var res = c.CombinationSum2([10, 1, 2, 7, 6, 1, 5], 8);
                 foreach (var i in res)
                 {
                     Console.WriteLine(string.Join(",", i));
@@ -59,7 +59,7 @@ namespace leetcode_exercise
             }
             {
                 CombinationSum2_ c = new();
-                var res = c.CombinationSum2(new int[] { 2, 5, 2, 1, 2 }, 5);
+                var res = c.CombinationSum2([2, 5, 2, 1, 2], 5);
                 foreach (var i in res)
                 {
                     Console.WriteLine(string.Join(",", i));

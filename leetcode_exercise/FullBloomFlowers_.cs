@@ -16,7 +16,7 @@ namespace leetcode_exercise
         public int[] FullBloomFlowers(int[][] flowers, int[] people)
         {
           
-            SortedDictionary<int,int> cnt=new SortedDictionary<int,int>();
+            SortedDictionary<int,int> cnt=new();
             foreach(var i in flowers)
             {
                 cnt[i[0]] = cnt.GetValueOrDefault(i[0]) + 1;
@@ -48,22 +48,15 @@ namespace leetcode_exercise
         {
             FullBloomFlowers_ f = new();
             {
-                int[][] flowers = new int[2][];
-                flowers[0] = new int[2] { 1, 10 };
-                flowers[1] = new int[2] { 3, 3 };
-                int[] people = { 3, 3, 2 };
+                int[][] flowers = [[1, 10], [3, 3]];
+                int[] people = [3, 3, 2];
                 var res = f.FullBloomFlowers(flowers, people);
                 Console.WriteLine(string.Join(",", res));
             }
 
             {
-                int[][] flowers = new int[4][];
-                flowers[0] = new int[2] { 1, 6 };
-                flowers[1] = new int[2] { 3, 7 };
-                flowers[2] = new int[2] { 9, 12 };
-                flowers[3] = new int[2] { 4, 13 };
-
-                int[] people = { 2, 3, 7, 11 };
+                int[][] flowers = [[1, 6], [3, 7], [9, 12], [4, 13]];
+                int[] people = [2, 3, 7, 11];
                 var res = f.FullBloomFlowers(flowers, people);
                 Console.WriteLine(string.Join(",", res));
             }

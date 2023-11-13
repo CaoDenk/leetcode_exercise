@@ -63,15 +63,15 @@ namespace leetcode_exercise
         {
             MaxPathSum_ m = new();
             {
-                var root = Utils.Make(new int?[] { 1,2,3 });
+                var root = Utils.Make([1,2,3]);
                 Console.WriteLine(m.MaxPathSum(root));
             }
             {
-                var root = Utils.Make(new int?[] { -10, 9, 20, null, null, 15, 7 });
+                var root = Utils.Make([-10, 9, 20, null, null, 15, 7]);
                 Console.WriteLine(m.MaxPathSum(root));
             }
             {
-                var root = Utils.Make(new int?[] { 1, 2, null, 3, null, 4, null, 5 });
+                var root = Utils.Make([1, 2, null, 3, null, 4, null, 5]);
                 Console.WriteLine(m.MaxPathSum(root));
             }
         }

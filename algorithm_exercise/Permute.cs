@@ -73,10 +73,10 @@ namespace algorithm_exercise
             {
                 int[] nums = [1, 2, 3, 4,5,6];
                 int size = p.fact(nums.Length);
-                HashSet<int[]> set = new HashSet<int[]>
-                {
+                HashSet<int[]> set =
+                [
                     (int[])nums.Clone()
-                };
+                ];
                 for (int i = 0; i < size-1; ++i)
                 {
                     p.NextPermutation(nums);

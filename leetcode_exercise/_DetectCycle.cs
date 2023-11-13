@@ -16,12 +16,9 @@ namespace leetcode_exercise
             HashSet<ListNode> visited = new HashSet<ListNode>();
             while (head != null)
             {
-                if (!visited.Contains(head))
-                    visited.Add(head);
-                else
+                if (!visited.Add(head))
                     return head;
                 head = head.next;
-
             }
             return null;
         }
