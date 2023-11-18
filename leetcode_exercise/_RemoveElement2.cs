@@ -63,7 +63,7 @@ internal class _RemoveElement2
 
         }
         {
-            int[] nums = new int[] { 0, 1, 2, 2, 3, 0, 4, 2 };
+            int[] nums = [0, 1, 2, 2, 3, 0, 4, 2];
             int ret = r.RemoveElement(nums, 2);
             print(ret, nums);
         }

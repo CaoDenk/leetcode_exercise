@@ -16,16 +16,16 @@ namespace leetcode_exercise
             if (root == null) return true;
             
 
-            return Cur(root.left,root.right);
+            return DFs(root.left,root.right);
         }
 
-        bool Cur(TreeNode node1, TreeNode node2)
+        bool DFs(TreeNode node1, TreeNode node2)
         {
             if(node1!=null && node2!=null)
             {
                 if (node1.val != node2.val)return false;
                 else
-                    return Cur(node1.left, node2.right) && Cur(node1.right, node2.left);
+                    return DFs(node1.left, node2.right) && DFs(node1.right, node2.left);
             }else
                 return node1 == node2;
          

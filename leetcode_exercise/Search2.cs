@@ -110,7 +110,7 @@ namespace leetcode_exercise
         static void Main(string[] args)
         {
             Search2 s = new();
-            Console.WriteLine(s.Search(new int[] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1 },2));
+            Console.WriteLine(s.Search([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1],2));
         }
     }
 }

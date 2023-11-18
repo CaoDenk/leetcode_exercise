@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace leetcode_exercise
 {
+    /// <summary>
+    /// 44. 通配符匹配
+    /// </summary>
     internal class _IsMatch2
     {
         public bool IsMatch(string s, string p)

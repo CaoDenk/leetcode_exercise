@@ -47,9 +47,9 @@ namespace leetcode_exercise
         static void Main(string[] args)
         {
             Rob2 r = new();
-            Console.WriteLine(r.Rob(new int[] { 2, 3, 2 }));
-            Console.WriteLine(r.Rob(new int[] { 1, 2, 3, 1 }));
-            Console.WriteLine(r.Rob(new int[] { 1, 2, 3 }));
+            Console.WriteLine(r.Rob([2, 3, 2]));
+            Console.WriteLine(r.Rob([1, 2, 3, 1]));
+            Console.WriteLine(r.Rob([1, 2, 3]));
         }
     }
 }

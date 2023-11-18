@@ -99,7 +99,7 @@ namespace leetcode_exercise
             Search_ s = new();
             //Console.WriteLine(s.Search(new int[] { 4, 5, 6, 7, 0, 1, 2 },0));
             //Console.WriteLine(s.Search(new int[] { 1,3 },0));
-            Console.WriteLine(s.Search(new int[] { 15, 16, 19, 20, 25, 1, 3, 4, 5, 7, 10, 14 },25));
+            Console.WriteLine(s.Search([15, 16, 19, 20, 25, 1, 3, 4, 5, 7, 10, 14],25));
         }
     }
 }

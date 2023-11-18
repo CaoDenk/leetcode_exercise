@@ -19,10 +19,9 @@ namespace algorithm_exercise
             this.map = map;
         }
         
-        int Search()
+        int Search(int start,int dest, int[,] map)
         {
             bool[] visited=new bool[map.GetLength(0)];
-
             visited[start] = true;
 
             int begin = start;
@@ -50,7 +49,6 @@ namespace algorithm_exercise
                 }
                 begin = mark;
             }
-           
             return map[start,dest];
         }
 

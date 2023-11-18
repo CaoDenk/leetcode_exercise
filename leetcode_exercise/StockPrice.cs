@@ -9,8 +9,6 @@ namespace leetcode_exercise
 {
     /// <summary>
     /// 2034. 股票价格波动
-    /// 错误，，。。
-    /// 结果不对
     /// </summary>
     public class StockPrice
     {

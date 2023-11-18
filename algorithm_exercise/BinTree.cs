@@ -13,9 +13,7 @@ namespace algorithm_exercise
         {
             Console.WriteLine(n.value);
             if(n.left != null)
-            {
                 PreVisit(n.left);
-            }
             if(n.right != null)
                 PreVisit(n.right);
 
@@ -24,9 +22,7 @@ namespace algorithm_exercise
         void MidVisit(Node n)
         {
             if (n.left != null)
-            {
                 MidVisit(n.left);
-            }
             Console.WriteLine(n.value);
             if (n.right != null)
                 MidVisit(n.right);
@@ -35,9 +31,7 @@ namespace algorithm_exercise
         void PostVisit(Node n)
         {
             if (n.left != null)
-            {
-                PostVisit(n.left);
-            }
+            PostVisit(n.left);
             if (n.right != null)
                 PostVisit(n.right);
             Console.WriteLine(n.value);

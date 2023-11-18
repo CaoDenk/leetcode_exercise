@@ -102,7 +102,7 @@ namespace leetcode_exercise
             //    Console.WriteLine();
             //}
             {
-                int[] arr = { 1, 1 };
+                int[] arr = [1, 1];
                 int x = 2;
                 var node = Utils.MakeListNodes(arr);
                 var res = p.Partition(node, x);

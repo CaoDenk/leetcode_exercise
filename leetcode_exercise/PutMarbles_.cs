@@ -37,7 +37,7 @@ namespace leetcode_exercise
         static void Main(string[] args)
         {
             PutMarbles_ p = new();
-            Console.WriteLine(p.PutMarbles(new int[] { 1, 4, 2, 5, 2 },3));
+            Console.WriteLine(p.PutMarbles([1, 4, 2, 5, 2],3));
         }
     }
 }

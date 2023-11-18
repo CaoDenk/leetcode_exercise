@@ -65,7 +65,7 @@ namespace leetcode_exercise
             //}
 
             {
-                TreeNode root = Utils.Make(new int?[] { 3, 1, 4, null, null, 2 });
+                TreeNode root = Utils.Make([3, 1, 4, null, null, 2]);
                 _RecoverTree r = new _RecoverTree();
                 r.RecoverTree(root);
                 List<int> list = new List<int>();

@@ -42,7 +42,7 @@ namespace leetcode_exercise
 
         static void Main(string[] args)
         {
-           var head= Utils.MakeListNodes(new int[] { 1, 2, 3, 4,5 });
+           var head= Utils.MakeListNodes([1, 2, 3, 4,5]);
             SwapPairs_ s = new();
             Utils.Print(head);
             var ans=s.SwapPairs(head);

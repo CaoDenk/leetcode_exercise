@@ -84,7 +84,7 @@ namespace leetcode_exercise
             //Test(new int[] { -1, 0, 1, 2, -1, -4 });
             //Test(new int[] { 3, 0, -2, -1, 1, 2});
             //Test(new int[] { 0,0,0,0});
-            Test(new int[] { -1, 0, 1, 2, -1, -4, -2, -3, 3, 0, 4 });
+            Test([-1, 0, 1, 2, -1, -4, -2, -3, 3, 0, 4]);
 
         }
         static void Test(int[] arr)

@@ -48,7 +48,7 @@ namespace leetcode_exercise
         static void Main(string[] args)
         {
             _Trap3 t = new();
-            Console.WriteLine(t.Trap(new int[] { 0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1 }));
+            Console.WriteLine(t.Trap([0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]));
         }
     }
 }

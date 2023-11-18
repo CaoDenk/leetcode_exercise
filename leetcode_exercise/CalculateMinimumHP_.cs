@@ -41,11 +41,7 @@ namespace leetcode_exercise
         {
             CalculateMinimumHP_ c = new();
             {
-                int[][] dungeon = new int[3][];
-                dungeon[0] = new int[3] { -2, -3, 3 };
-                dungeon[1] = new int[3] { -5, -10, 1 };
-                dungeon[2] = new int[3] { 10, 30, -5 };
-
+                int[][] dungeon = [[-2, -3, 3], [-5, -10, 1], [10, 30, -5]];
                 Console.WriteLine(c.CalculateMinimumHP(dungeon));
 
             }

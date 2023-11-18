@@ -15,7 +15,7 @@ namespace leetcode_exercise
             if (n == 1) return 1;
             if (n == 2) return 1;
 
-            List<BigInteger> ints = new List<BigInteger>() { 1, 1, 2 };
+            List<BigInteger> ints = new() { 1, 1, 2 };
             for (int i = 3; i < n; i++)
             {
                 var sum = ints[^1] + ints[^2];

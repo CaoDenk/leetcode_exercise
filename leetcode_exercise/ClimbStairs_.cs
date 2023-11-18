@@ -28,9 +28,6 @@ namespace leetcode_exercise
             }
             public static Matrix operator *(Matrix left, Matrix right)
             {
-#if DEBUG
-                Debug.Assert(left.GetLength(1)==right.GetLength(0));
-#endif
                 int[,] ret=new int[left.GetLength(0),right.GetLength(1)];   
                 for(int i=0;i<left.GetLength(0);++i)
                     for(int j=0;j<right.GetLength(1);++j)
@@ -43,9 +40,7 @@ namespace leetcode_exercise
 
             public static Matrix operator ^(Matrix left, int exp)
             {
-#if DEBUG
-                Debug.Assert(left.GetLength(0)==left.GetLength(1));
-#endif
+
                 if (exp == 1) return left;
                 if (exp == 2) return left * left;
                 Matrix m = left;

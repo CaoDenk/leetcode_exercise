@@ -14,7 +14,7 @@ namespace leetcode_exercise
         public int ScheduleCourse(int[][] courses)
         {
             Array.Sort(courses, (o1, o2) => o1[1] - o2[1]);
-            PriorityQueue<int, int> priorityQueue = new( new MyComparer());
+            PriorityQueue<int, int> priorityQueue = new( Comparer<int>.Create((o1,o2)=>o2.CompareTo(o1)));
             int total = 0;
             foreach(var item in courses)
             {
@@ -38,11 +38,13 @@ namespace leetcode_exercise
         {
             ScheduleCourse_ s = new();
             {//[[100,200],[200,1300],[1000,1250],[2000,3200]]
-                int[][] courses = new int[4][];
-                courses[0] = new int[2] { 100, 200 };
-                courses[1] = new int[2] { 200, 1300 };
-                courses[2] = new int[2] { 1000, 1250 };
-                courses[3] = new int[2] { 2000, 3200 };
+                int[][] courses =
+                [
+                    [100, 200],
+                    [200, 1300],
+                    [1000, 1250],
+                    [2000, 3200],
+                ];
                 int res = s.ScheduleCourse(courses);
                 Console.WriteLine(res);
             }
@@ -97,14 +99,6 @@ namespace leetcode_exercise
             //}
         }
 
-        private class MyComparer:IComparer<int>
-        {
-         
-
-            public int Compare(int x, int y)
-            {
-                return y - x;
-            }
-        }
+       
     }
 }

@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace leetcode_exercise
 {
+    /// <summary>
+    /// 103. 二叉树的锯齿形层序遍历
+    /// </summary>
     internal class _ZigzagLevelOrder
     {
         public IList<IList<int>> ZigzagLevelOrder(TreeNode root)
@@ -52,7 +55,7 @@ namespace leetcode_exercise
         static void Main(string[] args)
         {
             {
-                TreeNode root = Utils.Make(new int?[] { 3, 9, 20, null, null, 15, 7 });
+                TreeNode root = Utils.Make([3, 9, 20, null, null, 15, 7]);
                 _ZigzagLevelOrder z = new();
                 var ret = z.ZigzagLevelOrder(root);
                 foreach (var i in ret)
@@ -61,7 +64,7 @@ namespace leetcode_exercise
                 }
             }
             {
-                TreeNode root = Utils.Make(new int?[] { 1, 2, 3, 4, null, null, 5});
+                TreeNode root = Utils.Make([1, 2, 3, 4, null, null, 5]);
                 _ZigzagLevelOrder z = new();
                 var ret = z.ZigzagLevelOrder(root);
                 foreach (var i in ret)

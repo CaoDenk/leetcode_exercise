@@ -29,8 +29,8 @@ namespace leetcode_exercise
         static void Main(string[] args)
         {
             _MinSubArrayLen2 m = new();
-            Console.WriteLine(m.MinSubArrayLen(7, new int[] { 2, 3, 1, 2, 4, 3 }));
-            Console.WriteLine(m.MinSubArrayLen(4, new int[] {1,4,4}));
+            Console.WriteLine(m.MinSubArrayLen(7, [2, 3, 1, 2, 4, 3]));
+            Console.WriteLine(m.MinSubArrayLen(4, [1,4,4]));
             //Console.WriteLine(m.MinSubArrayLen(11,new int[] { 1, 2, 3, 4, 5 }));
             //Console.WriteLine(m.MinSubArrayLen(15, new int[] { 1, 2, 3, 4, 5 }));
             //Console.WriteLine(m.MinSubArrayLen(7, new int[] { 5 }));

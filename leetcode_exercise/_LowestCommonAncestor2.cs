@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace leetcode_exercise
 {
+    /// <summary>
+    /// 236. 二叉树的最近公共祖先
+    /// </summary>
     internal class _LowestCommonAncestor2
     {
         public TreeNode LowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q)

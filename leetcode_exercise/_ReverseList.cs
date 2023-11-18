@@ -55,7 +55,7 @@ namespace leetcode_exercise
         static void Main()
         {
 
-            var arr = new int[] { 1, 2, 3, 4, 5 };
+            int[] arr = [1, 2, 3, 4, 5];
             _ReverseList r = new();
             var ret=r.init(arr);
             var revret=r.ReverseList(ret);

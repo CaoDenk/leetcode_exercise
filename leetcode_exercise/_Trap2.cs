@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace leetcode_exercise
 {
+    /// <summary>
+    /// 42. 接雨水
+    /// </summary>
     internal class _Trap2
     {
         public int Trap(int[] height)
@@ -40,11 +43,9 @@ namespace leetcode_exercise
 
         static void Main(string[] args)
         {
-
-
             _Trap2 trap = new _Trap2();
-            Console.WriteLine(trap.Trap(new int[] { 0,1,0,2 }));
-            Console.WriteLine(trap.Trap(new int[] { 4, 2, 0, 3, 2, 5 }));
+            Console.WriteLine(trap.Trap([0,1,0,2]));
+            Console.WriteLine(trap.Trap([4, 2, 0, 3, 2, 5]));
         }
     }
 }

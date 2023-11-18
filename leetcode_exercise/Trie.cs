@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace leetcode_exercise
 {
-    internal class CountSeniors_
+    /// <summary>
+    /// 208. 实现 Trie (前缀树)
+    /// </summary>
+    internal class Trie
     {
     }
 }

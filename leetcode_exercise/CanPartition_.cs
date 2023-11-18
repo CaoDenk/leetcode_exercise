@@ -8,6 +8,7 @@ namespace leetcode_exercise
 {
     /// <summary>
     /// 416. 分割等和子集
+    /// 超时
     /// </summary>
     internal class CanPartition_
     {
@@ -68,7 +69,7 @@ namespace leetcode_exercise
         static void Main(string[] args)
         {
             CanPartition_ c = new();
-            Console.WriteLine(c.CanPartition(new int[] { 1, 5, 11, 5 }));
+            Console.WriteLine(c.CanPartition([1, 5, 11, 5]));
         }
 
     }

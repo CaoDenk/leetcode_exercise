@@ -10,7 +10,7 @@ namespace leetcode_exercise
     {
         string un = "])}";//第一次出现时抛异常
         string value;
-        Dictionary<char, char> dir = new Dictionary<char, char>()
+        readonly Dictionary<char, char> dir = new Dictionary<char, char>()
         {
                 {'(',')' },
                 {'{','}' },
@@ -63,9 +63,8 @@ namespace leetcode_exercise
 
         public bool IsValid(string s)
         {
-            this.value = s;
+            value = s;
             return check();
-
         }
 
         public static void Main(string[] args)

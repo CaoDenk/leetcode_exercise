@@ -41,7 +41,7 @@ namespace leetcode_exercise
             //    Console.WriteLine(idx);
             //}
             {
-                int idx = f.PivotIndex(new int[] { 1, 7, 3, 6, 5, 6 });
+                int idx = f.PivotIndex([1, 7, 3, 6, 5, 6]);
                 Console.WriteLine(idx);
             }
         }

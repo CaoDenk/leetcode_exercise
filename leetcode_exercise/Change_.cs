@@ -28,7 +28,7 @@ namespace leetcode_exercise
         static void Main(string[] args)
         {
             Change_ c = new();
-            Console.WriteLine(c.Change(5,new int[] {1,2,5}));
+            Console.WriteLine(c.Change(5,[1,2,5]));
         }
     }
 

@@ -35,8 +35,6 @@ namespace leetcode_exercise
                     Cur(node1.left,node2.right);
                 if (node1.right != null || node2.left != null)
                     Cur(node1.right, node2.left);
-                else
-                    return;
             }
 
         }

@@ -48,22 +48,22 @@ namespace leetcode_exercise
         {
             Candy2 c = new();
             {
-                int[] rate = { 1, 2, 2 };
+                int[] rate = [1, 2, 2];
                 int res = c.Candy(rate);
                 Console.WriteLine(res == 4);
             }
             {
-                int[] rate = { 1, 2, 87, 87, 87, 2, 1 };
+                int[] rate = [1, 2, 87, 87, 87, 2, 1];
                 int res = c.Candy(rate);
                 Console.WriteLine(res == 13);
             }
             {
-                int[] rate = { 1, 3, 2, 2, 1 };
+                int[] rate = [1, 3, 2, 2, 1];
                 int res = c.Candy(rate);
                 Console.WriteLine(res == 7);
             }
             {
-                int[] rate = { 0, 1, 2, 3, 2, 1 };
+                int[] rate = [0, 1, 2, 3, 2, 1];
                 int res = c.Candy(rate);
                 Console.WriteLine(res );
             }

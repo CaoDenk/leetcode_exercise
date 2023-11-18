@@ -39,11 +39,11 @@ namespace leetcode_exercise
         {
             SearchRange_ s = new();
             {
-                var arr = s.SearchRange(new int[] { 5, 7, 7, 8, 8, 10 }, 8);
+                var arr = s.SearchRange([5, 7, 7, 8, 8, 10], 8);
                 Console.WriteLine(string.Join(",", arr));
             }
             {
-                var arr = s.SearchRange(new int[] { 1 }, 1);
+                var arr = s.SearchRange([1], 1);
                 Console.WriteLine(string.Join(",", arr));
             }
       

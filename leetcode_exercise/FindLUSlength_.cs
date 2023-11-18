@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 namespace leetcode_exercise
 {
     /// <summary>
-    /// 找最长不循环字串
+    /// 521. 最长特殊序列 Ⅰ
     /// </summary>
-    internal class _MaxOfLongestString
+    internal class FindLUSlength_
     {
         int  GetLongest(string str)
         {

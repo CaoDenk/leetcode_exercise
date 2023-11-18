@@ -53,8 +53,6 @@ namespace leetcode_exercise
                 Qn(arr, l + 1, r, list);
                 for (int i = l + 1; i <= r; ++i)
                 {
-
-
                     Swap(ref arr[l], ref arr[i]);                
                     Qn(arr, l + 1, r, list);
                     Swap(ref arr[l], ref arr[i]);

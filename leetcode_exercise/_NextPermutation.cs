@@ -58,12 +58,12 @@ namespace leetcode_exercise
         {
             _NextPermutation n = new();
             {
-                int[] nums = { 1, 2, 3 };
+                int[] nums = [1, 2, 3];
                 n.NextPermutation(nums);
                 Console.WriteLine(string.Join(",", nums.Select(x => x.ToString()).ToArray()));
             }
             {
-                int[] nums = { 1, 3,2 };
+                int[] nums = [1, 3,2];
                 n.NextPermutation(nums);
                 Console.WriteLine(string.Join(",", nums.Select(x => x.ToString()).ToArray()));
             }

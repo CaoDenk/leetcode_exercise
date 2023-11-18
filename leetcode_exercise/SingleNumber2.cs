@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace leetcode_exercise
 {
+    /// <summary>
+    /// 137. 只出现一次的数字 II
+    /// </summary>
     internal class SingleNumber2
     {
         public int[] SingleNumber(int[] nums)

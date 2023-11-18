@@ -10,7 +10,6 @@ namespace leetcode_exercise2
     /// 146. LRU 缓存
     /// </summary>
     /// 
-
     class Node
     {
         public Node pre;

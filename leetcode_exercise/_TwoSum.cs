@@ -32,7 +32,7 @@ namespace leetcode_exercise
         {
             _TwoSum t = new();
 
-            var ret = t.TwoSum(new int[] { 3, 2, 4 }, 6);
+            var ret = t.TwoSum([3, 2, 4], 6);
             Console.WriteLine(string.Join(",",ret));
         }
     }

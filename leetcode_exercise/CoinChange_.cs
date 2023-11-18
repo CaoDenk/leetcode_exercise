@@ -46,10 +46,10 @@ namespace leetcode_exercise
             //    Console.WriteLine(c.CoinChange(new int[] {1,2,5},11));
             //}
             {
-                Console.WriteLine(c.CoinChange(new int[] { 2 }, 3));
+                Console.WriteLine(c.CoinChange([2], 3));
             }
             {
-                Console.WriteLine(c.CoinChange(new int[] { 2 }, 4));
+                Console.WriteLine(c.CoinChange([2], 4));
             }
         }
     }

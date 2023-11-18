@@ -86,8 +86,8 @@ namespace leetcode_exercise
             //    Console.WriteLine(count);
             //}
             {
-                int[] staple = { 2,1,1 };
-                int[] drinks = { 8, 9, 5, 1 };
+                int[] staple = [2,1,1];
+                int[] drinks = [8, 9, 5, 1];
                 int count = b.BreakfastNumber(staple, drinks, 9);
                 Console.WriteLine(count);
             }

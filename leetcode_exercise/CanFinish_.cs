@@ -8,7 +8,6 @@ namespace leetcode_exercise
 {
     /// <summary>
     /// 207. 课程表
-    /// 挖坑、
     /// 检测能否成为环
     /// </summary>
     internal class CanFinish_
@@ -128,11 +127,7 @@ namespace leetcode_exercise
                 Console.WriteLine(canFinish_.CanFinish(4, prerequisites));
             }
             {//1,0],[1,2],[0,1
-                int[][] prerequisites = new int[3][];
-                prerequisites[0] = new int[] { 1, 0 };
-                prerequisites[1] = new int[] { 0, 2 };
-                prerequisites[2] = new int[] { 2, 1 };
-
+                int[][] prerequisites = [[1, 0], [0, 2], [2, 1]];
                 Console.WriteLine(canFinish_.CanFinish(3, prerequisites));
             }
         }

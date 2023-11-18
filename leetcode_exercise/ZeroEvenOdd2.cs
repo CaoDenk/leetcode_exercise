@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace leetcode_exercise
 {
+    /// <summary>
+    /// 1116. 打印零与奇偶数
+    /// </summary>
     internal class ZeroEvenOdd2
     {
 
@@ -59,10 +62,12 @@ namespace leetcode_exercise
         public static void Main()
         {
             ZeroEvenOdd2 z = new(5);
-            Thread[] threads = new Thread[3];
-            threads[0] = new Thread(() => { z.Zero(printNumber); });
-            threads[1] = new Thread(() => { z.Odd(printNumber); });
-            threads[2] = new Thread(() => { z.Even(printNumber); });
+            Thread[] threads =
+            [
+                new Thread(() => { z.Zero(printNumber); }),
+                new Thread(() => { z.Odd(printNumber); }),
+                new Thread(() => { z.Even(printNumber); }),
+            ];
             z.pool.Release();
             for(int i=0;i<threads.Length;i++)
             {

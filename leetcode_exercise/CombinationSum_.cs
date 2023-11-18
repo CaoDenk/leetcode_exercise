@@ -44,7 +44,7 @@ namespace leetcode_exercise
         static void Main(string[] args)
         {
             CombinationSum_ c = new();
-            var res=c.CombinationSum(new int[] { 2, 3, 6, 7 }, 7);
+            var res=c.CombinationSum([2, 3, 6, 7], 7);
             foreach (var item in res)
             {
                 Console.WriteLine(string.Join(",",item));

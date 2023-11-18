@@ -35,7 +35,7 @@ namespace leetcode_exercise
         {
             Rob3 r = new Rob3();
             {
-                int?[] node = { 3, 4, 5, 1, 3, null, 1 };
+                int?[] node = [3, 4, 5, 1, 3, null, 1];
                 var root = Utils.Make(node);
                 Console.WriteLine(r.Rob(root));
             }

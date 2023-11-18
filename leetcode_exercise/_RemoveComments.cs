@@ -172,7 +172,7 @@ namespace leetcode_exercise
                 //}
             }
             {
-                string[] strs = new string[] { "void func(int k) {", "// this function does nothing /*", "   k = k*2/4;", "   k = k/2;*/", "}" };
+                string[] strs = { "void func(int k) {", "// this function does nothing /*", "   k = k*2/4;", "   k = k/2;*/", "}" };
                 foreach (string str in strs)
                 {
                     Console.WriteLine(str);
@@ -182,7 +182,7 @@ namespace leetcode_exercise
                 {
                     Console.WriteLine(str);
                 }
-                var result = new string[] { "void func(int k) {", "   k = k*2/4;", "   k = k/2;*/", "}" };
+                string[] result =  { "void func(int k) {", "   k = k*2/4;", "   k = k/2;*/", "}" };
                 foreach (string str in result)
                 {
                     Console.WriteLine(str);

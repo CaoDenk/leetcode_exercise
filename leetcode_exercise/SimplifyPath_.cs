@@ -16,9 +16,9 @@ namespace leetcode_exercise
         {
             public Path(bool isHome) 
             {
-                this.isHome = isHome;
+                this.IsHome = isHome;
             }
-            bool isHome { get; set; } = false;
+            bool IsHome { get; set; } = false;
             Stack<string> path=new Stack<string>();
             Stack<string> Back()
             {
@@ -42,7 +42,7 @@ namespace leetcode_exercise
             {
                 var list = path.Reverse();
                 var p = string.Join("/", list);
-                if (isHome)
+                if (IsHome)
                 {
                     return $"/{p}";
                 }

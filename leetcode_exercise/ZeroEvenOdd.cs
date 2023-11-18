@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace leetcode_exercise
 {
+    /// <summary>
+    /// 1116. 打印零与奇偶数
+    /// </summary>
     public class ZeroEvenOdd
     {
         private int n;

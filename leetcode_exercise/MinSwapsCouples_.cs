@@ -8,7 +8,6 @@ namespace leetcode_exercise
 {
     /// <summary>
     /// 765. 情侣牵手
-    /// 挖坑
     /// </summary>
     internal class MinSwapsCouples_
     {

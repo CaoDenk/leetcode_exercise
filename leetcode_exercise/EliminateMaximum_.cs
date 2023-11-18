@@ -36,11 +36,11 @@ namespace leetcode_exercise
         static void Main(string[] args)
         {
             EliminateMaximum_ e = new();
-            Console.WriteLine(e.EliminateMaximum(new int[] { 1,3,4},new int[] {1,1,1}));
-            Console.WriteLine(e.EliminateMaximum(new int[] { 1,1,2,3},new int[] {1,1,1,1}));
-            Console.WriteLine(e.EliminateMaximum(new int[] { 3, 2, 4 }, new int[] { 5,3,2 }));
-            Console.WriteLine(e.EliminateMaximum(new int[] { 4, 2, 3 }, new int[] { 2,1,1}));
-            Console.WriteLine(e.EliminateMaximum(new int[] { 3, 5, 7, 4, 5 }, new int[] { 2, 3, 6, 3, 2 }));
+            Console.WriteLine(e.EliminateMaximum([1,3,4],[1,1,1]));
+            Console.WriteLine(e.EliminateMaximum([1,1,2,3],[1,1,1,1]));
+            Console.WriteLine(e.EliminateMaximum([3, 2, 4], [5,3,2]));
+            Console.WriteLine(e.EliminateMaximum([4, 2, 3], [2,1,1]));
+            Console.WriteLine(e.EliminateMaximum([3, 5, 7, 4, 5], [2, 3, 6, 3, 2]));
 
         }
 

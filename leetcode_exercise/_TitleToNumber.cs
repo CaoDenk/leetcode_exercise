@@ -38,27 +38,6 @@ namespace leetcode_exercise
             return num;
         }
 
-        //public int ConvertToTitle(int columnNumber)
-        //{
-
-        //    Stack<char> ints = new Stack<char>();
-        //    var map = init();
-        //    do
-        //    {
-        //        --columnNumber;
-        //        columnNumber = Math.DivRem(columnNumber, 26, out int i);
-        //        ints.Push(i);
-
-        //    } while (columnNumber != 0);
-
-        //    int[] ret = new int[ints.Count];
-        //    for (int i = 0; i < ret.Length; ++i)
-        //    {
-        //        ret[i] = map[ints.Pop()];
-        //    }
-
-        //    return 0;
-        //}
         static void Main(string[] args)
         {
             _TitleToNumber t = new();
