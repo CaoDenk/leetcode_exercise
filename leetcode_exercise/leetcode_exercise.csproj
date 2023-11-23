@@ -7,7 +7,7 @@
     <Nullable>enable</Nullable>
 	  <!--<StartupObject>leetcode_exercise._AddStrings</StartupObject>-->
 	
-	  <StartupObject>leetcode_exercise.GoodNodes_</StartupObject>
+	  <StartupObject>leetcode_exercise.EntityParser_</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>

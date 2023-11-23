@@ -11,15 +11,11 @@ namespace leetcode_exercise
     /// </summary>
     internal class FindLUSlength_
     {
-        int  GetLongest(string str)
+        public int FindLUSlength(string a, string b)
         {
-
-            int max = 1;
-
-
-            return 0;
+            if (a == b) return -1;
+            return Math.Max(a.Length, b.Length);
         }
-
-
+      
     }
 }

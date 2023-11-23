@@ -36,8 +36,6 @@ namespace leetcode_exercise
                 stack.Push((height[i], i));
 
             }
-
-
             return ans;
         }
 
