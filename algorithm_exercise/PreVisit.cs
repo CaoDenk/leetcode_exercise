@@ -51,7 +51,7 @@ namespace algorithm_exercise
         static void Main(string[] args)
         {
             TreeNode root = Utils.Make(new int?[] { 1, null, 2, 3 });
-            _LevelOrder2 l = new();
+            LevelOrder2_ l = new();
             var ret= l.LevelOrder(root);
             foreach(var i in ret)
             {
